@@ -1,165 +1,379 @@
-  <div class="panel">
-    <div class="dashboard-top">
-      <span>999 Agent OS V3</span>
-      <span class="status" id="dbStatus">● CONECTANDO</span>
-    </div>
-    <div class="terminal">
-      <div><b>Sistema iniciado...</b></div>
-      <div><span class="cyan">CEO Agent</span> define estratégia.</div>
-      <div><span class="cyan">Store Agent</span> cria loja e produtos.</div>
-      <div><span class="cyan">Image Agent</span> gera prompts de fotos.</div>
-      <div><span class="cyan">Video Agent</span> cria roteiros de Reels.</div>
-      <div><span class="pink">Automation Agent</span> conecta fluxo gratuito.</div>
-      <div><span class="green">Supabase</span> salva leads no banco real.</div>
-      <div><b>Modo:</b> SaaS base, gratuito e expansível.</div>
-    </div>
-  </div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>999 Agent V3</title>
+<meta name="description" content="999 Agent — IA multiagentes com Supabase" />
+
+<style>
+:root{
+--bg:#050505;
+--card:rgba(255,255,255,.06);
+--line:rgba(255,255,255,.12);
+--text:#f5f5f5;
+--muted:#a3a3a3;
+--gold:#d6ff00;
+--cyan:#00e5ff;
+--purple:#8b5cf6;
+--green:#20ff9f;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:
+radial-gradient(circle at top left,rgba(0,229,255,.15),transparent 30%),
+radial-gradient(circle at top right,rgba(139,92,246,.18),transparent 30%),
+linear-gradient(180deg,#050505,#0b0b12);
+color:var(--text);
+overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+header{
+position:sticky;
+top:0;
+background:rgba(5,5,5,.8);
+backdrop-filter:blur(10px);
+border-bottom:1px solid var(--line);
+z-index:50;
+}
+.nav{
+max-width:1200px;
+margin:auto;
+padding:16px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:900;
+}
+.mark{
+width:42px;
+height:42px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--gold),var(--cyan),var(--purple));
+display:grid;
+place-items:center;
+color:#000;
+font-weight:900;
+}
+.btn{
+padding:12px 20px;
+border-radius:999px;
+border:none;
+font-weight:700;
+cursor:pointer;
+background:linear-gradient(135deg,var(--gold),var(--cyan));
+color:#000;
+}
+.hero{
+max-width:1200px;
+margin:auto;
+padding:90px 20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:40px;
+align-items:center;
+}
+.badge{
+display:inline-block;
+padding:10px 14px;
+border:1px solid var(--line);
+border-radius:999px;
+margin-bottom:20px;
+color:var(--gold);
+background:rgba(255,255,255,.05);
+}
+h1{
+font-size:70px;
+line-height:.95;
+margin-bottom:20px;
+letter-spacing:-3px;
+}
+.gradient{
+background:linear-gradient(135deg,#fff,var(--gold),var(--cyan));
+-webkit-background-clip:text;
+color:transparent;
+}
+.lead{
+font-size:20px;
+line-height:1.6;
+color:#ddd;
+margin-bottom:30px;
+}
+.panel{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:28px;
+padding:24px;
+box-shadow:0 20px 60px rgba(0,0,0,.4);
+}
+.terminal{
+background:#000;
+border-radius:20px;
+padding:20px;
+font-family:monospace;
+line-height:1.8;
+font-size:14px;
+}
+.green{color:var(--green)}
+.cyan{color:var(--cyan)}
+.purple{color:var(--purple)}
+section{
+max-width:1200px;
+margin:auto;
+padding:70px 20px;
+}
+.title{
+font-size:52px;
+margin-bottom:16px;
+letter-spacing:-2px;
+}
+.subtitle{
+color:var(--muted);
+font-size:18px;
+line-height:1.6;
+margin-bottom:30px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:18px;
+}
+.card{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:24px;
+padding:24px;
+}
+.card h3{margin-bottom:12px}
+.card p{color:var(--muted);line-height:1.6}
+.formbox{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:24px;
+padding:24px;
+}
+.input,textarea,select{
+width:100%;
+padding:14px;
+margin-top:12px;
+border-radius:14px;
+border:1px solid var(--line);
+background:#0d0d15;
+color:#fff;
+}
+textarea{min-height:120px}
+.output{
+background:#000;
+padding:18px;
+border-radius:18px;
+margin-top:20px;
+white-space:pre-wrap;
+font-family:monospace;
+line-height:1.6;
+}
+.metrics{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:16px;
+margin-top:20px;
+}
+.metric{
+background:var(--card);
+border:1px solid var(--line);
+border-radius:20px;
+padding:20px;
+}
+.metric strong{
+font-size:34px;
+color:var(--gold);
+}
+footer{
+padding:40px;
+text-align:center;
+color:var(--muted);
+border-top:1px solid var(--line);
+margin-top:60px;
+}
+@media(max-width:900px){
+.hero,.grid,.metrics{grid-template-columns:1fr}
+h1{font-size:48px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="nav">
+<div class="logo">
+<div class="mark">999</div>
+<div>999 Agent</div>
+</div>
+<a href="#lead"><button class="btn">Ativar</button></a>
+</div>
+</header>
+
+<section class="hero">
+<div>
+<div class="badge">⚡ IA Multiagentes + Supabase</div>
+<h1>Seu negócio operado por <span class="gradient">15 agentes de IA</span>.</h1>
+<p class="lead">O 999 Agent cria loja, conteúdo, automações, campanhas, vídeos, fotos e salva leads no Supabase em tempo real.</p>
+<a href="#lead"><button class="btn">Começar agora</button></a>
+</div>
+
+<div class="panel">
+<div class="terminal">
+<div><b>999 Agent iniciado...</b></div>
+<div><span class="cyan">CEO Agent</span> criando estratégia.</div>
+<div><span class="cyan">Store Agent</span> organizando loja.</div>
+<div><span class="cyan">Video Agent</span> criando Reels.</div>
+<div><span class="purple">Automation Agent</span> conectando fluxos.</div>
+<div><span class="green">Supabase</span> conectado ao banco real.</div>
+</div>
+</div>
 </section>
 
-<section id="agentes">
-  <h2 class="section-title">Equipe completa de agentes.</h2>
-  <p class="section-subtitle">Cada agente tem uma função específica para transformar ideia em operação comercial.</p>
-  <div class="agents">
-    <span class="chip">CEO</span>
-    <span class="chip">Loja</span>
-    <span class="chip">Produto</span>
-    <span class="chip">Branding</span>
-    <span class="chip">Copywriting</span>
-    <span class="chip">Design</span>
-    <span class="chip">Foto IA</span>
-    <span class="chip">Vídeo IA</span>
-    <span class="chip">Social Media</span>
-    <span class="chip">Tráfego</span>
-    <span class="chip">Atendimento</span>
-    <span class="chip">Vendas</span>
-    <span class="chip">Financeiro</span>
-    <span class="chip">Automação</span>
-    <span class="chip">Melhoria</span>
-  </div>
+<section>
+<h2 class="title">Equipe completa de agentes</h2>
+<p class="subtitle">Cada agente executa uma função estratégica da operação.</p>
+
+<div class="grid">
+<div class="card"><h3>CEO Agent</h3><p>Define estratégia e crescimento.</p></div>
+<div class="card"><h3>Social Media</h3><p>Cria posts, reels e campanhas.</p></div>
+<div class="card"><h3>Automation</h3><p>Conecta APIs e automatiza tarefas.</p></div>
+</div>
 </section>
 
 <section id="lead">
-  <h2 class="section-title">Captura de leads com banco real.</h2>
-  <p class="section-subtitle">Os dados são enviados para o Supabase e também ficam salvos localmente como backup no navegador.</p>
+<h2 class="title">Captura de leads com Supabase</h2>
+<p class="subtitle">Os leads são salvos localmente e enviados para o banco real.</p>
 
-  <div class="grid2">
-    <div class="formbox">
-      <h3>Formulário de interesse</h3>
-      <div class="formgrid">
-        <input class="input" id="nome" placeholder="Nome">
-        <input class="input" id="whats" placeholder="WhatsApp">
-      </div>
-      <div class="formgrid">
-        <input class="input" id="email" placeholder="E-mail">
-        <select id="objetivo">
-          <option>Criar loja</option>
-          <option>Criar posts</option>
-          <option>Criar vídeos</option>
-          <option>Automatizar redes sociais</option>
-          <option>Transformar em SaaS</option>
-        </select>
-      </div>
-      <textarea id="mensagem" placeholder="Explique o que você quer criar com o 999 Agent"></textarea>
-      <br><br>
-      <button class="btn primary" onclick="salvarLead()">Salvar lead</button>
-      <button class="btn" onclick="exportarCSV()">Exportar CSV</button>
-      <button class="btn" onclick="carregarLeadsSupabase()">Atualizar banco</button>
-    </div>
+<div class="formbox">
+<input class="input" id="nome" placeholder="Nome" />
+<input class="input" id="whats" placeholder="WhatsApp" />
+<input class="input" id="email" placeholder="E-mail" />
+<select class="input" id="objetivo">
+<option>Criar loja</option>
+<option>Automatizar redes sociais</option>
+<option>Criar SaaS</option>
+</select>
+<textarea id="mensagem" placeholder="Explique seu objetivo"></textarea>
+<br><br>
+<button class="btn" onclick="salvarLead()">Salvar lead</button>
 
-    <div class="module">
-      <h3>Leads capturados</h3>
-      <p>Total salvo localmente e sincronizado com Supabase.</p>
-      <div class="metrics" style="grid-template-columns:1fr 1fr;margin:16px 0">
-        <div class="metric"><strong id="totalLeads">0</strong><span>leads locais</span></div>
-        <div class="metric"><strong id="totalPosts">0</strong><span>conteúdos gerados</span></div>
-      </div>
-      <div class="output" id="listaLeads">Nenhum lead ainda.</div>
-    </div>
-  </div>
+<div class="metrics">
+<div class="metric"><strong id="mLeads">0</strong><div>Leads</div></div>
+<div class="metric"><strong>15</strong><div>Agentes</div></div>
+<div class="metric"><strong>V3</strong><div>Sistema</div></div>
+<div class="metric"><strong>R$0</strong><div>Base</div></div>
+</div>
+
+<div class="output" id="saida">Nenhum lead salvo.</div>
+</div>
 </section>
 
-<section id="gerador">
-  <h2 class="section-title">Gerador gratuito de posts, vídeos e prompts.</h2>
-  <p class="section-subtitle">Este gerador cria estruturas prontas para ChatGPT, Canva, CapCut, Instagram, TikTok ou Pinterest.</p>
+<section>
+<h2 class="title">Gerador de conteúdo</h2>
+<p class="subtitle">Cria campanhas, posts e prompts premium.</p>
 
-  <div class="grid2">
-    <div class="formbox">
-      <h3>Briefing rápido</h3>
-      <div class="formgrid">
-        <input class="input" id="marca" placeholder="Nome da marca">
-        <input class="input" id="produto" placeholder="Produto principal">
-      </div>
-      <div class="formgrid">
-        <input class="input" id="publico" placeholder="Público-alvo">
-        <select id="tipoConteudo">
-          <option>Post Instagram</option>
-          <option>Reel/TikTok</option>
-          <option>Anúncio</option>
-          <option>Foto de produto</option>
-          <option>Campanha completa</option>
-        </select>
-      </div>
-      <textarea id="beneficio" placeholder="Principal benefício ou promessa"></textarea>
-      <br><br>
-      <button class="btn primary" onclick="gerarConteudo()">Gerar conteúdo</button>
-      <button class="btn" onclick="copiarSaida()">Copiar saída</button>
-    </div>
-
-    <div class="module">
-      <h3>Resultado gerado</h3>
-      <div class="output" id="saidaGerador">Preencha o briefing e clique em gerar.</div>
-    </div>
-  </div>
+<div class="formbox">
+<input class="input" id="produto" placeholder="Produto" />
+<textarea id="beneficio" placeholder="Benefício principal"></textarea>
+<br>
+<button class="btn" onclick="gerarConteudo()">Gerar conteúdo</button>
+<div class="output" id="conteudo">Aguardando geração...</div>
+</div>
 </section>
 
-<section id="admin">
-  <h2 class="section-title">Painel admin local + Supabase.</h2>
-  <p class="section-subtitle">Painel simples para acompanhar leads, conteúdos, comandos e status da operação.</p>
+<footer>
+999 Agent © IA Multiagentes SaaS
+</footer>
 
-  <div class="metrics">
-    <div class="metric"><strong id="mLeads">0</strong><span>leads locais</span></div>
-    <div class="metric"><strong id="mConteudos">0</strong><span>conteúdos</span></div>
-    <div class="metric"><strong>15</strong><span>agentes</span></div>
-    <div class="metric"><strong>R$0</strong><span>custo base</span></div>
-  </div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <br>
+<script>
+const supabaseUrl='https://kzjuqssxifzqrzxskbwx.supabase.co';
+const supabaseKey='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
+const supabaseClient=window.supabase.createClient(supabaseUrl,supabaseKey);
 
-  <div class="grid2">
-    <div class="module">
-      <h3>Configurar WhatsApp</h3>
-      <p>Coloque seu número com DDI e DDD. Exemplo: 5511999999999</p>
-      <br>
-      <input class="input" id="numeroWhats" placeholder="Seu número WhatsApp">
-      <br><br>
-      <button class="btn primary" onclick="atualizarWhatsApp()">Atualizar botão</button>
-    </div>
+let leads=JSON.parse(localStorage.getItem('p1_leads')||'[]');
 
-    <div class="module">
-      <h3>Comando mestre</h3>
-      <div class="command-box" id="command">999 Agent, iniciar operação. Meu negócio é: [explique seu negócio]. Meu produto principal é: [produto]. Meu público-alvo é: [público]. Meu objetivo agora é: criar loja, conteúdo, fotos, vídeos, automações e vendas.</div>
-      <br>
-      <button class="btn" onclick="copyCommand()">Copiar comando</button>
-    </div>
-  </div>
+function render(){
+document.getElementById('mLeads').innerText=leads.length;
+document.getElementById('saida').innerText=
+leads.length?
+leads.map(l=>`${l.nome} | ${l.whats}`).join('\n'):
+'Nenhum lead salvo.';
+}
 
-  <br>
+async function salvarLead(){
+const lead={
+nome:document.getElementById('nome').value,
+whats:document.getElementById('whats').value,
+email:document.getElementById('email').value,
+objetivo:document.getElementById('objetivo').value,
+mensagem:document.getElementById('mensagem').value
+};
 
-  <div class="module">
-    <h3>Tabela de leads</h3>
-    <div id="tabelaLeads"></div>
-    <br>
-    <button class="btn" onclick="limparDados()">Limpar dados locais</button>
-  </div>
-</section>
+if(!lead.nome||!lead.whats){
+alert('Preencha nome e WhatsApp');
+return;
+}
 
-<section id="ativar">
-  <div class="cta-box">
-    <div>
-      <h2>Ative o 999 Agent.</h2>
-      <p>Copie o comando mestre, cole no seu assistente de IA e peça para executar a próxima tarefa da sua loja.</p>
-      <div class="command-box">999 Agent, crie minha operação completa com loja, produtos, fotos, vídeos, posts, atendimento, vendas, automações, dashboard e melhoria contínua.</div>
-    </div>
-    <a class="btn primary" href="#admin">Abrir admin</a>
-  </div>
-</section>
+leads.push(lead);
+localStorage.setItem('p1_leads',JSON.stringify(leads));
+render();
+
+try{
+await supabaseClient.from('leads').insert([
+{
+nome:lead.nome,
+whatsapp:lead.whats,
+email:lead.email,
+objetivo:lead.objetivo,
+mensagem:lead.mensagem
+}
+]);
+alert('Lead salvo no Supabase');
+}catch(err){
+console.error(err);
+alert('Erro ao salvar no Supabase');
+}
+}
+
+function gerarConteudo(){
+const produto=document.getElementById('produto').value||'[produto]';
+const beneficio=document.getElementById('beneficio').value||'[benefício]';
+
+const texto=`
+999 AGENT — CAMPANHA
+
+Produto: ${produto}
+Benefício: ${beneficio}
+
+Headline:
+Transforme sua rotina com ${produto}.
+
+Legenda:
+O ${produto} foi criado para quem busca ${beneficio} com mais velocidade, estilo e resultado.
+
+Prompt visual:
+Foto cinematográfica ultra realista de ${produto}, iluminação premium, estética futurista, 8k.
+
+CTA:
+Clique no link e ative agora.
+`;
+
+document.getElementById('conteudo').innerText=texto;
+}
+
+render();
+</script>
+
+</body>
+</html>
