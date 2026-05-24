@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P3</title>
+<title>999 Agent P3 — Login + IA</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-body{font-family:Arial;background:#050505;color:#fff;margin:0;padding:0}header{padding:20px;border-bottom:1px solid #222;display:flex;justify-content:space-between;align-items:center;background:#0b0b12}.logo{font-weight:900;font-size:22px}.wrap{max-width:1200px;margin:auto;padding:30px}.card{background:#111827;border:1px solid #222;padding:20px;border-radius:20px;margin-bottom:20px}.input,textarea,select{width:100%;padding:14px;background:#050505;border:1px solid #333;border-radius:12px;color:#fff;margin-top:10px}.btn{padding:14px 22px;border:none;border-radius:12px;background:#d6ff00;color:#000;font-weight:700;cursor:pointer;margin-top:10px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.chat{height:500px;overflow:auto;background:#000;padding:20px;border-radius:16px}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6}.user{background:#1f2937}.ai{background:#042f2e}.metric{background:#000;padding:20px;border-radius:16px;text-align:center}.metric h2{color:#d6ff00;font-size:40px}.hidden{display:none}@media(max-width:900px){.grid{grid-template-columns:1fr}}
+:root{--bg:#050505;--card:#111827;--line:#2a2f3a;--text:#fff;--muted:#a7a7a7;--gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b}*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 28%),radial-gradient(circle at 80% 10%,rgba(139,92,246,.16),transparent 28%),#050505;color:var(--text);margin:0;padding:0}header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1200px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:130px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.chat{height:460px;overflow:auto;background:#000;padding:20px;border-radius:16px;border:1px solid #222}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:38px;margin:0}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}@media(max-width:900px){.grid{grid-template-columns:1fr}.wrap{padding:18px}}
 </style>
 </head>
 <body>
@@ -19,159 +19,180 @@ body{font-family:Arial;background:#050505;color:#fff;margin:0;padding:0}header{p
 
 <div id="authBox" class="card">
 <h2>Login / Cadastro</h2>
-<input class="input" id="email" placeholder="Seu email" />
-<input class="input" id="senha" type="password" placeholder="Sua senha" />
-<button class="btn" onclick="registrar()">Cadastrar</button>
-<button class="btn" onclick="login()">Entrar</button>
+<p class="muted">Crie uma conta ou entre para acessar o painel IA com memória.</p>
+<input class="input" id="email" type="email" placeholder="Seu email" />
+<input class="input" id="senha" type="password" placeholder="Sua senha — mínimo 6 caracteres" />
+<button class="btn" id="btnCadastrar">Cadastrar</button>
+<button class="btn secondary" id="btnEntrar">Entrar</button>
+<div class="status" id="authStatus">Sistema pronto. Preencha email e senha.</div>
 </div>
 
 <div id="app" class="hidden">
 <div class="grid">
 <div class="card">
 <h2>Chat IA</h2>
+<p class="muted">Escolha o agente e envie uma ordem para o 999 Agent.</p>
 <select class="input" id="agente">
 <option>CEO Agent</option>
 <option>Social Media Agent</option>
 <option>Vendas Agent</option>
 <option>Design Agent</option>
 <option>Automation Agent</option>
+<option>Loja Agent</option>
 </select>
 <textarea id="prompt" class="input" placeholder="Digite sua ordem para o 999 Agent"></textarea>
-<button class="btn" onclick="enviarIA()">Enviar para IA</button>
-<button class="btn" onclick="logout()">Logout</button>
+<button class="btn" id="btnIA">Enviar para IA</button>
+<button class="btn danger" id="btnLogout">Logout</button>
+<div class="status" id="iaStatus">IA pronta.</div>
 </div>
 
 <div class="card">
 <h2>Dashboard</h2>
 <div class="grid">
-<div class="metric"><h2 id="mChats">0</h2><p>Chats</p></div>
+<div class="metric"><h2 id="mChats">0</h2><p>Chats salvos</p></div>
 <div class="metric"><h2 id="mPlano">FREE</h2><p>Plano</p></div>
 </div>
+<div class="status" id="profileStatus">Perfil aguardando login.</div>
 </div>
 </div>
 
 <div class="card">
 <h2>Histórico IA</h2>
-<div id="chatBox" class="chat"></div>
+<div id="chatBox" class="chat">Nenhuma conversa ainda.</div>
 </div>
 </div>
 </div>
 
 <script>
-const supabaseUrl='https://kzjuqssxifzqrzxskbwx.supabase.co';
-const supabaseKey='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
-const supabase=window.supabase.createClient(supabaseUrl,supabaseKey);
-
+const SUPABASE_URL='https://kzjuqssxifzqrzxskbwx.supabase.co';
+const SUPABASE_KEY='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 let currentUser=null;
 
+function setStatus(id,msg,type=''){
+  const el=document.getElementById(id);
+  el.className='status '+type;
+  el.textContent=msg;
+}
+
+function validarAuth(){
+  const email=document.getElementById('email').value.trim();
+  const senha=document.getElementById('senha').value.trim();
+  if(!email || !senha){setStatus('authStatus','Preencha email e senha.','err');return null;}
+  if(senha.length<6){setStatus('authStatus','A senha precisa ter pelo menos 6 caracteres.','err');return null;}
+  return {email,senha};
+}
+
 async function registrar(){
-const email=document.getElementById('email').value;
-const senha=document.getElementById('senha').value;
-
-const {data,error}=await supabase.auth.signUp({email,password:senha});
-
-if(error){alert(error.message);return;}
-
-alert('Conta criada');
+  const dados=validarAuth();
+  if(!dados)return;
+  setStatus('authStatus','Criando conta...');
+  try{
+    const {data,error}=await db.auth.signUp({email:dados.email,password:dados.senha});
+    if(error)throw error;
+    setStatus('authStatus','Conta criada. Agora clique em Entrar.','ok');
+  }catch(error){
+    setStatus('authStatus','Erro ao cadastrar: '+error.message,'err');
+    console.error(error);
+  }
 }
 
 async function login(){
-const email=document.getElementById('email').value;
-const senha=document.getElementById('senha').value;
-
-const {data,error}=await supabase.auth.signInWithPassword({email,password:senha});
-
-if(error){alert(error.message);return;}
-
-currentUser=data.user;
-
-await carregarPerfil();
-await carregarChats();
-
+  const dados=validarAuth();
+  if(!dados)return;
+  setStatus('authStatus','Entrando...');
+  try{
+    const {data,error}=await db.auth.signInWithPassword({email:dados.email,password:dados.senha});
+    if(error)throw error;
+    currentUser=data.user;
+    await abrirApp();
+  }catch(error){
+    setStatus('authStatus','Erro ao entrar: '+error.message,'err');
+    console.error(error);
+  }
 }
 
-async function carregarPerfil(){
-document.getElementById('authBox').classList.add('hidden');
-document.getElementById('app').classList.remove('hidden');
-document.getElementById('userInfo').innerText=currentUser.email;
-
-const {data}=await supabase
-.from('perfis')
-.select('*')
-.eq('id',currentUser.id)
-.single();
-
-if(!data){
-await supabase.from('perfis').insert([
-{
-id:currentUser.id,
-nome:currentUser.email,
-plano:'free'
+async function abrirApp(){
+  document.getElementById('authBox').classList.add('hidden');
+  document.getElementById('app').classList.remove('hidden');
+  document.getElementById('userInfo').innerText=currentUser.email;
+  await garantirPerfil();
+  await carregarChats();
 }
-]);
-}
+
+async function garantirPerfil(){
+  setStatus('profileStatus','Carregando perfil...');
+  try{
+    const {data,error}=await db.from('perfis').select('*').eq('id',currentUser.id).maybeSingle();
+    if(error)throw error;
+    if(!data){
+      const {error:insertError}=await db.from('perfis').insert([{id:currentUser.id,nome:currentUser.email,plano:'free'}]);
+      if(insertError)throw insertError;
+      document.getElementById('mPlano').innerText='FREE';
+      setStatus('profileStatus','Perfil criado no plano FREE.','ok');
+      return;
+    }
+    document.getElementById('mPlano').innerText=(data.plano||'free').toUpperCase();
+    setStatus('profileStatus','Perfil carregado.','ok');
+  }catch(error){
+    setStatus('profileStatus','Erro no perfil: '+error.message+'\nSe for RLS, desative temporariamente RLS da tabela perfis.','err');
+    console.error(error);
+  }
 }
 
 async function enviarIA(){
-const agente=document.getElementById('agente').value;
-const prompt=document.getElementById('prompt').value;
-
-if(!prompt)return;
-
-const chat=document.getElementById('chatBox');
-
-chat.innerHTML+=`<div class="bubble user"><b>Você:</b><br>${prompt}</div>`;
-
-const {data,error}=await supabase.functions.invoke('p1-ai',{
-body:{
-prompt:`Agente: ${agente}\n\nUsuário: ${prompt}`
-}
-});
-
-if(error){
-chat.innerHTML+=`<div class="bubble ai">Erro IA</div>`;
-return;
-}
-
-const resposta=data.output;
-
-chat.innerHTML+=`<div class="bubble ai"><b>${agente}:</b><br>${resposta}</div>`;
-
-await supabase.from('chats').insert([
-{
-user_id:currentUser.id,
-agente,
-prompt,
-resposta
-}
-]);
-
-await carregarChats();
+  const agente=document.getElementById('agente').value;
+  const prompt=document.getElementById('prompt').value.trim();
+  if(!prompt){setStatus('iaStatus','Digite uma ordem para a IA.','err');return;}
+  const chat=document.getElementById('chatBox');
+  if(chat.textContent==='Nenhuma conversa ainda.') chat.innerHTML='';
+  chat.innerHTML+=`<div class="bubble user"><b>Você:</b><br>${prompt}</div>`;
+  setStatus('iaStatus','IA processando...');
+  try{
+    const {data,error}=await db.functions.invoke('p1-ai',{body:{prompt:`Agente: ${agente}\n\nUsuário: ${prompt}`}});
+    if(error)throw error;
+    const resposta=data?.output||'Sem resposta.';
+    chat.innerHTML+=`<div class="bubble ai"><b>${agente}:</b><br>${resposta}</div>`;
+    await db.from('chats').insert([{user_id:currentUser.id,agente,prompt,resposta}]);
+    document.getElementById('prompt').value='';
+    setStatus('iaStatus','Resposta gerada e salva.','ok');
+    await carregarChats();
+  }catch(error){
+    chat.innerHTML+=`<div class="bubble ai"><b>Erro:</b><br>${error.message}</div>`;
+    setStatus('iaStatus','Erro IA: '+error.message,'err');
+    console.error(error);
+  }
 }
 
 async function carregarChats(){
-const {data}=await supabase
-.from('chats')
-.select('*')
-.eq('user_id',currentUser.id)
-.order('created_at',{ascending:false});
-
-if(data){
-document.getElementById('mChats').innerText=data.length;
-}
+  try{
+    const {data,error}=await db.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});
+    if(error)throw error;
+    document.getElementById('mChats').innerText=data?data.length:0;
+    if(data && data.length){
+      document.getElementById('chatBox').innerHTML=data.slice(0,20).reverse().map(c=>`<div class="bubble user"><b>Você:</b><br>${c.prompt}</div><div class="bubble ai"><b>${c.agente}:</b><br>${c.resposta}</div>`).join('');
+    }
+  }catch(error){
+    setStatus('iaStatus','Erro ao carregar chats: '+error.message+'\nSe for RLS, desative temporariamente RLS da tabela chats.','err');
+    console.error(error);
+  }
 }
 
 async function logout(){
-await supabase.auth.signOut();
-location.reload();
+  await db.auth.signOut();
+  location.reload();
 }
 
-supabase.auth.getSession().then(async ({data:{session}})=>{
-if(session){
-currentUser=session.user;
-await carregarPerfil();
-await carregarChats();
-}
+document.getElementById('btnCadastrar').addEventListener('click',registrar);
+document.getElementById('btnEntrar').addEventListener('click',login);
+document.getElementById('btnIA').addEventListener('click',enviarIA);
+document.getElementById('btnLogout').addEventListener('click',logout);
+
+db.auth.getSession().then(async ({data:{session}})=>{
+  if(session){
+    currentUser=session.user;
+    await abrirApp();
+  }
 });
 </script>
 </body>
