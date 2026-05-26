@@ -3,22 +3,22 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P4 — Memória SaaS</title>
+<title>999 Agent P5 — Multiagentes Reais</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root{--bg:#050505;--card:#111827;--line:#2a2f3a;--text:#fff;--muted:#a7a7a7;--gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b;--purple:#8b5cf6}*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(0,229,255,.12),transparent 28%),radial-gradient(circle at 80% 10%,rgba(139,92,246,.16),transparent 28%),linear-gradient(180deg,#050505,#090912 65%,#020202);color:var(--text);margin:0;padding:0}header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1240px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:130px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.btn.cyan{background:var(--cyan);color:#001014}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.chat{height:520px;overflow:auto;background:#000;padding:20px;border-radius:16px;border:1px solid #222}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}.system{background:#191124;color:#d7c7ff}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:38px;margin:0}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}.small{font-size:13px;color:var(--muted)}@media(max-width:900px){.grid,.grid3{grid-template-columns:1fr}.wrap{padding:18px}.chat{height:420px}}
+:root{--bg:#050505;--card:#111827;--line:#2a2f3a;--text:#fff;--muted:#a7a7a7;--gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b;--purple:#8b5cf6}*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(0,229,255,.13),transparent 28%),radial-gradient(circle at 80% 10%,rgba(139,92,246,.18),transparent 28%),linear-gradient(180deg,#050505,#090912 65%,#020202);color:var(--text);margin:0;padding:0}header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1280px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:140px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.btn.cyan{background:var(--cyan);color:#001014}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.chat{height:560px;overflow:auto;background:#000;padding:20px;border-radius:16px;border:1px solid #222}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}.agentnote{background:#171126;color:#e6dcff}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:34px;margin:0}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}.small{font-size:13px;color:var(--muted)}.agent-card{background:#050505;border:1px solid #2d3440;border-radius:18px;padding:16px;cursor:pointer;transition:.2s}.agent-card:hover{border-color:var(--gold);transform:translateY(-2px)}.agent-card.active{border-color:var(--gold);box-shadow:0 0 0 1px rgba(214,255,0,.3)}.agent-card h3{margin:0 0 8px}.agent-card p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}@media(max-width:1000px){.grid,.grid3,.grid4{grid-template-columns:1fr}.wrap{padding:18px}.chat{height:420px}}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">999 Agent P4 — Memória SaaS</div>
+<div class="logo">999 Agent P5 — Multiagentes Reais</div>
 <div id="userInfo">Não logado</div>
 </header>
 
 <div class="wrap">
 <div id="authBox" class="card">
 <h2>Login / Cadastro</h2>
-<p class="muted">Entre para acessar seu painel IA com histórico salvo no Supabase.</p>
+<p class="muted">Entre para acessar o sistema multiagentes com memória persistente.</p>
 <input class="input" id="email" type="email" placeholder="Seu email" />
 <input class="input" id="senha" type="password" placeholder="Sua senha — mínimo 6 caracteres" />
 <button class="btn" id="btnCadastrar">Cadastrar</button>
@@ -27,32 +27,31 @@
 </div>
 
 <div id="app" class="hidden">
+<div class="card">
+<h2>Central de Agentes</h2>
+<p class="muted">Os agentes abaixo são carregados da tabela <b>agentes</b> no Supabase. Clique em um agente para ativar seu modo especialista.</p>
+<div class="grid4" id="agentesGrid"></div>
+<div class="status" id="agentStatus">Carregando agentes...</div>
+</div>
+
 <div class="grid">
 <div class="card">
-<h2>Chat IA com memória</h2>
-<p class="muted">A IA usa contexto das últimas conversas e salva cada resposta no banco.</p>
-<select class="input" id="agente">
-<option>CEO Agent</option>
-<option>Social Media Agent</option>
-<option>Vendas Agent</option>
-<option>Design Agent</option>
-<option>Automation Agent</option>
-<option>Loja Agent</option>
-<option>Atendimento Agent</option>
-</select>
-<textarea id="prompt" class="input" placeholder="Digite sua ordem para o 999 Agent"></textarea>
-<button class="btn" id="btnIA">Enviar para IA</button>
-<button class="btn secondary" id="btnReload">Recarregar histórico</button>
+<h2>Comando para o agente</h2>
+<p class="muted">Agente ativo: <b id="agenteAtivoNome">Nenhum</b></p>
+<textarea id="prompt" class="input" placeholder="Digite sua ordem para o agente ativo"></textarea>
+<button class="btn" id="btnIA">Executar agente</button>
+<button class="btn secondary" id="btnReload">Recarregar memória</button>
 <button class="btn danger" id="btnLogout">Logout</button>
 <div class="status" id="iaStatus">IA pronta.</div>
 </div>
 
 <div class="card">
 <h2>Dashboard CEO</h2>
-<div class="grid3">
-<div class="metric"><h2 id="mChats">0</h2><p>Chats salvos</p></div>
+<div class="grid4">
+<div class="metric"><h2 id="mChats">0</h2><p>Chats</p></div>
+<div class="metric"><h2 id="mAgentes">0</h2><p>Agentes</p></div>
 <div class="metric"><h2 id="mPlano">FREE</h2><p>Plano</p></div>
-<div class="metric"><h2 id="mAgentes">7</h2><p>Agentes</p></div>
+<div class="metric"><h2 id="mMemoria">0</h2><p>Memória</p></div>
 </div>
 <div class="status" id="profileStatus">Perfil aguardando login.</div>
 <div class="status" id="memoryStatus">Memória aguardando histórico.</div>
@@ -60,8 +59,8 @@
 </div>
 
 <div class="card">
-<h2>Histórico IA persistente</h2>
-<p class="small">As conversas abaixo são carregadas da tabela <b>chats</b> no Supabase.</p>
+<h2>Histórico multiagentes</h2>
+<p class="small">As conversas são salvas na tabela <b>chats</b> e reutilizadas como memória contextual.</p>
 <div id="chatBox" class="chat">Nenhuma conversa ainda.</div>
 </div>
 </div>
@@ -73,6 +72,8 @@ const SUPABASE_KEY='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
 const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 let currentUser=null;
 let historico=[];
+let agentes=[];
+let agenteAtivo=null;
 
 function setStatus(id,msg,type=''){
   const el=document.getElementById(id);
@@ -100,9 +101,7 @@ async function registrar(){
     const {error}=await db.auth.signUp({email:dados.email,password:dados.senha});
     if(error)throw error;
     setStatus('authStatus','Conta criada. Agora clique em Entrar.','ok');
-  }catch(error){
-    setStatus('authStatus','Erro ao cadastrar: '+error.message,'err');
-  }
+  }catch(error){setStatus('authStatus','Erro ao cadastrar: '+error.message,'err');}
 }
 
 async function login(){
@@ -114,9 +113,7 @@ async function login(){
     if(error)throw error;
     currentUser=data.user;
     await abrirApp();
-  }catch(error){
-    setStatus('authStatus','Erro ao entrar: '+error.message,'err');
-  }
+  }catch(error){setStatus('authStatus','Erro ao entrar: '+error.message,'err');}
 }
 
 async function abrirApp(){
@@ -124,6 +121,7 @@ async function abrirApp(){
   document.getElementById('app').classList.remove('hidden');
   document.getElementById('userInfo').innerText=currentUser.email;
   await garantirPerfil();
+  await carregarAgentes();
   await carregarChats();
 }
 
@@ -141,82 +139,104 @@ async function garantirPerfil(){
     }
     document.getElementById('mPlano').innerText=(data.plano||'free').toUpperCase();
     setStatus('profileStatus','Perfil carregado.','ok');
-  }catch(error){
-    setStatus('profileStatus','Erro no perfil: '+error.message,'err');
-  }
+  }catch(error){setStatus('profileStatus','Erro no perfil: '+error.message,'err');}
+}
+
+async function carregarAgentes(){
+  setStatus('agentStatus','Carregando agentes do Supabase...');
+  try{
+    const {data,error}=await db.from('agentes').select('*').order('created_at',{ascending:true});
+    if(error)throw error;
+    agentes=data||[];
+    document.getElementById('mAgentes').innerText=agentes.length;
+    if(!agentes.length){
+      setStatus('agentStatus','Nenhum agente encontrado na tabela agentes.','err');
+      return;
+    }
+    agenteAtivo=agentes[0];
+    renderAgentes();
+    setStatus('agentStatus',`${agentes.length} agentes carregados.`,`ok`);
+  }catch(error){setStatus('agentStatus','Erro ao carregar agentes: '+error.message,'err');}
+}
+
+function renderAgentes(){
+  const grid=document.getElementById('agentesGrid');
+  grid.innerHTML=agentes.map(a=>`<div class="agent-card ${agenteAtivo&&agenteAtivo.id===a.id?'active':''}" onclick="selecionarAgente('${a.id}')"><h3>${escapeHtml(a.nome)}</h3><p>${escapeHtml(a.sistema)}</p></div>`).join('');
+  document.getElementById('agenteAtivoNome').innerText=agenteAtivo?agenteAtivo.nome:'Nenhum';
+}
+
+window.selecionarAgente=function(id){
+  agenteAtivo=agentes.find(a=>a.id===id);
+  renderAgentes();
+  setStatus('iaStatus',`${agenteAtivo.nome} ativado.`,`ok`);
 }
 
 function montarMemoria(){
   if(!historico.length)return 'Sem histórico anterior.';
-  return historico.slice(-6).map(c=>`Usuário: ${c.prompt}\n${c.agente}: ${c.resposta}`).join('\n\n');
+  return historico.slice(-8).map(c=>`Usuário: ${c.prompt}\n${c.agente}: ${c.resposta}`).join('\n\n');
 }
 
-function montarPromptComMemoria(agente,prompt){
-  return `Você é o 999 Agent, uma IA multiagentes premium para negócios digitais.\n\nAgente atual: ${agente}.\n\nMemória recente do usuário:\n${montarMemoria()}\n\nNova solicitação do usuário:\n${prompt}\n\nResponda em português, com execução prática, estratégia, automação, monetização e próximos passos claros.`;
+function montarPromptComMemoria(prompt){
+  const nome=agenteAtivo?.nome||'999 Agent';
+  const sistema=agenteAtivo?.sistema||'Especialista geral em negócios digitais.';
+  return `Você é o ${nome}, dentro do sistema 999 Agent.\n\nEspecialização do agente:\n${sistema}\n\nMemória recente do usuário:\n${montarMemoria()}\n\nNova solicitação do usuário:\n${prompt}\n\nRegras de resposta:\n- responda em português;\n- aja como especialista premium;\n- entregue execução prática;\n- inclua estratégia, próximos passos, automações e melhorias;\n- seja direto, útil e orientado a resultado.`;
 }
 
 async function enviarIA(){
-  const agente=document.getElementById('agente').value;
+  if(!agenteAtivo){setStatus('iaStatus','Selecione um agente primeiro.','err');return;}
   const prompt=document.getElementById('prompt').value.trim();
   if(!prompt){setStatus('iaStatus','Digite uma ordem para a IA.','err');return;}
   const chat=document.getElementById('chatBox');
   if(chat.textContent==='Nenhuma conversa ainda.') chat.innerHTML='';
   chat.innerHTML+=`<div class="bubble user"><b>Você:</b><br>${escapeHtml(prompt)}</div>`;
-  setStatus('iaStatus','IA processando com memória...');
+  chat.innerHTML+=`<div class="bubble agentnote"><b>Agente ativado:</b> ${escapeHtml(agenteAtivo.nome)}<br>${escapeHtml(agenteAtivo.sistema)}</div>`;
+  chat.scrollTop=chat.scrollHeight;
+  setStatus('iaStatus',`${agenteAtivo.nome} processando com memória...`);
   try{
-    const promptFinal=montarPromptComMemoria(agente,prompt);
+    const promptFinal=montarPromptComMemoria(prompt);
     const {data,error}=await db.functions.invoke('p1-ai',{body:{prompt:promptFinal}});
     if(error)throw error;
     const resposta=data?.output||'Sem resposta.';
-    chat.innerHTML+=`<div class="bubble ai"><b>${escapeHtml(agente)}:</b><br>${escapeHtml(resposta)}</div>`;
-    const {error:saveError}=await db.from('chats').insert([{user_id:currentUser.id,agente,prompt,resposta}]);
+    chat.innerHTML+=`<div class="bubble ai"><b>${escapeHtml(agenteAtivo.nome)}:</b><br>${escapeHtml(resposta)}</div>`;
+    const {error:saveError}=await db.from('chats').insert([{user_id:currentUser.id,agente:agenteAtivo.nome,prompt,resposta}]);
     if(saveError)throw saveError;
     document.getElementById('prompt').value='';
     setStatus('iaStatus','Resposta gerada e salva no Supabase.','ok');
-    await carregarChats();
+    await carregarChats(false);
   }catch(error){
     chat.innerHTML+=`<div class="bubble ai"><b>Erro:</b><br>${escapeHtml(error.message)}</div>`;
     setStatus('iaStatus','Erro IA: '+error.message,'err');
   }
 }
 
-async function carregarChats(){
+async function carregarChats(render=true){
   try{
     const {data,error}=await db.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true});
     if(error)throw error;
     historico=data||[];
     document.getElementById('mChats').innerText=historico.length;
-    document.getElementById('memoryStatus').textContent=historico.length?`Memória ativa: ${historico.length} conversas carregadas.`:'Memória vazia. Envie a primeira mensagem.';
+    document.getElementById('mMemoria').innerText=Math.min(historico.length,8);
+    document.getElementById('memoryStatus').textContent=historico.length?`Memória ativa: ${historico.length} conversas carregadas. A IA usa as últimas ${Math.min(historico.length,8)} como contexto.`:'Memória vazia. Envie a primeira mensagem.';
     document.getElementById('memoryStatus').className='status ok';
-    const chat=document.getElementById('chatBox');
-    if(historico.length){
-      chat.innerHTML=historico.slice(-30).map(c=>`<div class="bubble user"><b>Você:</b><br>${escapeHtml(c.prompt)}</div><div class="bubble ai"><b>${escapeHtml(c.agente)}:</b><br>${escapeHtml(c.resposta)}</div>`).join('');
-      chat.scrollTop=chat.scrollHeight;
-    }else{
-      chat.textContent='Nenhuma conversa ainda.';
+    if(render){
+      const chat=document.getElementById('chatBox');
+      if(historico.length){
+        chat.innerHTML=historico.slice(-30).map(c=>`<div class="bubble user"><b>Você:</b><br>${escapeHtml(c.prompt)}</div><div class="bubble ai"><b>${escapeHtml(c.agente)}:</b><br>${escapeHtml(c.resposta)}</div>`).join('');
+        chat.scrollTop=chat.scrollHeight;
+      }else chat.textContent='Nenhuma conversa ainda.';
     }
-  }catch(error){
-    setStatus('iaStatus','Erro ao carregar chats: '+error.message,'err');
-  }
+  }catch(error){setStatus('iaStatus','Erro ao carregar chats: '+error.message,'err');}
 }
 
-async function logout(){
-  await db.auth.signOut();
-  location.reload();
-}
+async function logout(){await db.auth.signOut();location.reload();}
 
 document.getElementById('btnCadastrar').addEventListener('click',registrar);
 document.getElementById('btnEntrar').addEventListener('click',login);
 document.getElementById('btnIA').addEventListener('click',enviarIA);
-document.getElementById('btnReload').addEventListener('click',carregarChats);
+document.getElementById('btnReload').addEventListener('click',()=>carregarChats(true));
 document.getElementById('btnLogout').addEventListener('click',logout);
 
-db.auth.getSession().then(async ({data:{session}})=>{
-  if(session){
-    currentUser=session.user;
-    await abrirApp();
-  }
-});
+db.auth.getSession().then(async ({data:{session}})=>{if(session){currentUser=session.user;await abrirApp();}});
 </script>
 </body>
 </html>
