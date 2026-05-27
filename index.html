@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P8 — SaaS IA Multiagentes</title>
+<title>999 Agent P9 — SaaS IA Multiagentes</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
@@ -19,6 +19,7 @@
   --purple:#8b5cf6;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
   font-family:Arial,sans-serif;
   background:
@@ -149,7 +150,7 @@ textarea{min-height:140px;resize:vertical}
   white-space:pre-wrap;
   line-height:1.6;
   min-height:220px;
-  max-height:720px;
+  max-height:760px;
   overflow:auto;
 }
 .split{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
@@ -168,6 +169,7 @@ pre{
   padding:14px;
   color:#dcdcdc;
   overflow:auto;
+  font-size:12px;
 }
 @media(max-width:1000px){
   .grid,.grid4,.split{grid-template-columns:1fr}
@@ -178,7 +180,7 @@ pre{
 </head>
 <body>
 <header>
-  <div class="logo">999 Agent P8 — SaaS IA Multiagentes</div>
+  <div class="logo">999 Agent P9 — SaaS IA Multiagentes</div>
   <div id="userInfo">Não logado</div>
 </header>
 
@@ -290,7 +292,7 @@ pre{
           <div class="metric"><h2 id="dMemoria">0</h2><p>Memórias usadas</p></div>
           <div class="metric"><h2 id="dCriativos">0</h2><p>Criativos locais</p></div>
         </div>
-        <div class="status ok">P8 ativo: agentes especializados, memória, imagem real e vídeo por roteiro.</div>
+        <div class="status ok">P9 ativo: agentes especializados, memória, imagem real/debug e vídeo por roteiro.</div>
       </div>
     </div>
   </div>
@@ -307,7 +309,7 @@ let currentUser = null;
 let historico = [];
 let agentes = [];
 let agenteAtivo = null;
-let criativos = JSON.parse(localStorage.getItem('p8_criativos') || '[]');
+let criativos = JSON.parse(localStorage.getItem('p9_criativos') || '[]');
 
 function setStatus(id, msg, type = '') {
   const el = document.getElementById(id);
@@ -554,13 +556,20 @@ async function gerarImagem() {
     });
 
     const data = await response.json();
+    console.log('RESPOSTA COMPLETA IMAGEM-AI:', data);
 
-    if (!response.ok) {
-      throw new Error(data.error || data.message || 'Erro HTTP ' + response.status);
-    }
-
-    const imageUrl = data.image || data.url || data.output || data?.raw?.images?.[0]?.url || null;
-    const generatedPrompt = data.prompt || finalPrompt;
+    const imageUrl =
+      data?.image ||
+      data?.url ||
+      data?.output ||
+      data?.raw?.image ||
+      data?.raw?.url ||
+      data?.raw?.images?.[0]?.url ||
+      data?.raw?.images?.[0]?.content_url ||
+      data?.raw?.data?.images?.[0]?.url ||
+      data?.raw?.output?.[0] ||
+      data?.raw?.output?.[0]?.url ||
+      null;
 
     if (imageUrl) {
       document.getElementById('saidaImagem').innerHTML = `
@@ -568,21 +577,23 @@ async function gerarImagem() {
         <br><br>
         <a class="btn cyan" href="${imageUrl}" target="_blank">Abrir imagem</a>
       `;
-      document.getElementById('promptImagemFinal').innerHTML = '<b>Prompt usado:</b><pre>' + escapeHtml(generatedPrompt) + '</pre>';
-      criativos.push({ tipo: 'imagem', produto, prompt: generatedPrompt, image: imageUrl, data: new Date().toISOString() });
-      localStorage.setItem('p8_criativos', JSON.stringify(criativos));
+      criativos.push({ tipo: 'imagem', produto, prompt: finalPrompt, image: imageUrl, data: new Date().toISOString() });
+      localStorage.setItem('p9_criativos', JSON.stringify(criativos));
       setStatus('imgStatus', 'Imagem gerada com sucesso.', 'ok');
-    } else if (generatedPrompt) {
-      document.getElementById('saidaImagem').innerHTML = 'A função retornou prompt, mas não retornou URL de imagem.';
-      document.getElementById('promptImagemFinal').innerHTML = '<b>Prompt gerado:</b><pre>' + escapeHtml(generatedPrompt) + '</pre>';
-      setStatus('imgStatus', 'Prompt gerado. A função imagem-ai ainda não está retornando imagem real.', 'err');
     } else {
-      throw new Error('Resposta sem imagem. Raw: ' + JSON.stringify(data));
+      document.getElementById('saidaImagem').innerHTML = `
+        <b>A função respondeu, mas não veio URL de imagem.</b>
+        <pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>
+      `;
+      setStatus('imgStatus', 'Sem URL de imagem. O JSON completo apareceu no resultado visual.', 'err');
     }
 
     atualizarDashboard();
   } catch (error) {
-    document.getElementById('saidaImagem').textContent = 'Erro ao gerar imagem.';
+    document.getElementById('saidaImagem').innerHTML = `
+      <b>Erro ao gerar imagem.</b>
+      <pre>${escapeHtml(error.message)}</pre>
+    `;
     setStatus('imgStatus', 'Erro imagem: ' + error.message, 'err');
   }
 }
@@ -602,7 +613,7 @@ async function gerarVideo() {
 
     document.getElementById('saidaVideo').textContent = resposta;
     criativos.push({ tipo: 'video', produto, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p8_criativos', JSON.stringify(criativos));
+    localStorage.setItem('p9_criativos', JSON.stringify(criativos));
     setStatus('vidStatus', 'Roteiro de vídeo gerado.', 'ok');
     atualizarDashboard();
   } catch (error) {
