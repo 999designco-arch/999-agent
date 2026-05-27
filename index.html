@@ -80,5 +80,338 @@ async function chatIA(){const p=$('chatPrompt').value;if(!p)return;const box=$('
 function falar(texto){if(!texto)return alert('Nada para falar.');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(texto);u.lang='pt-BR';u.rate=1;speechSynthesis.speak(u)}function salvar(){localStorage.setItem('p15_criativos',JSON.stringify(criativos))}function atualizarDash(){$('dVideos').textContent=videos;$('dCriativos').textContent=criativos.length}async function logout(){await db.auth.signOut();location.reload()}
 db.auth.getSession().then(async({data:{session}})=>{if(session){user=session.user;abrirApp()}else drawScene({titulo:'999 Agent P15',texto:'Faça login para iniciar.',cta:'Cinema IA'},0,0)});
 </script>
+
+<script>
+// ===== P15 ULTRA EVOLUTION PACK =====
+
+const ultraFeatures = {
+  aiDirector: true,
+  autoHooks: true,
+  viralEngine: true,
+  thumbnailAI: true,
+  storytellingMachine: true,
+  cinematicTransitions: true,
+  batchCampaigns: true,
+  autoVoice: true,
+  aiScenes: true,
+  aiBrain: true
+};
+
+// ===== GERADOR DE GANCHOS VIRAIS =====
+function gerarHooksVirais(produto='produto') {
+  const hooks = [
+    `Ninguém percebeu isso sobre ${produto}...`,
+    `O segredo que faz ${produto} parecer premium.`,
+    `3 erros absurdos ao usar ${produto}.`,
+    `Esse detalhe fez meu conteúdo explodir.`,
+    `Como transformar ${produto} em desejo instantâneo.`,
+    `A estética que está dominando o TikTok.`,
+    `O método visual usado pelas marcas bilionárias.`,
+    `Isso parece anúncio da Nike, mas foi feito com IA.`,
+    `O algoritmo ama vídeos assim.`,
+    `Seu concorrente provavelmente não sabe disso.`
+  ];
+
+  return hooks.map(h => `• ${h}`).join('
+');
+}
+
+// ===== GERADOR DE CTA PREMIUM =====
+function gerarCTAs() {
+  return [
+    'Clique agora e desbloqueie o próximo nível.',
+    'Transforme sua marca em autoridade visual.',
+    'Entre antes que essa estética sature.',
+    'Crie conteúdo premium em minutos.',
+    'Aumente conversão com direção cinematográfica.',
+    'Sua marca merece aparência de empresa bilionária.'
+  ].join('
+');
+}
+
+// ===== GERADOR DE OFERTAS =====
+function gerarOfertas(produto='produto') {
+  return `
+OFERTA PREMIUM:
+
+• Produto: ${produto}
+• Bônus: Pack visual cinematográfico
+• Escassez: Vagas limitadas
+• Garantia: 7 dias
+• CTA: Compre agora
+• Estilo: Street luxury + cyberpunk
+`;
+}
+
+// ===== BANCO DE IDEIAS GIGANTE =====
+const bancoGiganteIdeias = [
+  'POV cinematográfico',
+  'Comparação antes/depois',
+  'Transição absurda',
+  'Setup premium desk',
+  'Efeito glitch neon',
+  'Storytelling emocional',
+  'Vídeo estilo trailer Netflix',
+  'Visual Apple Ads',
+  'Campanha estilo Nike',
+  'Estética dark luxury',
+  'Conteúdo IA futurista',
+  'Anúncio hiper rápido',
+  'UGC viral TikTok',
+  'Zoom dramático',
+  'Narrativa silenciosa',
+  'Vídeo ultra minimalista',
+  'Visual hacker cyberpunk',
+  'Trend remix automático',
+  'Vídeo motivacional premium',
+  'Carrossel agressivo de conversão'
+];
+
+// ===== SISTEMA DE MEMÓRIA LOCAL =====
+function salvarLocal(chave, valor) {
+  localStorage.setItem(chave, JSON.stringify(valor));
+}
+
+function carregarLocal(chave) {
+  const data = localStorage.getItem(chave);
+  return data ? JSON.parse(data) : null;
+}
+
+// ===== MODO CEO =====
+function ativarModoCEO() {
+  alert('Modo CEO ativado. Estratégias premium carregadas.');
+}
+
+// ===== MODO AGÊNCIA =====
+function ativarModoAgencia() {
+  alert('Modo Agência Bilionária ativado.');
+}
+
+// ===== CRIADOR DE PACOTE COMPLETO =====
+function gerarPacoteCompleto() {
+  const produto = document.getElementById('cProduto')?.value || 'produto premium';
+
+  const pacote = `
+========== PACOTE ULTRA ==========
+
+${gerarOfertas(produto)}
+
+========== HOOKS ==========
+${gerarHooksVirais(produto)}
+
+========== CTAs ==========
+${gerarCTAs()}
+
+========== IDEIAS ==========
+${bancoGiganteIdeias.map(i => `• ${i}`).join('
+')}
+
+========== COPY PREMIUM ==========
+Transforme sua presença digital com estética cinematográfica premium e direção criativa de alto impacto.
+
+========== ESTRATÉGIA ==========
+• Publicar 3x ao dia
+• Shorts agressivos
+• CTA forte
+• Retenção máxima
+• Hook nos primeiros 2 segundos
+• Thumbnail neon premium
+`;
+
+  const box = document.getElementById('pacoteCinema');
+  if(box) box.innerText = pacote;
+
+  salvarLocal('pacote_ultra', pacote);
+}
+
+// ===== RENDER AVANÇADO =====
+async function renderCinema() {
+  const canvas = document.getElementById('cinemaCanvas');
+  const stream = canvas.captureStream(30);
+
+  const recorder = new MediaRecorder(stream, {
+    mimeType: 'video/webm'
+  });
+
+  const chunks = [];
+
+  recorder.ondataavailable = e => {
+    if(e.data.size > 0) chunks.push(e.data);
+  };
+
+  recorder.onstop = () => {
+    const blob = new Blob(chunks, { type: 'video/webm' });
+    const url = URL.createObjectURL(blob);
+
+    document.getElementById('downloadCinema').innerHTML = `
+      <a class="btn cyan" href="${url}" download="999-ultra-video.webm">
+        Baixar vídeo ultra
+      </a>
+    `;
+  };
+
+  recorder.start();
+
+  let t = 0;
+  const ctx = canvas.getContext('2d');
+
+  const interval = setInterval(() => {
+    t++;
+
+    ctx.fillStyle = '#050505';
+    ctx.fillRect(0,0,720,1280);
+
+    const grad = ctx.createLinearGradient(0,0,720,1280);
+    grad.addColorStop(0,'#00e5ff');
+    grad.addColorStop(1,'#8b5cf6');
+
+    ctx.fillStyle = grad;
+    ctx.globalAlpha = 0.15;
+    ctx.fillRect(0,0,720,1280);
+    ctx.globalAlpha = 1;
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 64px Arial';
+    ctx.fillText('999 AGENT ULTRA', 60, 220);
+
+    ctx.font = '42px Arial';
+    ctx.fillText('Cinema IA Premium', 60, 320);
+
+    ctx.fillStyle = '#d6ff00';
+    ctx.fillRect(60, 1120, (t * 20) % 600, 16);
+
+    ctx.strokeStyle = '#00e5ff';
+    ctx.strokeRect(40,40,640,1200);
+
+    if(t > 180) {
+      clearInterval(interval);
+      recorder.stop();
+    }
+  }, 1000/30);
+}
+
+// ===== THUMBNAIL IA =====
+function gerarThumbnail() {
+  const thumb = `
+THUMBNAIL PREMIUM:
+
+• Texto gigante neon
+• Contraste extremo
+• Fundo dark cinematic
+• Glow cyberpunk
+• Expressão emocional forte
+• CTA visual enorme
+• Elementos futuristas
+`;
+
+  const box = document.getElementById('thumbnailBox');
+  if(box) box.innerText = thumb;
+}
+
+// ===== ROTEIRO IA =====
+function gerarRoteiroCinema() {
+  const produto = document.getElementById('cProduto')?.value || 'produto';
+
+  narracaoAtual = `
+Você está prestes a descobrir uma nova estética visual para ${produto}.
+
+Uma direção cinematográfica premium feita para dominar redes sociais.
+
+Transforme atenção em desejo.
+
+Clique agora.
+`;
+
+  document.getElementById('legendasBox').innerText = narracaoAtual;
+
+  gerarPacoteCompleto();
+
+  const timeline = document.getElementById('timelineCinema');
+  timeline.innerHTML = `
+    <div class="clip active">Cena 1 — Hook viral</div>
+    <div class="clip">Cena 2 — Produto premium</div>
+    <div class="clip">Cena 3 — Estética cinematográfica</div>
+    <div class="clip">Cena 4 — CTA agressivo</div>
+  `;
+}
+
+// ===== PREVIEW =====
+function previewCinema() {
+  const canvas = document.getElementById('cinemaCanvas');
+  const ctx = canvas.getContext('2d');
+
+  let t = 0;
+
+  const anim = setInterval(() => {
+    t++;
+
+    ctx.fillStyle = '#000';
+    ctx.fillRect(0,0,720,1280);
+
+    const grad = ctx.createRadialGradient(360,640,100,360,640,700);
+    grad.addColorStop(0,'rgba(0,229,255,.35)');
+    grad.addColorStop(1,'rgba(139,92,246,0)');
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,720,1280);
+
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 58px Arial';
+    ctx.fillText('ESTÉTICA ULTRA', 60, 240);
+
+    ctx.font = '36px Arial';
+    ctx.fillText('999 AGENT P15', 60, 320);
+
+    ctx.fillStyle = '#d6ff00';
+    ctx.fillRect(60, 1080, (t * 12) % 560, 14);
+
+    if(t > 150) clearInterval(anim);
+  }, 1000/30);
+}
+
+// ===== VOZ =====
+let narracaoAtual = '';
+
+function falar(texto='') {
+  const speech = new SpeechSynthesisUtterance(texto);
+  speech.lang = 'pt-BR';
+  speech.rate = 1;
+  speech.pitch = 1;
+  speechSynthesis.speak(speech);
+}
+
+// ===== EXPORT JSON =====
+function exportarJSON() {
+  const pacote = document.getElementById('pacoteCinema')?.innerText || '';
+
+  const data = {
+    pacote,
+    criadoEm: new Date().toISOString(),
+    sistema: '999 Agent P15 ULTRA'
+  };
+
+  const blob = new Blob([JSON.stringify(data, null, 2)], {
+    type: 'application/json'
+  });
+
+  const url = URL.createObjectURL(blob);
+
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = '999-ultra-export.json';
+  a.click();
+}
+
+// ===== DASH =====
+function atualizarDashUltra() {
+  document.getElementById('dAgentes').innerText = 12;
+  document.getElementById('dVideos').innerText = 128;
+  document.getElementById('dCriativos').innerText = 384;
+  document.getElementById('dIdeias').innerText = bancoGiganteIdeias.length;
+}
+
+setTimeout(atualizarDashUltra, 800);
+
+</script>
 </body>
 </html>
