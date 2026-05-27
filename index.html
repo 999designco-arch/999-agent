@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P9 — SaaS IA Multiagentes</title>
+<title>999 Agent P10 — SaaS IA Grátis</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
@@ -17,6 +17,7 @@
   --green:#20ff9f;
   --red:#ff3b6b;
   --purple:#8b5cf6;
+  --orange:#ff9f1c;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -36,13 +37,14 @@ header{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:18px;
   background:#090910;
   position:sticky;
   top:0;
   z-index:10;
 }
 .logo{font-weight:900;font-size:22px}
-.wrap{max-width:1320px;margin:auto;padding:32px}
+.wrap{max-width:1360px;margin:auto;padding:32px}
 .card{
   background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
   border:1px solid var(--line);
@@ -72,12 +74,16 @@ textarea{min-height:140px;resize:vertical}
   cursor:pointer;
   margin-top:12px;
   margin-right:8px;
+  display:inline-block;
+  text-decoration:none;
 }
 .btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}
 .btn.danger{background:var(--red);color:#fff}
 .btn.cyan{background:var(--cyan);color:#001014}
 .btn.purple{background:var(--purple);color:#fff}
+.btn.orange{background:var(--orange);color:#000}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .chat{
   height:560px;
@@ -171,23 +177,32 @@ pre{
   overflow:auto;
   font-size:12px;
 }
+.tool-card{
+  background:#050505;
+  border:1px solid #28313d;
+  border-radius:18px;
+  padding:18px;
+}
+.tool-card h3{margin-top:0}
+.tool-card p{color:var(--muted);line-height:1.5}
 @media(max-width:1000px){
-  .grid,.grid4,.split{grid-template-columns:1fr}
+  .grid,.grid3,.grid4,.split{grid-template-columns:1fr}
   .wrap{padding:18px}
   .chat{height:420px}
+  header{align-items:flex-start;flex-direction:column}
 }
 </style>
 </head>
 <body>
 <header>
-  <div class="logo">999 Agent P9 — SaaS IA Multiagentes</div>
+  <div class="logo">999 Agent P10 — SaaS IA Grátis</div>
   <div id="userInfo">Não logado</div>
 </header>
 
 <div class="wrap">
   <div id="authBox" class="card">
     <h2>Login / Cadastro</h2>
-    <p class="muted">Entre para acessar agentes reais, memória, criação de imagens e vídeos.</p>
+    <p class="muted">Entre para acessar agentes reais, memória, imagem grátis, vídeo, voz, música e avatar.</p>
     <input class="input" id="email" type="email" placeholder="Seu email" />
     <input class="input" id="senha" type="password" placeholder="Sua senha — mínimo 6 caracteres" />
     <button class="btn" id="btnCadastrar">Cadastrar</button>
@@ -198,15 +213,18 @@ pre{
   <div id="app" class="hidden">
     <div class="card">
       <h2>Central de Agentes</h2>
-      <p class="muted">Agentes carregados da tabela <b>agentes</b>. Cada agente usa system prompt próprio via Edge Function.</p>
+      <p class="muted">Agentes carregados da tabela <b>agentes</b>. Cada agente usa system prompt próprio via Edge Function <b>p1-ai</b>.</p>
       <div class="grid4" id="agentesGrid"></div>
       <div class="status" id="agentStatus">Carregando agentes...</div>
     </div>
 
     <div class="tabs">
       <button class="tab active" onclick="mostrarModulo(event,'chat')">Chat Multiagentes</button>
-      <button class="tab" onclick="mostrarModulo(event,'imagem')">Criar Imagem Real</button>
-      <button class="tab" onclick="mostrarModulo(event,'video')">Criar Vídeo</button>
+      <button class="tab" onclick="mostrarModulo(event,'imagem')">Imagem Grátis</button>
+      <button class="tab" onclick="mostrarModulo(event,'video')">Vídeo</button>
+      <button class="tab" onclick="mostrarModulo(event,'voz')">Voz</button>
+      <button class="tab" onclick="mostrarModulo(event,'musica')">Música</button>
+      <button class="tab" onclick="mostrarModulo(event,'avatar')">Avatar</button>
       <button class="tab" onclick="mostrarModulo(event,'dashboard')">Dashboard</button>
     </div>
 
@@ -245,14 +263,21 @@ pre{
     <div id="modImagem" class="hidden">
       <div class="split">
         <div class="card">
-          <h2>Criar imagem IA real</h2>
-          <p class="muted">Gera imagem real usando a Edge Function <b>imagem-ai</b>.</p>
+          <h2>Criar imagem IA grátis</h2>
+          <p class="muted">Gera imagem direta no frontend usando Pollinations. Sem fal.ai, sem créditos, sem Edge Function e sem billing.</p>
           <input class="input" id="imgProduto" placeholder="Produto, marca ou cena" />
           <input class="input" id="imgEstilo" placeholder="Estilo visual — ex: street luxury cyberpunk premium" />
-          <input class="input" id="imgFormato" placeholder="Formato — ex: 1:1 Instagram, 9:16 Reels, banner horizontal" />
+          <select class="input" id="imgFormato">
+            <option value="instagram square 1:1">Instagram 1:1</option>
+            <option value="vertical 9:16 reels tiktok story">Reels/TikTok 9:16</option>
+            <option value="horizontal cinematic banner 16:9">Banner 16:9</option>
+            <option value="product mockup ecommerce">Mockup de produto</option>
+            <option value="youtube thumbnail">Thumbnail YouTube</option>
+          </select>
           <textarea id="imgDetalhes" placeholder="Detalhes: cores, ambiente, personagem, produto, atmosfera"></textarea>
-          <button class="btn cyan" id="btnImagem">Gerar imagem real</button>
+          <button class="btn cyan" id="btnImagem">Gerar imagem grátis</button>
           <button class="btn secondary" onclick="copiarTexto('promptImagemFinal')">Copiar prompt</button>
+          <button class="btn secondary" id="btnNovaSeed">Nova variação</button>
           <div class="status" id="imgStatus">Imagem pronta para briefing.</div>
         </div>
         <div class="card">
@@ -267,18 +292,95 @@ pre{
       <div class="split">
         <div class="card">
           <h2>Criar vídeo / Reels / anúncio</h2>
-          <p class="muted">Gera roteiro, cenas, narração, texto na tela e prompt para IA de vídeo.</p>
+          <p class="muted">Gera roteiro, cenas, narração, texto na tela e prompt para ferramentas grátis ou freemium de vídeo.</p>
           <input class="input" id="vidProduto" placeholder="Produto, marca ou campanha" />
           <input class="input" id="vidObjetivo" placeholder="Objetivo — vender, viralizar, lançar, educar" />
           <input class="input" id="vidDuracao" placeholder="Duração — ex: 15s, 30s, 60s" />
           <textarea id="vidDetalhes" placeholder="Detalhes: público, promessa, estética, CTA, oferta"></textarea>
           <button class="btn purple" id="btnVideo">Gerar roteiro de vídeo</button>
-          <button class="btn secondary" onclick="copiarTexto('saidaVideo')">Copiar</button>
+          <button class="btn secondary" onclick="copiarTexto('saidaVideo')">Copiar roteiro</button>
           <div class="status" id="vidStatus">Vídeo pronto para briefing.</div>
+          <div class="grid3" style="margin-top:18px">
+            <div class="tool-card"><h3>Pika</h3><p>Use o prompt gerado para criar vídeos curtos.</p><a class="btn secondary" target="_blank" href="https://pika.art">Abrir</a></div>
+            <div class="tool-card"><h3>Luma</h3><p>Use para cenas cinematográficas e movimento de câmera.</p><a class="btn secondary" target="_blank" href="https://lumalabs.ai/dream-machine">Abrir</a></div>
+            <div class="tool-card"><h3>PixVerse</h3><p>Use para anúncios, reels e vídeos verticais.</p><a class="btn secondary" target="_blank" href="https://pixverse.ai">Abrir</a></div>
+          </div>
         </div>
         <div class="card">
           <h2>Roteiro + prompt de vídeo</h2>
           <div id="saidaVideo" class="output">Aguardando geração...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modVoz" class="hidden">
+      <div class="split">
+        <div class="card">
+          <h2>Gerador de voz / narração</h2>
+          <p class="muted">Cria texto de narração pronto para usar em ferramentas de voz.</p>
+          <input class="input" id="vozMarca" placeholder="Marca/produto" />
+          <input class="input" id="vozTom" placeholder="Tom — premium, agressivo, cinematográfico, emocional" />
+          <textarea id="vozBriefing" placeholder="Explique o anúncio ou mensagem"></textarea>
+          <button class="btn orange" id="btnVoz">Gerar narração</button>
+          <button class="btn secondary" onclick="copiarTexto('saidaVoz')">Copiar</button>
+          <div class="status" id="vozStatus">Voz pronta para briefing.</div>
+          <div class="grid3" style="margin-top:18px">
+            <div class="tool-card"><h3>ElevenLabs</h3><p>Use a narração gerada para voz IA.</p><a class="btn secondary" target="_blank" href="https://elevenlabs.io">Abrir</a></div>
+            <div class="tool-card"><h3>TTSMaker</h3><p>Alternativa com plano gratuito para TTS.</p><a class="btn secondary" target="_blank" href="https://ttsmaker.com">Abrir</a></div>
+            <div class="tool-card"><h3>CapCut</h3><p>Use para narração, legendas e edição rápida.</p><a class="btn secondary" target="_blank" href="https://www.capcut.com">Abrir</a></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Narração pronta</h2>
+          <div id="saidaVoz" class="output">Aguardando geração...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modMusica" class="hidden">
+      <div class="split">
+        <div class="card">
+          <h2>Gerador de música / trilha</h2>
+          <p class="muted">Cria prompt musical para campanhas, reels e anúncios.</p>
+          <input class="input" id="musicaEstilo" placeholder="Estilo — trap, cinematic, afrobeat, techno, luxury" />
+          <input class="input" id="musicaMarca" placeholder="Marca/campanha" />
+          <textarea id="musicaDetalhes" placeholder="Energia, emoção, instrumentos, referência visual"></textarea>
+          <button class="btn purple" id="btnMusica">Gerar prompt musical</button>
+          <button class="btn secondary" onclick="copiarTexto('saidaMusica')">Copiar</button>
+          <div class="status" id="musicaStatus">Música pronta para briefing.</div>
+          <div class="grid3" style="margin-top:18px">
+            <div class="tool-card"><h3>Suno</h3><p>Crie música com o prompt gerado.</p><a class="btn secondary" target="_blank" href="https://suno.com">Abrir</a></div>
+            <div class="tool-card"><h3>Udio</h3><p>Alternativa para trilhas e músicas comerciais.</p><a class="btn secondary" target="_blank" href="https://udio.com">Abrir</a></div>
+            <div class="tool-card"><h3>Beatoven</h3><p>Trilhas para vídeos e anúncios.</p><a class="btn secondary" target="_blank" href="https://www.beatoven.ai">Abrir</a></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Prompt musical</h2>
+          <div id="saidaMusica" class="output">Aguardando geração...</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="modAvatar" class="hidden">
+      <div class="split">
+        <div class="card">
+          <h2>Gerador de avatar / apresentador</h2>
+          <p class="muted">Cria script e briefing para avatar IA, vídeo UGC ou apresentador virtual.</p>
+          <input class="input" id="avatarProduto" placeholder="Produto/campanha" />
+          <input class="input" id="avatarPersona" placeholder="Persona — especialista, influencer, fundador, vendedor" />
+          <textarea id="avatarDetalhes" placeholder="Oferta, público, problema, promessa, CTA"></textarea>
+          <button class="btn cyan" id="btnAvatar">Gerar script de avatar</button>
+          <button class="btn secondary" onclick="copiarTexto('saidaAvatar')">Copiar</button>
+          <div class="status" id="avatarStatus">Avatar pronto para briefing.</div>
+          <div class="grid3" style="margin-top:18px">
+            <div class="tool-card"><h3>HeyGen</h3><p>Use o script para avatar apresentador.</p><a class="btn secondary" target="_blank" href="https://www.heygen.com">Abrir</a></div>
+            <div class="tool-card"><h3>D-ID</h3><p>Transforme rosto em vídeo falado.</p><a class="btn secondary" target="_blank" href="https://www.d-id.com">Abrir</a></div>
+            <div class="tool-card"><h3>CapCut</h3><p>Monte o vídeo final com legenda e cortes.</p><a class="btn secondary" target="_blank" href="https://www.capcut.com">Abrir</a></div>
+          </div>
+        </div>
+        <div class="card">
+          <h2>Script de avatar</h2>
+          <div id="saidaAvatar" class="output">Aguardando geração...</div>
         </div>
       </div>
     </div>
@@ -292,7 +394,7 @@ pre{
           <div class="metric"><h2 id="dMemoria">0</h2><p>Memórias usadas</p></div>
           <div class="metric"><h2 id="dCriativos">0</h2><p>Criativos locais</p></div>
         </div>
-        <div class="status ok">P9 ativo: agentes especializados, memória, imagem real/debug e vídeo por roteiro.</div>
+        <div class="status ok">P10 ativo: agentes, memória, imagem grátis, vídeo, voz, música e avatar.</div>
       </div>
     </div>
   </div>
@@ -301,7 +403,6 @@ pre{
 <script>
 const SUPABASE_URL = 'https://kzjuqssxifzqrzxskbwx.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
-const IMAGEM_AI_URL = 'https://kzjuqssxifzqrzxskbwx.supabase.co/functions/v1/imagem-ai';
 
 const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -309,7 +410,8 @@ let currentUser = null;
 let historico = [];
 let agentes = [];
 let agenteAtivo = null;
-let criativos = JSON.parse(localStorage.getItem('p9_criativos') || '[]');
+let imageSeed = Date.now();
+let criativos = JSON.parse(localStorage.getItem('p10_criativos') || '[]');
 
 function setStatus(id, msg, type = '') {
   const el = document.getElementById(id);
@@ -454,32 +556,24 @@ async function enviarIA() {
     setStatus('iaStatus', 'Selecione um agente primeiro.', 'err');
     return;
   }
-
   const prompt = document.getElementById('prompt').value.trim();
   if (!prompt) {
     setStatus('iaStatus', 'Digite uma ordem para a IA.', 'err');
     return;
   }
-
   const chat = document.getElementById('chatBox');
   if (chat.textContent === 'Nenhuma conversa ainda.') chat.innerHTML = '';
-
   chat.innerHTML += `<div class="bubble user"><b>Você:</b><br>${escapeHtml(prompt)}</div>`;
   chat.innerHTML += `<div class="bubble agentnote"><b>Agente ativado:</b> ${escapeHtml(agenteAtivo.nome)}<br>${escapeHtml(agenteAtivo.sistema)}</div>`;
   chat.scrollTop = chat.scrollHeight;
-
   setStatus('iaStatus', `${agenteAtivo.nome} processando...`);
-
   try {
     const promptFinal = montarPromptComMemoria(prompt);
     const system = agenteAtivo.sistema + '\n\n' + systemPadrao();
     const resposta = await chamarIA(promptFinal, system);
-
     chat.innerHTML += `<div class="bubble ai"><b>${escapeHtml(agenteAtivo.nome)}:</b><br>${escapeHtml(resposta)}</div>`;
-
     const { error: saveError } = await db.from('chats').insert([{ user_id: currentUser.id, agente: agenteAtivo.nome, prompt, resposta }]);
     if (saveError) throw saveError;
-
     document.getElementById('prompt').value = '';
     setStatus('iaStatus', 'Resposta gerada e salva no Supabase.', 'ok');
     await carregarChats(false);
@@ -494,7 +588,6 @@ async function carregarChats(render = true) {
     const { data, error } = await db.from('chats').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: true });
     if (error) throw error;
     historico = data || [];
-
     document.getElementById('mChats').innerText = historico.length;
     document.getElementById('mMemoria').innerText = Math.min(historico.length, 8);
     document.getElementById('dChats').innerText = historico.length;
@@ -503,7 +596,6 @@ async function carregarChats(render = true) {
       ? `Memória ativa: ${historico.length} conversas carregadas. A IA usa as últimas ${Math.min(historico.length, 8)} como contexto.`
       : 'Memória vazia. Envie a primeira mensagem.';
     document.getElementById('memoryStatus').className = 'status ok';
-
     if (render) {
       const chat = document.getElementById('chatBox');
       if (historico.length) {
@@ -516,7 +608,6 @@ async function carregarChats(render = true) {
         chat.textContent = 'Nenhuma conversa ainda.';
       }
     }
-
     atualizarDashboard();
   } catch (error) {
     setStatus('iaStatus', 'Erro ao carregar chats: ' + error.message, 'err');
@@ -526,76 +617,58 @@ async function carregarChats(render = true) {
 function mostrarModulo(event, nome) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   event.target.classList.add('active');
-  document.getElementById('modChat').classList.toggle('hidden', nome !== 'chat');
-  document.getElementById('modImagem').classList.toggle('hidden', nome !== 'imagem');
-  document.getElementById('modVideo').classList.toggle('hidden', nome !== 'video');
-  document.getElementById('modDashboard').classList.toggle('hidden', nome !== 'dashboard');
+  const mods = ['Chat','Imagem','Video','Voz','Musica','Avatar','Dashboard'];
+  mods.forEach(m => {
+    const el = document.getElementById('mod' + m);
+    if (el) el.classList.add('hidden');
+  });
+  const alvo = document.getElementById('mod' + nome.charAt(0).toUpperCase() + nome.slice(1));
+  if (alvo) alvo.classList.remove('hidden');
+}
+
+function montarPromptImagem() {
+  const produto = document.getElementById('imgProduto').value || 'produto premium';
+  const estilo = document.getElementById('imgEstilo').value || 'street luxury futurista, cyberpunk premium, cinematográfico';
+  const formato = document.getElementById('imgFormato').value || 'instagram square 1:1';
+  const detalhes = document.getElementById('imgDetalhes').value || 'visual sofisticado, iluminação dramática, atmosfera de campanha global';
+  return `${produto}, ${estilo}, ${formato}, ${detalhes}, ultra realistic, cinematic lighting, luxury advertising, futuristic, highly detailed, premium branding, sharp focus, dramatic shadows, global campaign aesthetic`;
 }
 
 async function gerarImagem() {
-  const produto = document.getElementById('imgProduto').value || 'produto premium';
-  const estilo = document.getElementById('imgEstilo').value || 'street luxury futurista, cyberpunk premium, cinematográfico';
-  const formato = document.getElementById('imgFormato').value || '9:16 vertical';
-  const detalhes = document.getElementById('imgDetalhes').value || 'visual sofisticado, iluminação dramática, atmosfera de campanha global';
-
-  const finalPrompt = `${produto}, ${estilo}, ${formato}, ${detalhes}, ultra realistic, cinematic lighting, luxury advertising, futuristic, highly detailed, premium branding, sharp focus, dramatic shadows, global campaign aesthetic`;
+  const finalPrompt = montarPromptImagem();
+  const width = document.getElementById('imgFormato').value.includes('9:16') ? 720 : document.getElementById('imgFormato').value.includes('16:9') ? 1280 : 1024;
+  const height = document.getElementById('imgFormato').value.includes('9:16') ? 1280 : document.getElementById('imgFormato').value.includes('16:9') ? 720 : 1024;
+  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(finalPrompt)}?width=${width}&height=${height}&seed=${imageSeed}&nologo=true&enhance=true`;
 
   document.getElementById('promptImagemFinal').innerHTML = '<b>Prompt usado:</b><pre>' + escapeHtml(finalPrompt) + '</pre>';
-  document.getElementById('saidaImagem').innerHTML = 'Gerando imagem...';
-  setStatus('imgStatus', 'Chamando Edge Function imagem-ai...');
+  document.getElementById('saidaImagem').innerHTML = 'Gerando imagem grátis...';
+  setStatus('imgStatus', 'Gerando imagem IA grátis via Pollinations...');
 
-  try {
-    const response = await fetch(IMAGEM_AI_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY
-      },
-      body: JSON.stringify({ prompt: finalPrompt })
-    });
-
-    const data = await response.json();
-    console.log('RESPOSTA COMPLETA IMAGEM-AI:', data);
-
-    const imageUrl =
-      data?.image ||
-      data?.url ||
-      data?.output ||
-      data?.raw?.image ||
-      data?.raw?.url ||
-      data?.raw?.images?.[0]?.url ||
-      data?.raw?.images?.[0]?.content_url ||
-      data?.raw?.data?.images?.[0]?.url ||
-      data?.raw?.output?.[0] ||
-      data?.raw?.output?.[0]?.url ||
-      null;
-
-    if (imageUrl) {
-      document.getElementById('saidaImagem').innerHTML = `
-        <img src="${imageUrl}" class="preview-img" alt="Imagem gerada pelo 999 Agent" />
-        <br><br>
-        <a class="btn cyan" href="${imageUrl}" target="_blank">Abrir imagem</a>
-      `;
-      criativos.push({ tipo: 'imagem', produto, prompt: finalPrompt, image: imageUrl, data: new Date().toISOString() });
-      localStorage.setItem('p9_criativos', JSON.stringify(criativos));
-      setStatus('imgStatus', 'Imagem gerada com sucesso.', 'ok');
-    } else {
-      document.getElementById('saidaImagem').innerHTML = `
-        <b>A função respondeu, mas não veio URL de imagem.</b>
-        <pre>${escapeHtml(JSON.stringify(data, null, 2))}</pre>
-      `;
-      setStatus('imgStatus', 'Sem URL de imagem. O JSON completo apareceu no resultado visual.', 'err');
-    }
-
-    atualizarDashboard();
-  } catch (error) {
+  const img = new Image();
+  img.onload = function() {
     document.getElementById('saidaImagem').innerHTML = `
-      <b>Erro ao gerar imagem.</b>
-      <pre>${escapeHtml(error.message)}</pre>
+      <img src="${imageUrl}" class="preview-img" alt="Imagem gerada pelo 999 Agent" />
+      <br><br>
+      <a class="btn cyan" href="${imageUrl}" target="_blank">Abrir imagem</a>
     `;
-    setStatus('imgStatus', 'Erro imagem: ' + error.message, 'err');
-  }
+    criativos.push({ tipo: 'imagem', prompt: finalPrompt, image: imageUrl, data: new Date().toISOString() });
+    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
+    setStatus('imgStatus', 'Imagem gerada grátis com sucesso.', 'ok');
+    atualizarDashboard();
+  };
+  img.onerror = function() {
+    document.getElementById('saidaImagem').innerHTML = `
+      <b>Não foi possível carregar a imagem agora.</b>
+      <pre>${escapeHtml(imageUrl)}</pre>
+    `;
+    setStatus('imgStatus', 'O serviço grátis pode estar instável. Clique em Nova variação e tente novamente.', 'err');
+  };
+  img.src = imageUrl;
+}
+
+function novaSeed() {
+  imageSeed = Date.now() + Math.floor(Math.random() * 999999);
+  gerarImagem();
 }
 
 async function gerarVideo() {
@@ -603,21 +676,75 @@ async function gerarVideo() {
   const objetivo = document.getElementById('vidObjetivo').value || 'vender e gerar desejo';
   const duracao = document.getElementById('vidDuracao').value || '30s';
   const detalhes = document.getElementById('vidDetalhes').value || 'estética street luxury, cortes rápidos, visual cinematográfico';
-
   setStatus('vidStatus', 'Gerando roteiro de vídeo com Video Agent...');
-
   try {
     const system = 'Você é o Video Agent do 999 Agent. Especialista em roteiros cinematográficos, anúncios, Reels, TikTok, IA de vídeo, viralização e direção audiovisual premium.';
     const prompt = `Crie um roteiro completo de vídeo IA.\nProduto/campanha: ${produto}\nObjetivo: ${objetivo}\nDuração: ${duracao}\nDetalhes: ${detalhes}\n\nEntregue: conceito, roteiro por segundos, cenas, narração, texto na tela, prompt para IA de vídeo, prompt de imagem base, trilha sugerida e CTA.`;
     const resposta = await chamarIA(prompt, system);
-
     document.getElementById('saidaVideo').textContent = resposta;
     criativos.push({ tipo: 'video', produto, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p9_criativos', JSON.stringify(criativos));
+    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
     setStatus('vidStatus', 'Roteiro de vídeo gerado.', 'ok');
     atualizarDashboard();
   } catch (error) {
     setStatus('vidStatus', 'Erro vídeo: ' + error.message, 'err');
+  }
+}
+
+async function gerarVoz() {
+  const marca = document.getElementById('vozMarca').value || 'marca premium';
+  const tom = document.getElementById('vozTom').value || 'cinematográfico e persuasivo';
+  const briefing = document.getElementById('vozBriefing').value || 'anúncio de produto premium';
+  setStatus('vozStatus', 'Gerando narração...');
+  try {
+    const system = 'Você é especialista em locução publicitária, narração cinematográfica e scripts para voz IA.';
+    const prompt = `Crie uma narração pronta para voz IA.\nMarca/produto: ${marca}\nTom: ${tom}\nBriefing: ${briefing}\n\nEntregue versão de 15s, 30s e 60s, com pausas, emoção e CTA.`;
+    const resposta = await chamarIA(prompt, system);
+    document.getElementById('saidaVoz').textContent = resposta;
+    criativos.push({ tipo: 'voz', marca, resposta, data: new Date().toISOString() });
+    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
+    setStatus('vozStatus', 'Narração gerada.', 'ok');
+    atualizarDashboard();
+  } catch (error) {
+    setStatus('vozStatus', 'Erro voz: ' + error.message, 'err');
+  }
+}
+
+async function gerarMusica() {
+  const estilo = document.getElementById('musicaEstilo').value || 'cinematic trap luxury';
+  const marca = document.getElementById('musicaMarca').value || 'campanha premium';
+  const detalhes = document.getElementById('musicaDetalhes').value || 'energia alta, atmosfera futurista, comercial premium';
+  setStatus('musicaStatus', 'Gerando prompt musical...');
+  try {
+    const system = 'Você é especialista em prompts musicais para IA, trilhas publicitárias, jingles e sound branding.';
+    const prompt = `Crie um prompt musical para IA.\nEstilo: ${estilo}\nMarca/campanha: ${marca}\nDetalhes: ${detalhes}\n\nEntregue prompt para Suno/Udio, letra curta opcional, direção sonora, BPM, instrumentos e clima emocional.`;
+    const resposta = await chamarIA(prompt, system);
+    document.getElementById('saidaMusica').textContent = resposta;
+    criativos.push({ tipo: 'musica', marca, resposta, data: new Date().toISOString() });
+    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
+    setStatus('musicaStatus', 'Prompt musical gerado.', 'ok');
+    atualizarDashboard();
+  } catch (error) {
+    setStatus('musicaStatus', 'Erro música: ' + error.message, 'err');
+  }
+}
+
+async function gerarAvatar() {
+  const produto = document.getElementById('avatarProduto').value || 'produto premium';
+  const persona = document.getElementById('avatarPersona').value || 'fundador especialista';
+  const detalhes = document.getElementById('avatarDetalhes').value || 'oferta premium com CTA forte';
+  setStatus('avatarStatus', 'Gerando script de avatar...');
+  try {
+    const system = 'Você é especialista em vídeos UGC, avatar IA, scripts de apresentador virtual e anúncios de alta conversão.';
+    const prompt = `Crie script para avatar IA.\nProduto/campanha: ${produto}\nPersona: ${persona}\nDetalhes: ${detalhes}\n\nEntregue fala direta, texto na tela, expressões, gestos, cenário, CTA e variação UGC.`;
+    const resposta = await chamarIA(prompt, system);
+    document.getElementById('saidaAvatar').textContent = resposta;
+    criativos.push({ tipo: 'avatar', produto, resposta, data: new Date().toISOString() });
+    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
+    setStatus('avatarStatus', 'Script de avatar gerado.', 'ok');
+    atualizarDashboard();
+  } catch (error) {
+    setStatus('avatarStatus', 'Erro avatar: ' + error.message, 'err');
   }
 }
 
@@ -642,7 +769,11 @@ document.getElementById('btnIA').addEventListener('click', enviarIA);
 document.getElementById('btnReload').addEventListener('click', () => carregarChats(true));
 document.getElementById('btnLogout').addEventListener('click', logout);
 document.getElementById('btnImagem').addEventListener('click', gerarImagem);
+document.getElementById('btnNovaSeed').addEventListener('click', novaSeed);
 document.getElementById('btnVideo').addEventListener('click', gerarVideo);
+document.getElementById('btnVoz').addEventListener('click', gerarVoz);
+document.getElementById('btnMusica').addEventListener('click', gerarMusica);
+document.getElementById('btnAvatar').addEventListener('click', gerarAvatar);
 
 db.auth.getSession().then(async ({ data: { session } }) => {
   if (session) {
