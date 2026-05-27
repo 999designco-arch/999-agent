@@ -3,415 +3,71 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P15 — Vídeo Cinematográfico IA</title>
+<title>999 Agent P16 ULTIMATE — Sistema Operacional IA</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
-:root{--line:#2a2f3a;--muted:#a7a7a7;--gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b;--purple:#8b5cf6;--orange:#ff9f1c}*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:radial-gradient(circle at 15% 10%,rgba(0,229,255,.16),transparent 30%),radial-gradient(circle at 85% 10%,rgba(139,92,246,.22),transparent 30%),linear-gradient(180deg,#050505,#080812 65%,#020202);color:#fff;margin:0}header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1500px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:130px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px;text-decoration:none;display:inline-block}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.btn.cyan{background:var(--cyan);color:#001014}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange);color:#000}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}.output{background:#000;border:1px solid #222;border-radius:16px;padding:18px;white-space:pre-wrap;line-height:1.6;overflow:auto;min-height:220px;max-height:720px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tab{padding:12px 16px;border-radius:999px;background:#050505;border:1px solid #333;color:#fff;cursor:pointer;font-weight:800}.tab.active{background:linear-gradient(135deg,var(--gold),var(--cyan));color:#000;border:none}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:34px;margin:0}.agent-card,.task-card,.campaign-card,.scene-card{background:#050505;border:1px solid #2d3440;border-radius:18px;padding:16px;transition:.2s}.agent-card:hover,.task-card:hover,.campaign-card:hover,.scene-card:hover{border-color:var(--gold);transform:translateY(-2px)}.agent-card h3,.task-card h3,.campaign-card h3,.scene-card h3{margin:0 0 8px}.agent-card p,.task-card p,.campaign-card p,.scene-card p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}.list{display:grid;gap:12px;margin-top:16px}.pill{display:inline-block;padding:7px 10px;border:1px solid #333;border-radius:999px;color:var(--muted);font-size:12px;margin:4px 4px 0 0;background:#050505}.video-shell{display:grid;grid-template-columns:380px 1fr;gap:20px}.phone{width:380px;max-width:100%;aspect-ratio:9/16;background:#000;border:1px solid #333;border-radius:30px;padding:14px;margin:auto;box-shadow:0 30px 100px rgba(0,0,0,.45)}canvas{width:100%;height:100%;border-radius:22px;background:#000}.timeline{display:flex;gap:12px;overflow-x:auto;background:#000;border:1px solid #222;border-radius:18px;padding:16px;min-height:150px}.clip{min-width:220px;background:#101827;border:1px solid #2d3440;border-radius:16px;padding:14px;cursor:pointer}.clip.active{border-color:var(--gold)}.preview-img{width:100%;border-radius:20px;margin-top:14px;border:1px solid #333}.chat{height:480px;overflow:auto;background:#000;border:1px solid #222;border-radius:16px;padding:18px}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}@media(max-width:1000px){.grid,.grid3,.grid4,.video-shell{grid-template-columns:1fr}.wrap{padding:18px}header{align-items:flex-start;flex-direction:column}.phone{width:100%}}
+:root{--bg:#050505;--panel:#0b0f17;--line:#2a2f3a;--muted:#a7a7a7;--gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b;--purple:#8b5cf6;--orange:#ff9f1c}*{box-sizing:border-box}body{font-family:Arial,sans-serif;background:radial-gradient(circle at 10% 8%,rgba(0,229,255,.18),transparent 30%),radial-gradient(circle at 90% 10%,rgba(139,92,246,.25),transparent 30%),linear-gradient(180deg,#050505,#070812 65%,#020202);color:#fff;margin:0}header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1580px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px;box-shadow:0 20px 80px rgba(0,0,0,.25)}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:130px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px;text-decoration:none;display:inline-block}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.btn.cyan{background:var(--cyan);color:#001014}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange);color:#000}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}.output{background:#000;border:1px solid #222;border-radius:16px;padding:18px;white-space:pre-wrap;line-height:1.6;overflow:auto;min-height:220px;max-height:760px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tab{padding:12px 16px;border-radius:999px;background:#050505;border:1px solid #333;color:#fff;cursor:pointer;font-weight:800}.tab.active{background:linear-gradient(135deg,var(--gold),var(--cyan));color:#000;border:none}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:34px;margin:0}.item,.scene-card,.asset-card,.lead-card{background:#050505;border:1px solid #2d3440;border-radius:18px;padding:16px;transition:.2s}.item:hover,.scene-card:hover,.asset-card:hover,.lead-card:hover{border-color:var(--gold);transform:translateY(-2px)}.item h3,.scene-card h3,.asset-card h3,.lead-card h3{margin:0 0 8px}.item p,.scene-card p,.asset-card p,.lead-card p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}.list{display:grid;gap:12px;margin-top:16px}.pill{display:inline-block;padding:7px 10px;border:1px solid #333;border-radius:999px;color:var(--muted);font-size:12px;margin:4px 4px 0 0;background:#050505}.video-shell{display:grid;grid-template-columns:390px 1fr;gap:20px}.phone{width:390px;max-width:100%;aspect-ratio:9/16;background:#000;border:1px solid #333;border-radius:30px;padding:14px;margin:auto;box-shadow:0 30px 100px rgba(0,0,0,.45)}canvas{width:100%;height:100%;border-radius:22px;background:#000}.timeline{display:flex;gap:12px;overflow-x:auto;background:#000;border:1px solid #222;border-radius:18px;padding:16px;min-height:150px}.clip{min-width:230px;background:#101827;border:1px solid #2d3440;border-radius:16px;padding:14px;cursor:pointer}.clip.active{border-color:var(--gold)}.preview-img{width:100%;border-radius:20px;margin-top:14px;border:1px solid #333}.chat{height:480px;overflow:auto;background:#000;border:1px solid #222;border-radius:16px;padding:18px}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}.mini{font-size:12px;color:var(--muted)}@media(max-width:1000px){.grid,.grid3,.grid4,.video-shell{grid-template-columns:1fr}.wrap{padding:18px}header{align-items:flex-start;flex-direction:column}.phone{width:100%}}
 </style>
 </head>
 <body>
-<header><div class="logo">999 Agent P15 — Vídeo Cinematográfico IA</div><div id="userInfo">Não logado</div></header>
+<header><div class="logo">999 Agent P16 ULTIMATE — Sistema Operacional IA</div><div id="userInfo">Não logado</div></header>
 <div class="wrap">
   <div id="authBox" class="card">
-    <h2>Login / Cadastro</h2><p class="muted">P15 adiciona vídeo cinematográfico com animações, transições, legenda, narração, thumbnail e pacote viral.</p>
+    <h2>Login / Cadastro</h2><p class="muted">P16 Ultimate: agência IA, cinema, render, campanha, funil, calendário, CRM, automações, biblioteca de prompts, ideias, exports e dashboard CEO.</p>
     <input class="input" id="email" type="email" placeholder="Seu email" />
     <input class="input" id="senha" type="password" placeholder="Sua senha" />
     <button class="btn" onclick="registrar()">Cadastrar</button><button class="btn secondary" onclick="login()">Entrar</button>
     <div class="status" id="authStatus">Sistema pronto.</div>
   </div>
+
   <div id="app" class="hidden">
-    <div class="card"><h2>999 Agent P15</h2><p class="muted">Modo CapCut + Midjourney + TikTok Creative Center: gera roteiro, cenas, animação, legenda, thumbnail e vídeo real em .webm.</p><div class="grid4"><div class="metric"><h2 id="dAgentes">0</h2><p>Agentes</p></div><div class="metric"><h2 id="dChats">0</h2><p>Chats</p></div><div class="metric"><h2 id="dVideos">0</h2><p>Vídeos</p></div><div class="metric"><h2 id="dCriativos">0</h2><p>Criativos</p></div></div></div>
-    <div class="tabs"><button class="tab active" onclick="mostrar(event,'cinema')">Cinema IA</button><button class="tab" onclick="mostrar(event,'autonomo')">Empresa IA</button><button class="tab" onclick="mostrar(event,'viral')">Pacote Viral</button><button class="tab" onclick="mostrar(event,'imagem')">Imagem</button><button class="tab" onclick="mostrar(event,'chat')">Chat</button></div>
+    <div class="card"><h2>Command Center P16 Ultimate</h2><p class="muted">A plataforma agora opera como agência IA completa: cria campanhas, vídeos, imagens, funis, posts, automações, leads e pacotes exportáveis.</p><div class="grid4"><div class="metric"><h2 id="dAgentes">0</h2><p>Agentes</p></div><div class="metric"><h2 id="dVideos">0</h2><p>Vídeos</p></div><div class="metric"><h2 id="dCriativos">0</h2><p>Criativos</p></div><div class="metric"><h2 id="dIdeias">0</h2><p>Ideias</p></div></div></div>
+
+    <div class="tabs">
+      <button class="tab active" onclick="mostrar(event,'cinema')">Cinema IA</button><button class="tab" onclick="mostrar(event,'agencia')">Agência IA</button><button class="tab" onclick="mostrar(event,'funil')">Funil + Ads</button><button class="tab" onclick="mostrar(event,'calendario')">Calendário</button><button class="tab" onclick="mostrar(event,'thumbs')">Thumbnails</button><button class="tab" onclick="mostrar(event,'ideias')">Ideias</button><button class="tab" onclick="mostrar(event,'prompts')">Prompts</button><button class="tab" onclick="mostrar(event,'crm')">CRM</button><button class="tab" onclick="mostrar(event,'automacoes')">Automações</button><button class="tab" onclick="mostrar(event,'imagem')">Imagem</button><button class="tab" onclick="mostrar(event,'chat')">Chat</button>
+    </div>
 
     <div id="modCinema">
       <div class="grid">
-        <div class="card">
-          <h2>Gerador de Vídeo Cinematográfico</h2>
-          <input class="input" id="cProduto" placeholder="Produto/campanha — ex: camiseta streetwear cyberpunk" />
-          <input class="input" id="cPublico" placeholder="Público-alvo — ex: jovens que usam streetwear" />
-          <select class="input" id="cFormato"><option value="15">Reels 15s</option><option value="30">TikTok 30s</option><option value="45">Shorts 45s</option></select>
-          <select class="input" id="cEstilo"><option>Cyberpunk premium neon</option><option>Street luxury minimalista</option><option>Trailer cinematográfico escuro</option><option>UGC criador falando</option><option>Anúncio Meta Ads premium</option></select>
-          <textarea id="cBriefing" placeholder="Oferta, promessa, CTA, dores, diferenciais"></textarea>
-          <button class="btn purple" onclick="gerarRoteiroCinema()">1. Gerar roteiro IA</button>
-          <button class="btn cyan" onclick="previewCinema()">2. Preview animado</button>
-          <button class="btn orange" onclick="renderCinema()">3. Renderizar .webm</button>
-          <button class="btn secondary" onclick="gerarThumbnail()">Gerar thumbnail</button>
-          <button class="btn secondary" onclick="falar(narracaoAtual)">Falar narração</button>
-          <div class="status" id="cinemaStatus">Cinema IA pronto.</div>
-          <div class="timeline" id="timelineCinema">Timeline vazia.</div>
-        </div>
-        <div class="card">
-          <h2>Preview vertical</h2>
-          <div class="video-shell"><div class="phone"><canvas id="cinemaCanvas" width="720" height="1280"></canvas></div><div><h3>Download</h3><div id="downloadCinema" class="output">Nenhum vídeo renderizado.</div><h3>Thumbnail</h3><div id="thumbnailBox" class="output">Nenhuma thumbnail.</div></div></div>
-        </div>
-      </div>
-      <div class="grid"><div class="card"><h2>Pacote completo do vídeo</h2><div id="pacoteCinema" class="output">Aguardando roteiro...</div></div><div class="card"><h2>Legendas automáticas</h2><div id="legendasBox" class="output">Aguardando cenas...</div></div></div>
+        <div class="card"><h2>Vídeo Cinematográfico Ultimate</h2><input class="input" id="cProduto" placeholder="Produto/campanha" /><input class="input" id="cPublico" placeholder="Público-alvo" /><select class="input" id="cFormato"><option value="15">Reels 15s</option><option value="30">TikTok 30s</option><option value="45">Shorts 45s</option><option value="60">VSL 60s</option></select><select class="input" id="cTemplate"><option>Cyberpunk premium neon</option><option>Street luxury minimalista</option><option>Trailer dark Hollywood</option><option>UGC criador falando</option><option>Meta Ads conversão direta</option><option>Storytelling emocional</option><option>Oferta relâmpago</option></select><textarea id="cBriefing" placeholder="Oferta, promessa, CTA, dores, diferenciais, preço, urgência"></textarea><button class="btn purple" onclick="gerarRoteiroCinema()">Gerar roteiro + cenas</button><button class="btn cyan" onclick="previewCinema()">Preview animado</button><button class="btn orange" onclick="renderCinema()">Renderizar .webm</button><button class="btn secondary" onclick="gerarThumbnail()">Thumbnail</button><button class="btn secondary" onclick="falar(narracaoAtual)">Narração</button><button class="btn secondary" onclick="exportarJSON()">Export JSON</button><div class="status" id="cinemaStatus">Cinema IA pronto.</div><div class="timeline" id="timelineCinema">Timeline vazia.</div></div>
+        <div class="card"><h2>Preview vertical + export</h2><div class="video-shell"><div class="phone"><canvas id="cinemaCanvas" width="720" height="1280"></canvas></div><div><h3>Download</h3><div id="downloadCinema" class="output">Nenhum vídeo renderizado.</div><h3>Thumbnail</h3><div id="thumbnailBox" class="output">Nenhuma thumbnail.</div></div></div></div>
+      </div><div class="grid"><div class="card"><h2>Pacote do vídeo</h2><div id="pacoteCinema" class="output">Aguardando roteiro...</div></div><div class="card"><h2>Legendas + narração</h2><div id="legendasBox" class="output">Aguardando cenas...</div></div></div>
     </div>
 
-    <div id="modAutonomo" class="hidden"><div class="grid"><div class="card"><h2>Empresa IA automática</h2><input class="input" id="autoNicho" placeholder="Nicho"/><input class="input" id="autoPlataforma" placeholder="Plataforma"/><textarea id="autoObjetivo" placeholder="Objetivo da operação"></textarea><button class="btn" onclick="rodarEmpresaIA()">Rodar Empresa IA</button><button class="btn secondary" onclick="loopAutonomo()">Loop 5 tarefas</button><div class="status" id="autoStatus">Aguardando.</div></div><div class="card"><h2>Resultado</h2><div id="saidaAuto" class="output">Aguardando...</div></div></div><div class="card"><h2>Tarefas</h2><div id="tarefasBox" class="list">Nenhuma tarefa.</div></div></div>
-    <div id="modViral" class="hidden"><div class="grid"><div class="card"><h2>Pacote Viral</h2><input class="input" id="vNicho" placeholder="Nicho/produto"/><input class="input" id="vPlataforma" placeholder="TikTok, Reels, Shorts"/><textarea id="vBriefing" placeholder="Briefing"></textarea><button class="btn" onclick="gerarViral()">Gerar pacote viral</button></div><div class="card"><h2>Resultado viral</h2><div id="saidaViral" class="output">Aguardando...</div></div></div></div>
+    <div id="modAgencia" class="hidden"><div class="grid"><div class="card"><h2>Agência IA Automática</h2><input class="input" id="agMarca" placeholder="Nome da marca"/><input class="input" id="agNicho" placeholder="Nicho"/><input class="input" id="agOferta" placeholder="Oferta principal"/><textarea id="agBriefing" placeholder="Público, promessa, estética, canais, preço"></textarea><button class="btn" onclick="gerarAgencia()">Gerar campanha completa</button><button class="btn secondary" onclick="exportarTexto('saidaAgencia','campanha-agencia.txt')">Export TXT</button><div class="status" id="agStatus">Agência pronta.</div></div><div class="card"><h2>Campanha completa</h2><div id="saidaAgencia" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modFunil" class="hidden"><div class="grid"><div class="card"><h2>Funil + Ads</h2><input class="input" id="funProduto" placeholder="Produto"/><input class="input" id="funTicket" placeholder="Ticket/preço"/><select class="input" id="funCanal"><option>Instagram Ads</option><option>TikTok Ads</option><option>YouTube Ads</option><option>WhatsApp</option><option>Email</option></select><textarea id="funBriefing" placeholder="Público, dor, promessa, objeções"></textarea><button class="btn orange" onclick="gerarFunil()">Gerar funil</button><button class="btn secondary" onclick="copiarTexto('saidaFunil')">Copiar</button></div><div class="card"><h2>Funil gerado</h2><div id="saidaFunil" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modCalendario" class="hidden"><div class="grid"><div class="card"><h2>Calendário de Conteúdo</h2><input class="input" id="calNicho" placeholder="Nicho"/><select class="input" id="calDias"><option value="7">7 dias</option><option value="15">15 dias</option><option value="30">30 dias</option></select><textarea id="calBriefing" placeholder="Objetivo, frequência, plataformas"></textarea><button class="btn cyan" onclick="gerarCalendario()">Gerar calendário</button><button class="btn secondary" onclick="exportarCSVCalendario()">Export CSV</button></div><div class="card"><h2>Calendário</h2><div id="saidaCalendario" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modThumbs" class="hidden"><div class="grid"><div class="card"><h2>Thumbnails em lote</h2><input class="input" id="thumbTema" placeholder="Tema/produto"/><input class="input" id="thumbQtd" placeholder="Quantidade — ex: 10"/><textarea id="thumbEstilo" placeholder="Estilo visual, cores, emoção"></textarea><button class="btn purple" onclick="gerarThumbs()">Gerar ideias de thumbnails</button></div><div class="card"><h2>Thumbnails</h2><div id="saidaThumbs" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modIdeias" class="hidden"><div class="grid"><div class="card"><h2>Banco de Ideias Infinito</h2><input class="input" id="ideiaNicho" placeholder="Nicho"/><button class="btn" onclick="gerarBancoIdeias()">Gerar 50 ideias</button><button class="btn secondary" onclick="copiarTexto('saidaIdeias')">Copiar</button></div><div class="card"><h2>Ideias</h2><div id="saidaIdeias" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modPrompts" class="hidden"><div class="grid"><div class="card"><h2>Prompt Library</h2><select class="input" id="promptTipo"><option>Imagem cinematográfica</option><option>Vídeo viral</option><option>Copy de vendas</option><option>Landing page</option><option>Automação n8n</option><option>Post social</option></select><input class="input" id="promptTema" placeholder="Tema"/><button class="btn cyan" onclick="gerarPromptLibrary()">Gerar prompt premium</button></div><div class="card"><h2>Prompt</h2><div id="saidaPrompt" class="output">Aguardando...</div></div></div></div>
+
+    <div id="modCrm" class="hidden"><div class="grid"><div class="card"><h2>CRM simples</h2><input class="input" id="leadNome" placeholder="Nome do lead"/><input class="input" id="leadContato" placeholder="Contato"/><input class="input" id="leadInteresse" placeholder="Interesse"/><button class="btn" onclick="salvarLead()">Salvar lead</button><button class="btn secondary" onclick="exportarLeadsCSV()">Export leads CSV</button></div><div class="card"><h2>Leads</h2><div id="listaLeads" class="list">Nenhum lead.</div></div></div></div>
+
+    <div id="modAutomacoes" class="hidden"><div class="grid"><div class="card"><h2>Gerador de Automações</h2><select class="input" id="autoTipo"><option>Instagram automático</option><option>WhatsApp atendimento</option><option>CRM de leads</option><option>Email marketing</option><option>Relatório CEO diário</option><option>Postagem em lote</option></select><textarea id="autoBriefing" placeholder="Explique o fluxo desejado"></textarea><button class="btn orange" onclick="gerarAutomacao()">Gerar workflow</button></div><div class="card"><h2>Workflow</h2><div id="saidaAutomacao" class="output">Aguardando...</div></div></div></div>
+
     <div id="modImagem" class="hidden"><div class="grid"><div class="card"><h2>Imagem grátis</h2><input class="input" id="imgPrompt" placeholder="Descreva a imagem"/><select class="input" id="imgFormato"><option value="1024x1024">Quadrado</option><option value="720x1280">Vertical</option><option value="1280x720">Horizontal</option></select><button class="btn cyan" onclick="gerarImagem()">Gerar imagem</button></div><div class="card"><h2>Resultado</h2><div id="saidaImagem" class="output">Aguardando...</div></div></div></div>
-    <div id="modChat" class="hidden"><div class="grid"><div class="card"><h2>Chat IA</h2><textarea id="chatPrompt" placeholder="Digite sua ordem"></textarea><button class="btn" onclick="chatIA()">Enviar</button><button class="btn danger" onclick="logout()">Logout</button><div class="status" id="chatStatus">Pronto.</div></div><div class="card"><h2>Histórico</h2><div id="chatBox" class="chat">Nenhuma conversa.</div></div></div></div>
+
+    <div id="modChat" class="hidden"><div class="grid"><div class="card"><h2>Chat CEO</h2><textarea id="chatPrompt" placeholder="Digite sua ordem"></textarea><button class="btn" onclick="chatIA()">Enviar</button><button class="btn danger" onclick="logout()">Logout</button><div class="status" id="chatStatus">Pronto.</div></div><div class="card"><h2>Histórico</h2><div id="chatBox" class="chat">Nenhuma conversa.</div></div></div></div>
   </div>
 </div>
 <script>
 const SUPABASE_URL='https://kzjuqssxifzqrzxskbwx.supabase.co';const SUPABASE_KEY='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
-let user=null,agentes=[],chats=[],cenas=[],cenaAtual=0,chunks=[],recorder=null,narracaoAtual='',videos=0,criativos=JSON.parse(localStorage.getItem('p15_criativos')||'[]'),tarefas=[];
-function $(id){return document.getElementById(id)}function status(id,msg,type=''){const el=$(id);if(el){el.className='status '+type;el.textContent=msg}}function esc(t){return String(t||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function wait(ms){return new Promise(r=>setTimeout(r,ms))}
-async function registrar(){const email=$('email').value.trim(),password=$('senha').value.trim();if(!email||password.length<6)return status('authStatus','Preencha email e senha com mínimo 6 caracteres.','err');try{const{error}=await db.auth.signUp({email,password});if(error)throw error;status('authStatus','Conta criada. Clique em Entrar.','ok')}catch(e){status('authStatus',e.message,'err')}}
-async function login(){const email=$('email').value.trim(),password=$('senha').value.trim();try{const{data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;user=data.user;abrirApp()}catch(e){status('authStatus',e.message,'err')}}
-async function abrirApp(){$('authBox').classList.add('hidden');$('app').classList.remove('hidden');$('userInfo').textContent=user.email;await carregarAgentes();await carregarChats();drawScene({titulo:'999 Agent P15',texto:'Cinema IA pronto para criar vídeos.',cta:'Comece agora'},0,0);atualizarDash()}
-async function carregarAgentes(){try{const{data}=await db.from('agentes').select('*');agentes=data||[];$('dAgentes').textContent=agentes.length}catch(e){}}
-async function carregarChats(){try{const{data}=await db.from('chats').select('*').eq('user_id',user.id).order('created_at',{ascending:true});chats=data||[];$('dChats').textContent=chats.length}catch(e){}}
-function mostrar(ev,n){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));ev.target.classList.add('active');['Cinema','Autonomo','Viral','Imagem','Chat'].forEach(m=>$('mod'+m).classList.add('hidden'));$('mod'+({cinema:'Cinema',autonomo:'Autonomo',viral:'Viral',imagem:'Imagem',chat:'Chat'}[n])).classList.remove('hidden')}
-async function ia(prompt,system){const{data,error}=await db.functions.invoke('p1-ai',{body:{prompt,system}});if(error)throw error;return data?.output||'Sem resposta.'}
-async function gerarRoteiroCinema(){const produto=$('cProduto').value||'produto premium';const publico=$('cPublico').value||'público jovem';const dur=$('cFormato').value;const estilo=$('cEstilo').value;const briefing=$('cBriefing').value||'campanha premium com CTA forte';status('cinemaStatus','Gerando roteiro cinematográfico...');try{const resposta=await ia(`Crie um vídeo vertical de ${dur}s para ${produto}. Público: ${publico}. Estilo: ${estilo}. Briefing: ${briefing}. Crie ${dur==15?5:dur==30?7:9} cenas no formato: TITULO | TEXTO CURTO | NARRAÇÃO | CTA. Depois dê hashtags, legenda e thumbnail.`, 'Você é diretor cinematográfico, editor de Reels, copywriter viral e estrategista de anúncios.');$('pacoteCinema').textContent=resposta;cenas=parseCenas(resposta,produto);narracaoAtual=cenas.map(c=>c.narracao).join('. ');$('legendasBox').textContent=cenas.map((c,i)=>`Cena ${i+1}: ${c.texto}`).join('\n');renderTimeline();drawScene(cenas[0],0,0);status('cinemaStatus','Roteiro pronto. Clique em Preview ou Renderizar.','ok');criativos.push({tipo:'roteiro-cinema',resposta,data:new Date().toISOString()});salvar()}catch(e){status('cinemaStatus','Erro: '+e.message,'err')}}
-function parseCenas(txt,produto){let lines=txt.split('\n').map(x=>x.trim()).filter(x=>x.includes('|')).slice(0,9);if(!lines.length)lines=[`Desbloqueie seu estilo | ${produto} em cena premium neon | Conheça a peça que muda sua presença | Compre agora`,`Prova visual | Close cinematográfico nos detalhes | Cada detalhe foi feito para chamar atenção | Garanta o seu`,`CTA final | Oferta aparecendo na tela | Clique e desbloqueie seu potencial | Clique agora`];return lines.map((l,i)=>{const p=l.split('|').map(x=>x.trim());return{titulo:p[0]||`Cena ${i+1}`,texto:p[1]||produto,narracao:p[2]||p[1]||produto,cta:p[3]||'Clique agora',duracao:2.7}})}
-function renderTimeline(){$('timelineCinema').innerHTML=cenas.map((c,i)=>`<div class="clip ${i===cenaAtual?'active':''}" onclick="selectCena(${i})"><b>${esc(c.titulo)}</b><p>${esc(c.texto)}</p><span class="pill">${c.duracao}s</span></div>`).join('')}function selectCena(i){cenaAtual=i;renderTimeline();drawScene(cenas[i],0,0)}
-function drawScene(scene,progress,global){const canvas=$('cinemaCanvas'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;const zoom=1+0.035*Math.sin(progress*Math.PI);ctx.save();ctx.translate(w/2,h/2);ctx.scale(zoom,zoom);ctx.translate(-w/2,-h/2);let g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#05030a');g.addColorStop(.45,'#101827');g.addColorStop(1,'#002129');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);ctx.fillStyle=`rgba(214,255,0,${.10+.08*Math.sin(progress*Math.PI)})`;ctx.beginPath();ctx.arc(w*(.2+.04*Math.sin(global*8)),h*.18,190,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(0,229,255,.16)';ctx.beginPath();ctx.arc(w*(.75-.05*Math.cos(global*6)),h*.42,250,0,Math.PI*2);ctx.fill();ctx.strokeStyle='rgba(255,255,255,.10)';ctx.lineWidth=2;for(let y=-100;y<h+100;y+=78){ctx.beginPath();ctx.moveTo(0,y+(global*180%78));ctx.lineTo(w,y+(global*180%78));ctx.stroke()}ctx.restore();const fade=Math.min(1,progress*5, (1-progress)*5);ctx.globalAlpha=fade;ctx.fillStyle='#d6ff00';ctx.font='bold 32px Arial';ctx.fillText('999 AGENT',50,80);ctx.fillStyle='#fff';wrap(ctx,scene?.titulo||'Cena',50,210,w-100,62,'bold 58px Arial');ctx.fillStyle='#e5e7eb';wrap(ctx,scene?.texto||'',50,510,w-100,40,'34px Arial');ctx.fillStyle='#00e5ff';wrap(ctx,scene?.cta||'Clique agora',50,990,w-100,48,'bold 46px Arial');ctx.fillStyle='rgba(0,0,0,.55)';roundRect(ctx,42,1080,w-84,105,20,true);ctx.fillStyle='#fff';wrap(ctx,scene?.narracao||'',70,1125,w-140,30,'26px Arial');ctx.globalAlpha=1;ctx.fillStyle='rgba(255,255,255,.18)';ctx.fillRect(50,h-72,w-100,10);ctx.fillStyle='#d6ff00';ctx.fillRect(50,h-72,(w-100)*global,10)}
-function wrap(ctx,text,x,y,max,lineH,font){ctx.font=font;let words=String(text).replace(/\*\*/g,'').split(' '),line='';for(let word of words){let test=line+word+' ';if(ctx.measureText(test).width>max&&line){ctx.fillText(line,x,y);line=word+' ';y+=lineH}else line=test}ctx.fillText(line,x,y)}function roundRect(ctx,x,y,w,h,r,fill){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);if(fill)ctx.fill()}
-async function previewCinema(){if(!cenas.length)return status('cinemaStatus','Gere roteiro primeiro.','err');let total=cenas.reduce((a,c)=>a+c.duracao,0),elapsed=0;for(let i=0;i<cenas.length;i++){selectCena(i);for(let f=0;f<25;f++){drawScene(cenas[i],f/25,(elapsed+(f/25)*cenas[i].duracao)/total);await wait(35)}elapsed+=cenas[i].duracao}}
-async function renderCinema(){if(!cenas.length)return status('cinemaStatus','Gere roteiro primeiro.','err');status('cinemaStatus','Renderizando vídeo cinematográfico... não feche a aba.');const canvas=$('cinemaCanvas'),stream=canvas.captureStream(30);chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm'});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{const blob=new Blob(chunks,{type:'video/webm'}),url=URL.createObjectURL(blob);$('downloadCinema').innerHTML=`<a class="btn cyan" href="${url}" download="999-agent-p15-cinema.webm">Baixar vídeo .webm</a><br><br><video src="${url}" controls style="width:100%;border-radius:16px"></video>`;videos++;criativos.push({tipo:'video-cinema',data:new Date().toISOString()});salvar();atualizarDash();status('cinemaStatus','Vídeo renderizado com sucesso.','ok')};recorder.start();let total=cenas.reduce((a,c)=>a+c.duracao,0),elapsed=0;for(let scene of cenas){let frames=Math.floor(scene.duracao*30);for(let f=0;f<frames;f++){drawScene(scene,f/frames,(elapsed+(f/frames)*scene.duracao)/total);await wait(33)}elapsed+=scene.duracao}recorder.stop()}
-function gerarThumbnail(){if(!cenas.length)return status('cinemaStatus','Gere roteiro primeiro.','err');drawScene(cenas[0],.5,.12);const url=$('cinemaCanvas').toDataURL('image/png');$('thumbnailBox').innerHTML=`<img src="${url}" class="preview-img"><br><a class="btn cyan" href="${url}" download="thumbnail-999-agent.png">Baixar thumbnail</a>`;status('cinemaStatus','Thumbnail criada.','ok')}
-async function rodarEmpresaIA(){status('autoStatus','Empresa IA trabalhando...');try{const r=await ia(`Crie operação autônoma para ${$('autoNicho').value}. Plataforma ${$('autoPlataforma').value}. Objetivo ${$('autoObjetivo').value}. Gere conteúdo, vídeo, imagem, automação e calendário.`, 'Você é uma empresa IA autônoma.');$('saidaAuto').textContent=r;addTarefa('CEO Agent','Operação criada');status('autoStatus','Concluído.','ok')}catch(e){status('autoStatus',e.message,'err')}}function addTarefa(a,t){tarefas.unshift({a,t});$('tarefasBox').innerHTML=tarefas.map(x=>`<div class="task-card"><h3>${esc(x.a)}</h3><p>${esc(x.t)}</p></div>`).join('')}function loopAutonomo(){['Content Agent','Image Agent','Video Agent','Growth Agent','Automation Agent'].forEach((a,i)=>setTimeout(()=>addTarefa(a,'Tarefa autônoma executada'),i*800))}
-async function gerarViral(){try{$('saidaViral').textContent=await ia(`Gere pacote viral para ${$('vNicho').value} na plataforma ${$('vPlataforma').value}. Briefing: ${$('vBriefing').value}. Inclua hooks, CTAs, hashtags, thumbnails e calendário.`, 'Especialista em viralização.')}catch(e){$('saidaViral').textContent=e.message}}
-function gerarImagem(){const [w,h]=$('imgFormato').value.split('x');const prompt=($('imgPrompt').value||'street luxury cyberpunk premium')+', ultra realistic, cinematic, premium advertising';const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${w}&height=${h}&seed=${Date.now()}&nologo=true&enhance=true`;$('saidaImagem').innerHTML=`<img class="preview-img" src="${url}"><br><a class="btn cyan" target="_blank" href="${url}">Abrir imagem</a>`}
-async function chatIA(){const p=$('chatPrompt').value;if(!p)return;const box=$('chatBox');box.innerHTML+=`<div class="bubble user"><b>Você:</b><br>${esc(p)}</div>`;try{const r=await ia(p,'Você é o 999 Agent CEO.');box.innerHTML+=`<div class="bubble ai"><b>IA:</b><br>${esc(r)}</div>`;await db.from('chats').insert([{user_id:user.id,agente:'P15 Agent',prompt:p,resposta:r}]);$('chatPrompt').value='';carregarChats()}catch(e){box.innerHTML+=`<div class="bubble ai">${esc(e.message)}</div>`}}
-function falar(texto){if(!texto)return alert('Nada para falar.');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(texto);u.lang='pt-BR';u.rate=1;speechSynthesis.speak(u)}function salvar(){localStorage.setItem('p15_criativos',JSON.stringify(criativos))}function atualizarDash(){$('dVideos').textContent=videos;$('dCriativos').textContent=criativos.length}async function logout(){await db.auth.signOut();location.reload()}
-db.auth.getSession().then(async({data:{session}})=>{if(session){user=session.user;abrirApp()}else drawScene({titulo:'999 Agent P15',texto:'Faça login para iniciar.',cta:'Cinema IA'},0,0)});
-</script>
-
-<script>
-// ===== P15 ULTRA EVOLUTION PACK =====
-
-const ultraFeatures = {
-  aiDirector: true,
-  autoHooks: true,
-  viralEngine: true,
-  thumbnailAI: true,
-  storytellingMachine: true,
-  cinematicTransitions: true,
-  batchCampaigns: true,
-  autoVoice: true,
-  aiScenes: true,
-  aiBrain: true
-};
-
-// ===== GERADOR DE GANCHOS VIRAIS =====
-function gerarHooksVirais(produto='produto') {
-  const hooks = [
-    `Ninguém percebeu isso sobre ${produto}...`,
-    `O segredo que faz ${produto} parecer premium.`,
-    `3 erros absurdos ao usar ${produto}.`,
-    `Esse detalhe fez meu conteúdo explodir.`,
-    `Como transformar ${produto} em desejo instantâneo.`,
-    `A estética que está dominando o TikTok.`,
-    `O método visual usado pelas marcas bilionárias.`,
-    `Isso parece anúncio da Nike, mas foi feito com IA.`,
-    `O algoritmo ama vídeos assim.`,
-    `Seu concorrente provavelmente não sabe disso.`
-  ];
-
-  return hooks.map(h => `• ${h}`).join('
-');
-}
-
-// ===== GERADOR DE CTA PREMIUM =====
-function gerarCTAs() {
-  return [
-    'Clique agora e desbloqueie o próximo nível.',
-    'Transforme sua marca em autoridade visual.',
-    'Entre antes que essa estética sature.',
-    'Crie conteúdo premium em minutos.',
-    'Aumente conversão com direção cinematográfica.',
-    'Sua marca merece aparência de empresa bilionária.'
-  ].join('
-');
-}
-
-// ===== GERADOR DE OFERTAS =====
-function gerarOfertas(produto='produto') {
-  return `
-OFERTA PREMIUM:
-
-• Produto: ${produto}
-• Bônus: Pack visual cinematográfico
-• Escassez: Vagas limitadas
-• Garantia: 7 dias
-• CTA: Compre agora
-• Estilo: Street luxury + cyberpunk
-`;
-}
-
-// ===== BANCO DE IDEIAS GIGANTE =====
-const bancoGiganteIdeias = [
-  'POV cinematográfico',
-  'Comparação antes/depois',
-  'Transição absurda',
-  'Setup premium desk',
-  'Efeito glitch neon',
-  'Storytelling emocional',
-  'Vídeo estilo trailer Netflix',
-  'Visual Apple Ads',
-  'Campanha estilo Nike',
-  'Estética dark luxury',
-  'Conteúdo IA futurista',
-  'Anúncio hiper rápido',
-  'UGC viral TikTok',
-  'Zoom dramático',
-  'Narrativa silenciosa',
-  'Vídeo ultra minimalista',
-  'Visual hacker cyberpunk',
-  'Trend remix automático',
-  'Vídeo motivacional premium',
-  'Carrossel agressivo de conversão'
-];
-
-// ===== SISTEMA DE MEMÓRIA LOCAL =====
-function salvarLocal(chave, valor) {
-  localStorage.setItem(chave, JSON.stringify(valor));
-}
-
-function carregarLocal(chave) {
-  const data = localStorage.getItem(chave);
-  return data ? JSON.parse(data) : null;
-}
-
-// ===== MODO CEO =====
-function ativarModoCEO() {
-  alert('Modo CEO ativado. Estratégias premium carregadas.');
-}
-
-// ===== MODO AGÊNCIA =====
-function ativarModoAgencia() {
-  alert('Modo Agência Bilionária ativado.');
-}
-
-// ===== CRIADOR DE PACOTE COMPLETO =====
-function gerarPacoteCompleto() {
-  const produto = document.getElementById('cProduto')?.value || 'produto premium';
-
-  const pacote = `
-========== PACOTE ULTRA ==========
-
-${gerarOfertas(produto)}
-
-========== HOOKS ==========
-${gerarHooksVirais(produto)}
-
-========== CTAs ==========
-${gerarCTAs()}
-
-========== IDEIAS ==========
-${bancoGiganteIdeias.map(i => `• ${i}`).join('
-')}
-
-========== COPY PREMIUM ==========
-Transforme sua presença digital com estética cinematográfica premium e direção criativa de alto impacto.
-
-========== ESTRATÉGIA ==========
-• Publicar 3x ao dia
-• Shorts agressivos
-• CTA forte
-• Retenção máxima
-• Hook nos primeiros 2 segundos
-• Thumbnail neon premium
-`;
-
-  const box = document.getElementById('pacoteCinema');
-  if(box) box.innerText = pacote;
-
-  salvarLocal('pacote_ultra', pacote);
-}
-
-// ===== RENDER AVANÇADO =====
-async function renderCinema() {
-  const canvas = document.getElementById('cinemaCanvas');
-  const stream = canvas.captureStream(30);
-
-  const recorder = new MediaRecorder(stream, {
-    mimeType: 'video/webm'
-  });
-
-  const chunks = [];
-
-  recorder.ondataavailable = e => {
-    if(e.data.size > 0) chunks.push(e.data);
-  };
-
-  recorder.onstop = () => {
-    const blob = new Blob(chunks, { type: 'video/webm' });
-    const url = URL.createObjectURL(blob);
-
-    document.getElementById('downloadCinema').innerHTML = `
-      <a class="btn cyan" href="${url}" download="999-ultra-video.webm">
-        Baixar vídeo ultra
-      </a>
-    `;
-  };
-
-  recorder.start();
-
-  let t = 0;
-  const ctx = canvas.getContext('2d');
-
-  const interval = setInterval(() => {
-    t++;
-
-    ctx.fillStyle = '#050505';
-    ctx.fillRect(0,0,720,1280);
-
-    const grad = ctx.createLinearGradient(0,0,720,1280);
-    grad.addColorStop(0,'#00e5ff');
-    grad.addColorStop(1,'#8b5cf6');
-
-    ctx.fillStyle = grad;
-    ctx.globalAlpha = 0.15;
-    ctx.fillRect(0,0,720,1280);
-    ctx.globalAlpha = 1;
-
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 64px Arial';
-    ctx.fillText('999 AGENT ULTRA', 60, 220);
-
-    ctx.font = '42px Arial';
-    ctx.fillText('Cinema IA Premium', 60, 320);
-
-    ctx.fillStyle = '#d6ff00';
-    ctx.fillRect(60, 1120, (t * 20) % 600, 16);
-
-    ctx.strokeStyle = '#00e5ff';
-    ctx.strokeRect(40,40,640,1200);
-
-    if(t > 180) {
-      clearInterval(interval);
-      recorder.stop();
-    }
-  }, 1000/30);
-}
-
-// ===== THUMBNAIL IA =====
-function gerarThumbnail() {
-  const thumb = `
-THUMBNAIL PREMIUM:
-
-• Texto gigante neon
-• Contraste extremo
-• Fundo dark cinematic
-• Glow cyberpunk
-• Expressão emocional forte
-• CTA visual enorme
-• Elementos futuristas
-`;
-
-  const box = document.getElementById('thumbnailBox');
-  if(box) box.innerText = thumb;
-}
-
-// ===== ROTEIRO IA =====
-function gerarRoteiroCinema() {
-  const produto = document.getElementById('cProduto')?.value || 'produto';
-
-  narracaoAtual = `
-Você está prestes a descobrir uma nova estética visual para ${produto}.
-
-Uma direção cinematográfica premium feita para dominar redes sociais.
-
-Transforme atenção em desejo.
-
-Clique agora.
-`;
-
-  document.getElementById('legendasBox').innerText = narracaoAtual;
-
-  gerarPacoteCompleto();
-
-  const timeline = document.getElementById('timelineCinema');
-  timeline.innerHTML = `
-    <div class="clip active">Cena 1 — Hook viral</div>
-    <div class="clip">Cena 2 — Produto premium</div>
-    <div class="clip">Cena 3 — Estética cinematográfica</div>
-    <div class="clip">Cena 4 — CTA agressivo</div>
-  `;
-}
-
-// ===== PREVIEW =====
-function previewCinema() {
-  const canvas = document.getElementById('cinemaCanvas');
-  const ctx = canvas.getContext('2d');
-
-  let t = 0;
-
-  const anim = setInterval(() => {
-    t++;
-
-    ctx.fillStyle = '#000';
-    ctx.fillRect(0,0,720,1280);
-
-    const grad = ctx.createRadialGradient(360,640,100,360,640,700);
-    grad.addColorStop(0,'rgba(0,229,255,.35)');
-    grad.addColorStop(1,'rgba(139,92,246,0)');
-
-    ctx.fillStyle = grad;
-    ctx.fillRect(0,0,720,1280);
-
-    ctx.fillStyle = '#fff';
-    ctx.font = 'bold 58px Arial';
-    ctx.fillText('ESTÉTICA ULTRA', 60, 240);
-
-    ctx.font = '36px Arial';
-    ctx.fillText('999 AGENT P15', 60, 320);
-
-    ctx.fillStyle = '#d6ff00';
-    ctx.fillRect(60, 1080, (t * 12) % 560, 14);
-
-    if(t > 150) clearInterval(anim);
-  }, 1000/30);
-}
-
-// ===== VOZ =====
-let narracaoAtual = '';
-
-function falar(texto='') {
-  const speech = new SpeechSynthesisUtterance(texto);
-  speech.lang = 'pt-BR';
-  speech.rate = 1;
-  speech.pitch = 1;
-  speechSynthesis.speak(speech);
-}
-
-// ===== EXPORT JSON =====
-function exportarJSON() {
-  const pacote = document.getElementById('pacoteCinema')?.innerText || '';
-
-  const data = {
-    pacote,
-    criadoEm: new Date().toISOString(),
-    sistema: '999 Agent P15 ULTRA'
-  };
-
-  const blob = new Blob([JSON.stringify(data, null, 2)], {
-    type: 'application/json'
-  });
-
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = '999-ultra-export.json';
-  a.click();
-}
-
-// ===== DASH =====
-function atualizarDashUltra() {
-  document.getElementById('dAgentes').innerText = 12;
-  document.getElementById('dVideos').innerText = 128;
-  document.getElementById('dCriativos').innerText = 384;
-  document.getElementById('dIdeias').innerText = bancoGiganteIdeias.length;
-}
-
-setTimeout(atualizarDashUltra, 800);
-
+let user=null,agentes=[],cenas=[],chunks=[],recorder=null,narracaoAtual='',videos=0,criativos=JSON.parse(localStorage.getItem('p16_criativos')||'[]'),leads=JSON.parse(localStorage.getItem('p16_leads')||'[]'),calendario=[];
+const ideiasBase=['POV cinematográfico','Antes/depois premium','Erro comum','Segredo de marca milionária','Unboxing futurista','Bastidor de criação','Trend remix','Storytelling emocional','Oferta relâmpago','Tutorial rápido','Review UGC','Comparação concorrente','Mito vs verdade','Lista top 5','Transformação visual','Desafio 7 dias','Prova social','Reação surpresa','Análise de estética','Campanha dark luxury'];
+function $(id){return document.getElementById(id)}function status(id,msg,type=''){const el=$(id);if(el){el.className='status '+type;el.textContent=msg}}function esc(t){return String(t||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function wait(ms){return new Promise(r=>setTimeout(r,ms))}function salvar(){localStorage.setItem('p16_criativos',JSON.stringify(criativos));localStorage.setItem('p16_leads',JSON.stringify(leads));atualizarDash()}
+async function registrar(){const email=$('email').value.trim(),password=$('senha').value.trim();if(!email||password.length<6)return status('authStatus','Preencha email e senha com mínimo 6 caracteres.','err');try{const{error}=await db.auth.signUp({email,password});if(error)throw error;status('authStatus','Conta criada. Clique em Entrar.','ok')}catch(e){status('authStatus',e.message,'err')}}async function login(){const email=$('email').value.trim(),password=$('senha').value.trim();try{const{data,error}=await db.auth.signInWithPassword({email,password});if(error)throw error;user=data.user;abrirApp()}catch(e){status('authStatus',e.message,'err')}}async function abrirApp(){$('authBox').classList.add('hidden');$('app').classList.remove('hidden');$('userInfo').textContent=user.email;await carregarAgentes();drawScene({titulo:'999 Agent P16',texto:'Sistema operacional IA pronto.',cta:'Execute agora'},0,0);renderLeads();atualizarDash()}
+async function carregarAgentes(){try{const{data}=await db.from('agentes').select('*');agentes=data||[];$('dAgentes').textContent=agentes.length}catch(e){}}async function ia(prompt,system){const{data,error}=await db.functions.invoke('p1-ai',{body:{prompt,system}});if(error)throw error;return data?.output||'Sem resposta.'}
+function mostrar(ev,n){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));ev.target.classList.add('active');['Cinema','Agencia','Funil','Calendario','Thumbs','Ideias','Prompts','Crm','Automacoes','Imagem','Chat'].forEach(m=>$('mod'+m).classList.add('hidden'));$('mod'+({cinema:'Cinema',agencia:'Agencia',funil:'Funil',calendario:'Calendario',thumbs:'Thumbs',ideias:'Ideias',prompts:'Prompts',crm:'Crm',automacoes:'Automacoes',imagem:'Imagem',chat:'Chat'}[n])).classList.remove('hidden')}
+async function gerarRoteiroCinema(){const produto=$('cProduto').value||'produto premium',publico=$('cPublico').value||'público jovem',dur=$('cFormato').value,template=$('cTemplate').value,brief=$('cBriefing').value||'campanha premium';status('cinemaStatus','Gerando roteiro ultimate...');try{const r=await ia(`Crie vídeo vertical de ${dur}s para ${produto}. Público: ${publico}. Estilo: ${template}. Briefing: ${brief}. Crie cenas no formato: TITULO | TEXTO CURTO | NARRAÇÃO | CTA. Depois entregue legenda, hashtags, thumbnail e plano de postagem.`, 'Diretor cinematográfico, copywriter viral e estrategista de anúncios.');$('pacoteCinema').textContent=r;cenas=parseCenas(r,produto);narracaoAtual=cenas.map(c=>c.narracao).join('. ');$('legendasBox').textContent=cenas.map((c,i)=>`Cena ${i+1}: ${c.texto}\nNarração: ${c.narracao}`).join('\n\n');renderTimeline();drawScene(cenas[0],0,0);status('cinemaStatus','Roteiro pronto.','ok');criativos.push({tipo:'roteiro-video',r,data:new Date().toISOString()});salvar()}catch(e){status('cinemaStatus',e.message,'err')}}function parseCenas(txt,produto){let lines=txt.split('\n').map(x=>x.trim()).filter(x=>x.includes('|')).slice(0,10);if(!lines.length)lines=[`Hook premium | ${produto} surge em neon | Isso não é só produto, é presença | Veja agora`,`Desejo | Close nos detalhes | Cada detalhe foi feito para chamar atenção | Garanta o seu`,`CTA | Oferta na tela | Clique antes que acabe | Comprar agora`];return lines.map((l,i)=>{const p=l.split('|').map(x=>x.trim());return{titulo:p[0]||`Cena ${i+1}`,texto:p[1]||produto,narracao:p[2]||p[1]||produto,cta:p[3]||'Clique agora',duracao:2.7}})}function renderTimeline(){$('timelineCinema').innerHTML=cenas.map((c,i)=>`<div class="clip" onclick="drawScene(cenas[${i}],0,0)"><b>${esc(c.titulo)}</b><p>${esc(c.texto)}</p></div>`).join('')}
+function drawScene(scene,progress,global){const canvas=$('cinemaCanvas'),ctx=canvas.getContext('2d'),w=canvas.width,h=canvas.height;const zoom=1+0.04*Math.sin(progress*Math.PI);ctx.save();ctx.translate(w/2,h/2);ctx.scale(zoom,zoom);ctx.translate(-w/2,-h/2);let g=ctx.createLinearGradient(0,0,w,h);g.addColorStop(0,'#05030a');g.addColorStop(.45,'#101827');g.addColorStop(1,'#002129');ctx.fillStyle=g;ctx.fillRect(0,0,w,h);ctx.fillStyle=`rgba(214,255,0,${.10+.08*Math.sin(progress*Math.PI)})`;ctx.beginPath();ctx.arc(w*(.2+.05*Math.sin(global*8)),h*.18,190,0,Math.PI*2);ctx.fill();ctx.fillStyle='rgba(0,229,255,.16)';ctx.beginPath();ctx.arc(w*(.75-.05*Math.cos(global*6)),h*.42,250,0,Math.PI*2);ctx.fill();ctx.restore();ctx.fillStyle='#d6ff00';ctx.font='bold 32px Arial';ctx.fillText('999 AGENT',50,80);ctx.fillStyle='#fff';wrap(ctx,scene?.titulo||'P16 ULTIMATE',50,220,w-100,62,'bold 58px Arial');ctx.fillStyle='#e5e7eb';wrap(ctx,scene?.texto||'Sistema IA pronto.',50,520,w-100,40,'34px Arial');ctx.fillStyle='#00e5ff';wrap(ctx,scene?.cta||'Execute agora',50,990,w-100,48,'bold 46px Arial');ctx.fillStyle='rgba(0,0,0,.55)';ctx.fillRect(42,1080,w-84,105);ctx.fillStyle='#fff';wrap(ctx,scene?.narracao||'',70,1125,w-140,30,'26px Arial');ctx.fillStyle='rgba(255,255,255,.18)';ctx.fillRect(50,h-72,w-100,10);ctx.fillStyle='#d6ff00';ctx.fillRect(50,h-72,(w-100)*global,10)}function wrap(ctx,text,x,y,max,lineH,font){ctx.font=font;let words=String(text).replace(/\*\*/g,'').split(' '),line='';for(let word of words){let test=line+word+' ';if(ctx.measureText(test).width>max&&line){ctx.fillText(line,x,y);line=word+' ';y+=lineH}else line=test}ctx.fillText(line,x,y)}
+async function previewCinema(){if(!cenas.length)return status('cinemaStatus','Gere roteiro primeiro.','err');let total=cenas.reduce((a,c)=>a+c.duracao,0),elapsed=0;for(let scene of cenas){for(let f=0;f<25;f++){drawScene(scene,f/25,(elapsed+(f/25)*scene.duracao)/total);await wait(35)}elapsed+=scene.duracao}}async function renderCinema(){if(!cenas.length)return status('cinemaStatus','Gere roteiro primeiro.','err');status('cinemaStatus','Renderizando .webm...');const canvas=$('cinemaCanvas'),stream=canvas.captureStream(30);chunks=[];recorder=new MediaRecorder(stream,{mimeType:'video/webm'});recorder.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};recorder.onstop=()=>{const blob=new Blob(chunks,{type:'video/webm'}),url=URL.createObjectURL(blob);$('downloadCinema').innerHTML=`<a class="btn cyan" href="${url}" download="999-agent-p16-video.webm">Baixar vídeo .webm</a><br><br><video src="${url}" controls style="width:100%;border-radius:16px"></video>`;videos++;criativos.push({tipo:'video-render',data:new Date().toISOString()});salvar();status('cinemaStatus','Vídeo renderizado.','ok')};recorder.start();let total=cenas.reduce((a,c)=>a+c.duracao,0),elapsed=0;for(let scene of cenas){let frames=Math.floor(scene.duracao*30);for(let f=0;f<frames;f++){drawScene(scene,f/frames,(elapsed+(f/frames)*scene.duracao)/total);await wait(33)}elapsed+=scene.duracao}recorder.stop()}function gerarThumbnail(){if(!cenas.length)return;drawScene(cenas[0],.5,.1);const url=$('cinemaCanvas').toDataURL('image/png');$('thumbnailBox').innerHTML=`<img src="${url}" class="preview-img"><br><a class="btn cyan" href="${url}" download="thumbnail-p16.png">Baixar thumbnail</a>`}
+async function gerarAgencia(){status('agStatus','Gerando campanha...');try{$('saidaAgencia').textContent=await ia(`Gere campanha completa para marca ${$('agMarca').value}, nicho ${$('agNicho').value}, oferta ${$('agOferta').value}. Briefing: ${$('agBriefing').value}. Inclua posicionamento, promessa, funil, calendário, 10 anúncios, 10 posts, 5 roteiros, prompts de imagem e automações.`, 'Você é uma agência bilionária de IA.');status('agStatus','Campanha criada.','ok')}catch(e){status('agStatus',e.message,'err')}}async function gerarFunil(){$('saidaFunil').textContent=await ia(`Crie funil para ${$('funProduto').value}, ticket ${$('funTicket').value}, canal ${$('funCanal').value}. Briefing: ${$('funBriefing').value}.`, 'Especialista em funis e tráfego.')}async function gerarCalendario(){const dias=Number($('calDias').value);calendario=[];for(let i=1;i<=dias;i++)calendario.push({dia:i,titulo:`${$('calNicho').value||'Nicho'} — conteúdo ${i}`,tipo:['Reels','Carrossel','Story','Shorts'][i%4],cta:['Comente','Salve','Compartilhe','Clique'][i%4]});$('saidaCalendario').textContent=calendario.map(x=>`Dia ${x.dia}: ${x.tipo} — ${x.titulo} — CTA: ${x.cta}`).join('\n')}function exportarCSVCalendario(){const csv='dia,tipo,titulo,cta\n'+calendario.map(x=>`${x.dia},${x.tipo},"${x.titulo}",${x.cta}`).join('\n');downloadFile('calendario.csv',csv,'text/csv')}function gerarThumbs(){const qtd=Number($('thumbQtd').value||10),tema=$('thumbTema').value||'campanha';$('saidaThumbs').textContent=Array.from({length:qtd},(_,i)=>`${i+1}. ${tema}: texto gigante, contraste extremo, emoção forte, fundo neon premium, elemento central em close.`).join('\n')}function gerarBancoIdeias(){const nicho=$('ideiaNicho').value||'marca';const arr=Array.from({length:50},(_,i)=>`${i+1}. ${ideiasBase[i%ideiasBase.length]} para ${nicho}`);$('saidaIdeias').textContent=arr.join('\n');$('dIdeias').textContent=arr.length}function gerarPromptLibrary(){const tipo=$('promptTipo').value,tema=$('promptTema').value||'campanha premium';$('saidaPrompt').textContent=`Você é especialista em ${tipo}. Crie uma execução premium para: ${tema}. Entregue estratégia, estrutura, variações, checklist, erros a evitar e versão final pronta para uso.`}function salvarLead(){const l={nome:$('leadNome').value,contato:$('leadContato').value,interesse:$('leadInteresse').value,data:new Date().toISOString()};leads.push(l);salvar();renderLeads()}function renderLeads(){$('listaLeads').innerHTML=leads.length?leads.map(l=>`<div class="lead-card"><h3>${esc(l.nome)}</h3><p>${esc(l.contato)} — ${esc(l.interesse)}</p></div>`).join(''):'Nenhum lead.'}function exportarLeadsCSV(){downloadFile('leads.csv','nome,contato,interesse\n'+leads.map(l=>`"${l.nome}","${l.contato}","${l.interesse}"`).join('\n'),'text/csv')}async function gerarAutomacao(){$('saidaAutomacao').textContent=await ia(`Crie workflow para ${$('autoTipo').value}. Briefing: ${$('autoBriefing').value}. Inclua gatilhos, ferramentas, passos, campos, erros e melhorias.`, 'Especialista em n8n, Make, Zapier e automações comerciais.')}function gerarImagem(){const [w,h]=$('imgFormato').value.split('x');const prompt=($('imgPrompt').value||'street luxury cyberpunk premium')+', ultra realistic, cinematic, premium advertising';const url=`https://image.pollinations.ai/prompt/${encodeURIComponent(prompt)}?width=${w}&height=${h}&seed=${Date.now()}&nologo=true&enhance=true`;$('saidaImagem').innerHTML=`<img class="preview-img" src="${url}"><br><a class="btn cyan" target="_blank" href="${url}">Abrir imagem</a>`}async function chatIA(){const p=$('chatPrompt').value;if(!p)return;const r=await ia(p,'Você é o 999 Agent CEO.');$('chatBox').innerHTML+=`<div class="bubble user"><b>Você:</b><br>${esc(p)}</div><div class="bubble ai"><b>IA:</b><br>${esc(r)}</div>`;$('chatPrompt').value=''}function falar(texto){if(!texto)return alert('Nada para falar.');speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(texto);u.lang='pt-BR';speechSynthesis.speak(u)}function exportarJSON(){downloadFile('999-agent-p16.json',JSON.stringify({pacote:$('pacoteCinema').innerText,criativos,leads,calendario,data:new Date().toISOString()},null,2),'application/json')}function exportarTexto(id,nome){downloadFile(nome,$(id).innerText,'text/plain')}function copiarTexto(id){navigator.clipboard.writeText($(id).innerText);alert('Copiado')}function downloadFile(nome,conteudo,tipo){const blob=new Blob([conteudo],{type:tipo});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=nome;a.click()}function atualizarDash(){$('dVideos').textContent=videos;$('dCriativos').textContent=criativos.length;$('dIdeias').textContent=ideiasBase.length}async function logout(){await db.auth.signOut();location.reload()}
+db.auth.getSession().then(async({data:{session}})=>{if(session){user=session.user;abrirApp()}else drawScene({titulo:'999 Agent P16',texto:'Faça login para iniciar.',cta:'Ultimate IA'},0,0)});
 </script>
 </body>
 </html>
