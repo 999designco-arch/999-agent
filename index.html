@@ -3,223 +3,41 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>999 Agent P10 — SaaS IA Grátis</title>
+<title>999 Agent P11 — Super IA Operacional</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 :root{
-  --bg:#050505;
-  --card:#111827;
-  --line:#2a2f3a;
-  --text:#ffffff;
-  --muted:#a7a7a7;
-  --gold:#d6ff00;
-  --cyan:#00e5ff;
-  --green:#20ff9f;
-  --red:#ff3b6b;
-  --purple:#8b5cf6;
-  --orange:#ff9f1c;
+  --bg:#050505;--card:#111827;--line:#2a2f3a;--text:#fff;--muted:#a7a7a7;
+  --gold:#d6ff00;--cyan:#00e5ff;--green:#20ff9f;--red:#ff3b6b;--purple:#8b5cf6;--orange:#ff9f1c;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at 20% 10%,rgba(0,229,255,.13),transparent 28%),
-    radial-gradient(circle at 80% 10%,rgba(139,92,246,.18),transparent 28%),
-    linear-gradient(180deg,#050505,#090912 65%,#020202);
-  color:var(--text);
-  margin:0;
-  padding:0;
-}
-header{
-  padding:20px 26px;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  background:#090910;
-  position:sticky;
-  top:0;
-  z-index:10;
-}
-.logo{font-weight:900;font-size:22px}
-.wrap{max-width:1360px;margin:auto;padding:32px}
-.card{
-  background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));
-  border:1px solid var(--line);
-  padding:24px;
-  border-radius:22px;
-  margin-bottom:20px;
-  box-shadow:0 20px 70px rgba(0,0,0,.25);
-}
-.input,textarea,select{
-  width:100%;
-  padding:15px;
-  background:#050505;
-  border:1px solid #343a46;
-  border-radius:13px;
-  color:#fff;
-  margin-top:12px;
-  outline:none;
-}
-textarea{min-height:140px;resize:vertical}
-.btn{
-  padding:14px 22px;
-  border:none;
-  border-radius:13px;
-  background:var(--gold);
-  color:#000;
-  font-weight:800;
-  cursor:pointer;
-  margin-top:12px;
-  margin-right:8px;
-  display:inline-block;
-  text-decoration:none;
-}
-.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}
-.btn.danger{background:var(--red);color:#fff}
-.btn.cyan{background:var(--cyan);color:#001014}
-.btn.purple{background:var(--purple);color:#fff}
-.btn.orange{background:var(--orange);color:#000}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.chat{
-  height:560px;
-  overflow:auto;
-  background:#000;
-  padding:20px;
-  border-radius:16px;
-  border:1px solid #222;
-}
-.bubble{
-  padding:14px;
-  border-radius:14px;
-  margin-bottom:14px;
-  line-height:1.6;
-  white-space:pre-wrap;
-}
-.user{background:#1f2937}
-.ai{background:#042f2e}
-.agentnote{background:#171126;color:#e6dcff}
-.metric{
-  background:#000;
-  padding:20px;
-  border-radius:16px;
-  text-align:center;
-  border:1px solid #222;
-}
-.metric h2{color:var(--gold);font-size:34px;margin:0}
-.hidden{display:none}
-.status{
-  padding:14px;
-  border-radius:14px;
-  background:#000;
-  border:1px solid #333;
-  margin-top:16px;
-  color:var(--muted);
-  white-space:pre-wrap;
-}
-.ok{color:var(--green)}
-.err{color:var(--red)}
-.muted{color:var(--muted);line-height:1.6}
-.small{font-size:13px;color:var(--muted)}
-.agent-card{
-  background:#050505;
-  border:1px solid #2d3440;
-  border-radius:18px;
-  padding:16px;
-  cursor:pointer;
-  transition:.2s;
-}
-.agent-card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.agent-card.active{border-color:var(--gold);box-shadow:0 0 0 1px rgba(214,255,0,.3)}
-.agent-card h3{margin:0 0 8px}
-.agent-card p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}
-.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
-.tab{
-  padding:12px 16px;
-  border-radius:999px;
-  background:#050505;
-  border:1px solid #333;
-  color:#fff;
-  cursor:pointer;
-  font-weight:800;
-}
-.tab.active{background:linear-gradient(135deg,var(--gold),var(--cyan));color:#000;border:none}
-.output{
-  background:#000;
-  border:1px solid #222;
-  border-radius:16px;
-  padding:18px;
-  white-space:pre-wrap;
-  line-height:1.6;
-  min-height:220px;
-  max-height:760px;
-  overflow:auto;
-}
-.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
-.preview-img{
-  width:100%;
-  border-radius:20px;
-  margin-top:14px;
-  border:1px solid #333;
-  box-shadow:0 30px 80px rgba(0,0,0,.45);
-}
-pre{
-  white-space:pre-wrap;
-  background:#050505;
-  border:1px solid #222;
-  border-radius:14px;
-  padding:14px;
-  color:#dcdcdc;
-  overflow:auto;
-  font-size:12px;
-}
-.tool-card{
-  background:#050505;
-  border:1px solid #28313d;
-  border-radius:18px;
-  padding:18px;
-}
-.tool-card h3{margin-top:0}
-.tool-card p{color:var(--muted);line-height:1.5}
-@media(max-width:1000px){
-  .grid,.grid3,.grid4,.split{grid-template-columns:1fr}
-  .wrap{padding:18px}
-  .chat{height:420px}
-  header{align-items:flex-start;flex-direction:column}
-}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{font-family:Arial,sans-serif;background:radial-gradient(circle at 20% 10%,rgba(0,229,255,.13),transparent 28%),radial-gradient(circle at 80% 10%,rgba(139,92,246,.18),transparent 28%),linear-gradient(180deg,#050505,#090912 65%,#020202);color:var(--text);margin:0;padding:0}
+header{padding:20px 26px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:18px;background:#090910;position:sticky;top:0;z-index:10}.logo{font-weight:900;font-size:22px}.wrap{max-width:1400px;margin:auto;padding:32px}.card{background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(255,255,255,.035));border:1px solid var(--line);padding:24px;border-radius:22px;margin-bottom:20px;box-shadow:0 20px 70px rgba(0,0,0,.25)}.input,textarea,select{width:100%;padding:15px;background:#050505;border:1px solid #343a46;border-radius:13px;color:#fff;margin-top:12px;outline:none}textarea{min-height:140px;resize:vertical}.btn{padding:14px 22px;border:none;border-radius:13px;background:var(--gold);color:#000;font-weight:800;cursor:pointer;margin-top:12px;margin-right:8px;display:inline-block;text-decoration:none}.btn.secondary{background:#1f2937;color:#fff;border:1px solid #334155}.btn.danger{background:var(--red);color:#fff}.btn.cyan{background:var(--cyan);color:#001014}.btn.purple{background:var(--purple);color:#fff}.btn.orange{background:var(--orange);color:#000}.grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.chat{height:560px;overflow:auto;background:#000;padding:20px;border-radius:16px;border:1px solid #222}.bubble{padding:14px;border-radius:14px;margin-bottom:14px;line-height:1.6;white-space:pre-wrap}.user{background:#1f2937}.ai{background:#042f2e}.agentnote{background:#171126;color:#e6dcff}.metric{background:#000;padding:20px;border-radius:16px;text-align:center;border:1px solid #222}.metric h2{color:var(--gold);font-size:34px;margin:0}.hidden{display:none}.status{padding:14px;border-radius:14px;background:#000;border:1px solid #333;margin-top:16px;color:var(--muted);white-space:pre-wrap}.ok{color:var(--green)}.err{color:var(--red)}.muted{color:var(--muted);line-height:1.6}.small{font-size:13px;color:var(--muted)}.agent-card,.project-card,.file-card,.memory-card{background:#050505;border:1px solid #2d3440;border-radius:18px;padding:16px;cursor:pointer;transition:.2s}.agent-card:hover,.project-card:hover,.file-card:hover,.memory-card:hover{border-color:var(--gold);transform:translateY(-2px)}.agent-card.active,.project-card.active{border-color:var(--gold);box-shadow:0 0 0 1px rgba(214,255,0,.3)}.agent-card h3,.project-card h3,.file-card h3,.memory-card h3{margin:0 0 8px}.agent-card p,.project-card p,.file-card p,.memory-card p{margin:0;color:var(--muted);line-height:1.45;font-size:14px}.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}.tab{padding:12px 16px;border-radius:999px;background:#050505;border:1px solid #333;color:#fff;cursor:pointer;font-weight:800}.tab.active{background:linear-gradient(135deg,var(--gold),var(--cyan));color:#000;border:none}.output{background:#000;border:1px solid #222;border-radius:16px;padding:18px;white-space:pre-wrap;line-height:1.6;min-height:220px;max-height:760px;overflow:auto}.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}.preview-img{width:100%;border-radius:20px;margin-top:14px;border:1px solid #333;box-shadow:0 30px 80px rgba(0,0,0,.45)}pre{white-space:pre-wrap;background:#050505;border:1px solid #222;border-radius:14px;padding:14px;color:#dcdcdc;overflow:auto;font-size:12px}.tool-card{background:#050505;border:1px solid #28313d;border-radius:18px;padding:18px}.tool-card h3{margin-top:0}.tool-card p{color:var(--muted);line-height:1.5}.list{display:grid;gap:12px;margin-top:16px}.pill{display:inline-block;padding:7px 10px;border:1px solid #333;border-radius:999px;color:var(--muted);font-size:12px;margin:4px 4px 0 0;background:#050505}
+@media(max-width:1000px){.grid,.grid3,.grid4,.split{grid-template-columns:1fr}.wrap{padding:18px}.chat{height:420px}header{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">999 Agent P10 — SaaS IA Grátis</div>
-  <div id="userInfo">Não logado</div>
-</header>
-
+<header><div class="logo">999 Agent P11 — Super IA Operacional</div><div id="userInfo">Não logado</div></header>
 <div class="wrap">
   <div id="authBox" class="card">
-    <h2>Login / Cadastro</h2>
-    <p class="muted">Entre para acessar agentes reais, memória, imagem grátis, vídeo, voz, música e avatar.</p>
+    <h2>Login / Cadastro</h2><p class="muted">Entre para acessar agentes, memória, projetos, uploads, imagem grátis, voz e criativos.</p>
     <input class="input" id="email" type="email" placeholder="Seu email" />
     <input class="input" id="senha" type="password" placeholder="Sua senha — mínimo 6 caracteres" />
-    <button class="btn" id="btnCadastrar">Cadastrar</button>
-    <button class="btn secondary" id="btnEntrar">Entrar</button>
+    <button class="btn" id="btnCadastrar">Cadastrar</button><button class="btn secondary" id="btnEntrar">Entrar</button>
     <div class="status" id="authStatus">Sistema pronto. Preencha email e senha.</div>
   </div>
 
   <div id="app" class="hidden">
     <div class="card">
-      <h2>Central de Agentes</h2>
-      <p class="muted">Agentes carregados da tabela <b>agentes</b>. Cada agente usa system prompt próprio via Edge Function <b>p1-ai</b>.</p>
-      <div class="grid4" id="agentesGrid"></div>
-      <div class="status" id="agentStatus">Carregando agentes...</div>
+      <h2>Central de Agentes</h2><p class="muted">Agentes carregados da tabela <b>agentes</b>. Cada agente usa system prompt próprio via Edge Function <b>p1-ai</b>.</p>
+      <div class="grid4" id="agentesGrid"></div><div class="status" id="agentStatus">Carregando agentes...</div>
     </div>
 
     <div class="tabs">
-      <button class="tab active" onclick="mostrarModulo(event,'chat')">Chat Multiagentes</button>
+      <button class="tab active" onclick="mostrarModulo(event,'chat')">Chat</button>
+      <button class="tab" onclick="mostrarModulo(event,'projetos')">Projetos</button>
+      <button class="tab" onclick="mostrarModulo(event,'upload')">Upload</button>
+      <button class="tab" onclick="mostrarModulo(event,'memoria')">Memória</button>
       <button class="tab" onclick="mostrarModulo(event,'imagem')">Imagem Grátis</button>
       <button class="tab" onclick="mostrarModulo(event,'video')">Vídeo</button>
       <button class="tab" onclick="mostrarModulo(event,'voz')">Voz</button>
@@ -231,556 +49,114 @@ pre{
     <div id="modChat">
       <div class="grid">
         <div class="card">
-          <h2>Comando para o agente</h2>
-          <p class="muted">Agente ativo: <b id="agenteAtivoNome">Nenhum</b></p>
+          <h2>Comando para o agente</h2><p class="muted">Agente ativo: <b id="agenteAtivoNome">Nenhum</b> | Projeto ativo: <b id="projetoAtivoNome">Nenhum</b></p>
           <textarea id="prompt" class="input" placeholder="Digite sua ordem para o agente ativo"></textarea>
-          <button class="btn" id="btnIA">Executar agente</button>
-          <button class="btn secondary" id="btnReload">Recarregar memória</button>
-          <button class="btn danger" id="btnLogout">Logout</button>
+          <button class="btn" id="btnIA">Executar agente</button><button class="btn secondary" id="btnReload">Recarregar memória</button><button class="btn orange" id="btnFalarUltima">Falar última resposta</button><button class="btn danger" id="btnLogout">Logout</button>
           <div class="status" id="iaStatus">IA pronta.</div>
         </div>
-
         <div class="card">
           <h2>Dashboard CEO</h2>
-          <div class="grid4">
-            <div class="metric"><h2 id="mChats">0</h2><p>Chats</p></div>
-            <div class="metric"><h2 id="mAgentes">0</h2><p>Agentes</p></div>
-            <div class="metric"><h2 id="mPlano">FREE</h2><p>Plano</p></div>
-            <div class="metric"><h2 id="mMemoria">0</h2><p>Memória</p></div>
-          </div>
-          <div class="status" id="profileStatus">Perfil aguardando login.</div>
-          <div class="status" id="memoryStatus">Memória aguardando histórico.</div>
+          <div class="grid4"><div class="metric"><h2 id="mChats">0</h2><p>Chats</p></div><div class="metric"><h2 id="mAgentes">0</h2><p>Agentes</p></div><div class="metric"><h2 id="mProjetos">0</h2><p>Projetos</p></div><div class="metric"><h2 id="mMemoria">0</h2><p>Memória</p></div></div>
+          <div class="status" id="profileStatus">Perfil aguardando login.</div><div class="status" id="memoryStatus">Memória aguardando histórico.</div>
         </div>
       </div>
+      <div class="card"><h2>Histórico multiagentes</h2><p class="small">Conversas salvas na tabela <b>chats</b> e reutilizadas como memória contextual.</p><div id="chatBox" class="chat">Nenhuma conversa ainda.</div></div>
+    </div>
 
-      <div class="card">
-        <h2>Histórico multiagentes</h2>
-        <p class="small">Conversas salvas na tabela <b>chats</b> e reutilizadas como memória contextual.</p>
-        <div id="chatBox" class="chat">Nenhuma conversa ainda.</div>
+    <div id="modProjetos" class="hidden">
+      <div class="split">
+        <div class="card"><h2>Criar projeto / workspace</h2><p class="muted">Organize clientes, marcas, lojas e campanhas.</p><input class="input" id="projetoNome" placeholder="Nome do projeto"/><textarea id="projetoDescricao" placeholder="Descrição, nicho, público, produtos, objetivo"></textarea><button class="btn" id="btnCriarProjeto">Criar projeto</button><button class="btn secondary" id="btnListarProjetos">Atualizar projetos</button><div class="status" id="projetoStatus">Projetos prontos.</div></div>
+        <div class="card"><h2>Meus projetos</h2><div class="list" id="listaProjetos">Nenhum projeto carregado.</div></div>
+      </div>
+    </div>
+
+    <div id="modUpload" class="hidden">
+      <div class="split">
+        <div class="card"><h2>Upload de arquivos</h2><p class="muted">Envie imagens, PDFs, logos, referências e assets para o bucket <b>uploads</b>.</p><input class="input" id="arquivoInput" type="file"/><button class="btn cyan" id="btnUpload">Enviar arquivo</button><button class="btn secondary" id="btnListarArquivos">Atualizar arquivos</button><div class="status" id="uploadStatus">Upload pronto.</div></div>
+        <div class="card"><h2>Arquivos enviados</h2><div class="list" id="listaArquivos">Nenhum arquivo carregado.</div></div>
+      </div>
+    </div>
+
+    <div id="modMemoria" class="hidden">
+      <div class="split">
+        <div class="card"><h2>Memória operacional</h2><p class="muted">Salve informações fixas que a IA deve lembrar: branding, tom de voz, produtos, regras e preferências.</p><select class="input" id="memoriaTipo"><option>branding</option><option>produto</option><option>cliente</option><option>campanha</option><option>regra</option><option>preferencia</option></select><textarea id="memoriaConteudo" placeholder="Conteúdo da memória"></textarea><button class="btn purple" id="btnSalvarMemoria">Salvar memória</button><button class="btn secondary" id="btnListarMemoria">Atualizar memória</button><div class="status" id="memoriaStatusBox">Memória pronta.</div></div>
+        <div class="card"><h2>Memórias salvas</h2><div class="list" id="listaMemoria">Nenhuma memória carregada.</div></div>
       </div>
     </div>
 
     <div id="modImagem" class="hidden">
       <div class="split">
-        <div class="card">
-          <h2>Criar imagem IA grátis</h2>
-          <p class="muted">Gera imagem direta no frontend usando Pollinations. Sem fal.ai, sem créditos, sem Edge Function e sem billing.</p>
-          <input class="input" id="imgProduto" placeholder="Produto, marca ou cena" />
-          <input class="input" id="imgEstilo" placeholder="Estilo visual — ex: street luxury cyberpunk premium" />
-          <select class="input" id="imgFormato">
-            <option value="instagram square 1:1">Instagram 1:1</option>
-            <option value="vertical 9:16 reels tiktok story">Reels/TikTok 9:16</option>
-            <option value="horizontal cinematic banner 16:9">Banner 16:9</option>
-            <option value="product mockup ecommerce">Mockup de produto</option>
-            <option value="youtube thumbnail">Thumbnail YouTube</option>
-          </select>
-          <textarea id="imgDetalhes" placeholder="Detalhes: cores, ambiente, personagem, produto, atmosfera"></textarea>
-          <button class="btn cyan" id="btnImagem">Gerar imagem grátis</button>
-          <button class="btn secondary" onclick="copiarTexto('promptImagemFinal')">Copiar prompt</button>
-          <button class="btn secondary" id="btnNovaSeed">Nova variação</button>
-          <div class="status" id="imgStatus">Imagem pronta para briefing.</div>
-        </div>
-        <div class="card">
-          <h2>Resultado visual</h2>
-          <div id="saidaImagem" class="output">Aguardando imagem...</div>
-          <div id="promptImagemFinal" class="output" style="min-height:120px;margin-top:14px">Prompt aparecerá aqui.</div>
-        </div>
+        <div class="card"><h2>Criar imagem IA grátis</h2><p class="muted">Gera imagem direta no frontend usando Pollinations. Sem fal.ai, sem créditos e sem billing.</p><input class="input" id="imgProduto" placeholder="Produto, marca ou cena"/><input class="input" id="imgEstilo" placeholder="Estilo visual — ex: street luxury cyberpunk premium"/><select class="input" id="imgFormato"><option value="instagram square 1:1">Instagram 1:1</option><option value="vertical 9:16 reels tiktok story">Reels/TikTok 9:16</option><option value="horizontal cinematic banner 16:9">Banner 16:9</option><option value="product mockup ecommerce">Mockup de produto</option><option value="youtube thumbnail">Thumbnail YouTube</option></select><textarea id="imgDetalhes" placeholder="Detalhes: cores, ambiente, personagem, produto, atmosfera"></textarea><button class="btn cyan" id="btnImagem">Gerar imagem grátis</button><button class="btn secondary" onclick="copiarTexto('promptImagemFinal')">Copiar prompt</button><button class="btn secondary" id="btnNovaSeed">Nova variação</button><div class="status" id="imgStatus">Imagem pronta.</div></div>
+        <div class="card"><h2>Resultado visual</h2><div id="saidaImagem" class="output">Aguardando imagem...</div><div id="promptImagemFinal" class="output" style="min-height:120px;margin-top:14px">Prompt aparecerá aqui.</div></div>
       </div>
     </div>
 
     <div id="modVideo" class="hidden">
-      <div class="split">
-        <div class="card">
-          <h2>Criar vídeo / Reels / anúncio</h2>
-          <p class="muted">Gera roteiro, cenas, narração, texto na tela e prompt para ferramentas grátis ou freemium de vídeo.</p>
-          <input class="input" id="vidProduto" placeholder="Produto, marca ou campanha" />
-          <input class="input" id="vidObjetivo" placeholder="Objetivo — vender, viralizar, lançar, educar" />
-          <input class="input" id="vidDuracao" placeholder="Duração — ex: 15s, 30s, 60s" />
-          <textarea id="vidDetalhes" placeholder="Detalhes: público, promessa, estética, CTA, oferta"></textarea>
-          <button class="btn purple" id="btnVideo">Gerar roteiro de vídeo</button>
-          <button class="btn secondary" onclick="copiarTexto('saidaVideo')">Copiar roteiro</button>
-          <div class="status" id="vidStatus">Vídeo pronto para briefing.</div>
-          <div class="grid3" style="margin-top:18px">
-            <div class="tool-card"><h3>Pika</h3><p>Use o prompt gerado para criar vídeos curtos.</p><a class="btn secondary" target="_blank" href="https://pika.art">Abrir</a></div>
-            <div class="tool-card"><h3>Luma</h3><p>Use para cenas cinematográficas e movimento de câmera.</p><a class="btn secondary" target="_blank" href="https://lumalabs.ai/dream-machine">Abrir</a></div>
-            <div class="tool-card"><h3>PixVerse</h3><p>Use para anúncios, reels e vídeos verticais.</p><a class="btn secondary" target="_blank" href="https://pixverse.ai">Abrir</a></div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Roteiro + prompt de vídeo</h2>
-          <div id="saidaVideo" class="output">Aguardando geração...</div>
-        </div>
-      </div>
+      <div class="split"><div class="card"><h2>Criar vídeo / Reels / anúncio</h2><p class="muted">Gera roteiro, cenas, narração, texto na tela e prompt para ferramentas grátis ou freemium de vídeo.</p><input class="input" id="vidProduto" placeholder="Produto, marca ou campanha"/><input class="input" id="vidObjetivo" placeholder="Objetivo — vender, viralizar, lançar, educar"/><input class="input" id="vidDuracao" placeholder="Duração — ex: 15s, 30s, 60s"/><textarea id="vidDetalhes" placeholder="Detalhes: público, promessa, estética, CTA, oferta"></textarea><button class="btn purple" id="btnVideo">Gerar roteiro de vídeo</button><button class="btn secondary" onclick="copiarTexto('saidaVideo')">Copiar roteiro</button><div class="status" id="vidStatus">Vídeo pronto.</div><div class="grid3" style="margin-top:18px"><div class="tool-card"><h3>Pika</h3><p>Use o prompt gerado para criar vídeos curtos.</p><a class="btn secondary" target="_blank" href="https://pika.art">Abrir</a></div><div class="tool-card"><h3>Luma</h3><p>Cenas cinematográficas e movimento de câmera.</p><a class="btn secondary" target="_blank" href="https://lumalabs.ai/dream-machine">Abrir</a></div><div class="tool-card"><h3>PixVerse</h3><p>Anúncios, reels e vídeos verticais.</p><a class="btn secondary" target="_blank" href="https://pixverse.ai">Abrir</a></div></div></div><div class="card"><h2>Roteiro + prompt de vídeo</h2><div id="saidaVideo" class="output">Aguardando geração...</div></div></div>
     </div>
 
     <div id="modVoz" class="hidden">
-      <div class="split">
-        <div class="card">
-          <h2>Gerador de voz / narração</h2>
-          <p class="muted">Cria texto de narração pronto para usar em ferramentas de voz.</p>
-          <input class="input" id="vozMarca" placeholder="Marca/produto" />
-          <input class="input" id="vozTom" placeholder="Tom — premium, agressivo, cinematográfico, emocional" />
-          <textarea id="vozBriefing" placeholder="Explique o anúncio ou mensagem"></textarea>
-          <button class="btn orange" id="btnVoz">Gerar narração</button>
-          <button class="btn secondary" onclick="copiarTexto('saidaVoz')">Copiar</button>
-          <div class="status" id="vozStatus">Voz pronta para briefing.</div>
-          <div class="grid3" style="margin-top:18px">
-            <div class="tool-card"><h3>ElevenLabs</h3><p>Use a narração gerada para voz IA.</p><a class="btn secondary" target="_blank" href="https://elevenlabs.io">Abrir</a></div>
-            <div class="tool-card"><h3>TTSMaker</h3><p>Alternativa com plano gratuito para TTS.</p><a class="btn secondary" target="_blank" href="https://ttsmaker.com">Abrir</a></div>
-            <div class="tool-card"><h3>CapCut</h3><p>Use para narração, legendas e edição rápida.</p><a class="btn secondary" target="_blank" href="https://www.capcut.com">Abrir</a></div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Narração pronta</h2>
-          <div id="saidaVoz" class="output">Aguardando geração...</div>
-        </div>
-      </div>
+      <div class="split"><div class="card"><h2>Gerador de voz / narração grátis</h2><p class="muted">Cria texto de narração e usa Web Speech API para falar no navegador.</p><input class="input" id="vozMarca" placeholder="Marca/produto"/><input class="input" id="vozTom" placeholder="Tom — premium, agressivo, cinematográfico, emocional"/><textarea id="vozBriefing" placeholder="Explique o anúncio ou mensagem"></textarea><button class="btn orange" id="btnVoz">Gerar narração</button><button class="btn cyan" id="btnFalarVoz">Falar narração</button><button class="btn secondary" onclick="copiarTexto('saidaVoz')">Copiar</button><div class="status" id="vozStatus">Voz pronta.</div></div><div class="card"><h2>Narração pronta</h2><div id="saidaVoz" class="output">Aguardando geração...</div></div></div>
     </div>
 
     <div id="modMusica" class="hidden">
-      <div class="split">
-        <div class="card">
-          <h2>Gerador de música / trilha</h2>
-          <p class="muted">Cria prompt musical para campanhas, reels e anúncios.</p>
-          <input class="input" id="musicaEstilo" placeholder="Estilo — trap, cinematic, afrobeat, techno, luxury" />
-          <input class="input" id="musicaMarca" placeholder="Marca/campanha" />
-          <textarea id="musicaDetalhes" placeholder="Energia, emoção, instrumentos, referência visual"></textarea>
-          <button class="btn purple" id="btnMusica">Gerar prompt musical</button>
-          <button class="btn secondary" onclick="copiarTexto('saidaMusica')">Copiar</button>
-          <div class="status" id="musicaStatus">Música pronta para briefing.</div>
-          <div class="grid3" style="margin-top:18px">
-            <div class="tool-card"><h3>Suno</h3><p>Crie música com o prompt gerado.</p><a class="btn secondary" target="_blank" href="https://suno.com">Abrir</a></div>
-            <div class="tool-card"><h3>Udio</h3><p>Alternativa para trilhas e músicas comerciais.</p><a class="btn secondary" target="_blank" href="https://udio.com">Abrir</a></div>
-            <div class="tool-card"><h3>Beatoven</h3><p>Trilhas para vídeos e anúncios.</p><a class="btn secondary" target="_blank" href="https://www.beatoven.ai">Abrir</a></div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Prompt musical</h2>
-          <div id="saidaMusica" class="output">Aguardando geração...</div>
-        </div>
-      </div>
+      <div class="split"><div class="card"><h2>Gerador de música / trilha</h2><p class="muted">Cria prompt musical para campanhas, reels e anúncios.</p><input class="input" id="musicaEstilo" placeholder="Estilo — trap, cinematic, afrobeat, techno, luxury"/><input class="input" id="musicaMarca" placeholder="Marca/campanha"/><textarea id="musicaDetalhes" placeholder="Energia, emoção, instrumentos, referência visual"></textarea><button class="btn purple" id="btnMusica">Gerar prompt musical</button><button class="btn secondary" onclick="copiarTexto('saidaMusica')">Copiar</button><div class="status" id="musicaStatus">Música pronta.</div></div><div class="card"><h2>Prompt musical</h2><div id="saidaMusica" class="output">Aguardando geração...</div></div></div>
     </div>
 
     <div id="modAvatar" class="hidden">
-      <div class="split">
-        <div class="card">
-          <h2>Gerador de avatar / apresentador</h2>
-          <p class="muted">Cria script e briefing para avatar IA, vídeo UGC ou apresentador virtual.</p>
-          <input class="input" id="avatarProduto" placeholder="Produto/campanha" />
-          <input class="input" id="avatarPersona" placeholder="Persona — especialista, influencer, fundador, vendedor" />
-          <textarea id="avatarDetalhes" placeholder="Oferta, público, problema, promessa, CTA"></textarea>
-          <button class="btn cyan" id="btnAvatar">Gerar script de avatar</button>
-          <button class="btn secondary" onclick="copiarTexto('saidaAvatar')">Copiar</button>
-          <div class="status" id="avatarStatus">Avatar pronto para briefing.</div>
-          <div class="grid3" style="margin-top:18px">
-            <div class="tool-card"><h3>HeyGen</h3><p>Use o script para avatar apresentador.</p><a class="btn secondary" target="_blank" href="https://www.heygen.com">Abrir</a></div>
-            <div class="tool-card"><h3>D-ID</h3><p>Transforme rosto em vídeo falado.</p><a class="btn secondary" target="_blank" href="https://www.d-id.com">Abrir</a></div>
-            <div class="tool-card"><h3>CapCut</h3><p>Monte o vídeo final com legenda e cortes.</p><a class="btn secondary" target="_blank" href="https://www.capcut.com">Abrir</a></div>
-          </div>
-        </div>
-        <div class="card">
-          <h2>Script de avatar</h2>
-          <div id="saidaAvatar" class="output">Aguardando geração...</div>
-        </div>
-      </div>
+      <div class="split"><div class="card"><h2>Gerador de avatar / apresentador</h2><p class="muted">Cria script e briefing para avatar IA, vídeo UGC ou apresentador virtual.</p><input class="input" id="avatarProduto" placeholder="Produto/campanha"/><input class="input" id="avatarPersona" placeholder="Persona — especialista, influencer, fundador, vendedor"/><textarea id="avatarDetalhes" placeholder="Oferta, público, problema, promessa, CTA"></textarea><button class="btn cyan" id="btnAvatar">Gerar script de avatar</button><button class="btn secondary" onclick="copiarTexto('saidaAvatar')">Copiar</button><div class="status" id="avatarStatus">Avatar pronto.</div></div><div class="card"><h2>Script de avatar</h2><div id="saidaAvatar" class="output">Aguardando geração...</div></div></div>
     </div>
 
     <div id="modDashboard" class="hidden">
-      <div class="card">
-        <h2>Visão CEO</h2>
-        <div class="grid4">
-          <div class="metric"><h2 id="dChats">0</h2><p>Conversas</p></div>
-          <div class="metric"><h2 id="dAgentes">0</h2><p>Agentes ativos</p></div>
-          <div class="metric"><h2 id="dMemoria">0</h2><p>Memórias usadas</p></div>
-          <div class="metric"><h2 id="dCriativos">0</h2><p>Criativos locais</p></div>
-        </div>
-        <div class="status ok">P10 ativo: agentes, memória, imagem grátis, vídeo, voz, música e avatar.</div>
-      </div>
+      <div class="card"><h2>Visão CEO</h2><div class="grid4"><div class="metric"><h2 id="dChats">0</h2><p>Conversas</p></div><div class="metric"><h2 id="dAgentes">0</h2><p>Agentes</p></div><div class="metric"><h2 id="dProjetos">0</h2><p>Projetos</p></div><div class="metric"><h2 id="dCriativos">0</h2><p>Criativos</p></div></div><div class="status ok">P11 ativo: agentes, memória, projetos, upload, imagem grátis, vídeo, voz, música e avatar.</div></div>
     </div>
   </div>
 </div>
 
 <script>
-const SUPABASE_URL = 'https://kzjuqssxifzqrzxskbwx.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
-
-const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-let currentUser = null;
-let historico = [];
-let agentes = [];
-let agenteAtivo = null;
-let imageSeed = Date.now();
-let criativos = JSON.parse(localStorage.getItem('p10_criativos') || '[]');
-
-function setStatus(id, msg, type = '') {
-  const el = document.getElementById(id);
-  el.className = 'status ' + type;
-  el.textContent = msg;
-}
-
-function escapeHtml(text) {
-  return String(text || '').replace(/[&<>'"]/g, c => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
-  }[c]));
-}
-
-function validarAuth() {
-  const email = document.getElementById('email').value.trim();
-  const senha = document.getElementById('senha').value.trim();
-  if (!email || !senha) {
-    setStatus('authStatus', 'Preencha email e senha.', 'err');
-    return null;
-  }
-  if (senha.length < 6) {
-    setStatus('authStatus', 'A senha precisa ter pelo menos 6 caracteres.', 'err');
-    return null;
-  }
-  return { email, senha };
-}
-
-async function registrar() {
-  const dados = validarAuth();
-  if (!dados) return;
-  setStatus('authStatus', 'Criando conta...');
-  try {
-    const { error } = await db.auth.signUp({ email: dados.email, password: dados.senha });
-    if (error) throw error;
-    setStatus('authStatus', 'Conta criada. Agora clique em Entrar.', 'ok');
-  } catch (error) {
-    setStatus('authStatus', 'Erro ao cadastrar: ' + error.message, 'err');
-  }
-}
-
-async function login() {
-  const dados = validarAuth();
-  if (!dados) return;
-  setStatus('authStatus', 'Entrando...');
-  try {
-    const { data, error } = await db.auth.signInWithPassword({ email: dados.email, password: dados.senha });
-    if (error) throw error;
-    currentUser = data.user;
-    await abrirApp();
-  } catch (error) {
-    setStatus('authStatus', 'Erro ao entrar: ' + error.message, 'err');
-  }
-}
-
-async function abrirApp() {
-  document.getElementById('authBox').classList.add('hidden');
-  document.getElementById('app').classList.remove('hidden');
-  document.getElementById('userInfo').innerText = currentUser.email;
-  await garantirPerfil();
-  await carregarAgentes();
-  await carregarChats();
-  atualizarDashboard();
-}
-
-async function garantirPerfil() {
-  setStatus('profileStatus', 'Carregando perfil...');
-  try {
-    const { data, error } = await db.from('perfis').select('*').eq('id', currentUser.id).maybeSingle();
-    if (error) throw error;
-    if (!data) {
-      const { error: insertError } = await db.from('perfis').insert([{ id: currentUser.id, nome: currentUser.email, plano: 'free' }]);
-      if (insertError) throw insertError;
-      document.getElementById('mPlano').innerText = 'FREE';
-      setStatus('profileStatus', 'Perfil criado no plano FREE.', 'ok');
-      return;
-    }
-    document.getElementById('mPlano').innerText = (data.plano || 'free').toUpperCase();
-    setStatus('profileStatus', 'Perfil carregado.', 'ok');
-  } catch (error) {
-    setStatus('profileStatus', 'Erro no perfil: ' + error.message, 'err');
-  }
-}
-
-async function carregarAgentes() {
-  setStatus('agentStatus', 'Carregando agentes do Supabase...');
-  try {
-    const { data, error } = await db.from('agentes').select('*').order('created_at', { ascending: true });
-    if (error) throw error;
-    agentes = data || [];
-    document.getElementById('mAgentes').innerText = agentes.length;
-    document.getElementById('dAgentes').innerText = agentes.length;
-    if (!agentes.length) {
-      setStatus('agentStatus', 'Nenhum agente encontrado na tabela agentes.', 'err');
-      return;
-    }
-    agenteAtivo = agentes[0];
-    renderAgentes();
-    setStatus('agentStatus', `${agentes.length} agentes carregados.`, 'ok');
-  } catch (error) {
-    setStatus('agentStatus', 'Erro ao carregar agentes: ' + error.message, 'err');
-  }
-}
-
-function renderAgentes() {
-  const grid = document.getElementById('agentesGrid');
-  grid.innerHTML = agentes.map(a => `
-    <div class="agent-card ${agenteAtivo && agenteAtivo.id === a.id ? 'active' : ''}" onclick="selecionarAgente('${a.id}')">
-      <h3>${escapeHtml(a.nome)}</h3>
-      <p>${escapeHtml(a.sistema)}</p>
-    </div>
-  `).join('');
-  document.getElementById('agenteAtivoNome').innerText = agenteAtivo ? agenteAtivo.nome : 'Nenhum';
-}
-
-window.selecionarAgente = function(id) {
-  agenteAtivo = agentes.find(a => a.id === id);
-  renderAgentes();
-  setStatus('iaStatus', `${agenteAtivo.nome} ativado.`, 'ok');
-}
-
-function montarMemoria() {
-  if (!historico.length) return 'Sem histórico anterior.';
-  return historico.slice(-8).map(c => `Usuário: ${c.prompt}\n${c.agente}: ${c.resposta}`).join('\n\n');
-}
-
-function systemPadrao() {
-  return `Você faz parte do 999 Agent, uma central de IA multiagentes premium para negócios digitais. Responda sempre em português, com execução prática, estratégia, automação, monetização, clareza e próximos passos.`;
-}
-
-function montarPromptComMemoria(prompt) {
-  return `Memória recente do usuário:\n${montarMemoria()}\n\nNova solicitação do usuário:\n${prompt}\n\nRegras:\n- entregue execução prática;\n- inclua estratégia e automações;\n- seja especialista premium;\n- responda com estrutura clara.`;
-}
-
-async function chamarIA(prompt, system) {
-  const { data, error } = await db.functions.invoke('p1-ai', { body: { prompt, system } });
-  if (error) throw error;
-  return data?.output || 'Sem resposta.';
-}
-
-async function enviarIA() {
-  if (!agenteAtivo) {
-    setStatus('iaStatus', 'Selecione um agente primeiro.', 'err');
-    return;
-  }
-  const prompt = document.getElementById('prompt').value.trim();
-  if (!prompt) {
-    setStatus('iaStatus', 'Digite uma ordem para a IA.', 'err');
-    return;
-  }
-  const chat = document.getElementById('chatBox');
-  if (chat.textContent === 'Nenhuma conversa ainda.') chat.innerHTML = '';
-  chat.innerHTML += `<div class="bubble user"><b>Você:</b><br>${escapeHtml(prompt)}</div>`;
-  chat.innerHTML += `<div class="bubble agentnote"><b>Agente ativado:</b> ${escapeHtml(agenteAtivo.nome)}<br>${escapeHtml(agenteAtivo.sistema)}</div>`;
-  chat.scrollTop = chat.scrollHeight;
-  setStatus('iaStatus', `${agenteAtivo.nome} processando...`);
-  try {
-    const promptFinal = montarPromptComMemoria(prompt);
-    const system = agenteAtivo.sistema + '\n\n' + systemPadrao();
-    const resposta = await chamarIA(promptFinal, system);
-    chat.innerHTML += `<div class="bubble ai"><b>${escapeHtml(agenteAtivo.nome)}:</b><br>${escapeHtml(resposta)}</div>`;
-    const { error: saveError } = await db.from('chats').insert([{ user_id: currentUser.id, agente: agenteAtivo.nome, prompt, resposta }]);
-    if (saveError) throw saveError;
-    document.getElementById('prompt').value = '';
-    setStatus('iaStatus', 'Resposta gerada e salva no Supabase.', 'ok');
-    await carregarChats(false);
-  } catch (error) {
-    chat.innerHTML += `<div class="bubble ai"><b>Erro:</b><br>${escapeHtml(error.message)}</div>`;
-    setStatus('iaStatus', 'Erro IA: ' + error.message, 'err');
-  }
-}
-
-async function carregarChats(render = true) {
-  try {
-    const { data, error } = await db.from('chats').select('*').eq('user_id', currentUser.id).order('created_at', { ascending: true });
-    if (error) throw error;
-    historico = data || [];
-    document.getElementById('mChats').innerText = historico.length;
-    document.getElementById('mMemoria').innerText = Math.min(historico.length, 8);
-    document.getElementById('dChats').innerText = historico.length;
-    document.getElementById('dMemoria').innerText = Math.min(historico.length, 8);
-    document.getElementById('memoryStatus').textContent = historico.length
-      ? `Memória ativa: ${historico.length} conversas carregadas. A IA usa as últimas ${Math.min(historico.length, 8)} como contexto.`
-      : 'Memória vazia. Envie a primeira mensagem.';
-    document.getElementById('memoryStatus').className = 'status ok';
-    if (render) {
-      const chat = document.getElementById('chatBox');
-      if (historico.length) {
-        chat.innerHTML = historico.slice(-30).map(c => `
-          <div class="bubble user"><b>Você:</b><br>${escapeHtml(c.prompt)}</div>
-          <div class="bubble ai"><b>${escapeHtml(c.agente)}:</b><br>${escapeHtml(c.resposta)}</div>
-        `).join('');
-        chat.scrollTop = chat.scrollHeight;
-      } else {
-        chat.textContent = 'Nenhuma conversa ainda.';
-      }
-    }
-    atualizarDashboard();
-  } catch (error) {
-    setStatus('iaStatus', 'Erro ao carregar chats: ' + error.message, 'err');
-  }
-}
-
-function mostrarModulo(event, nome) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  event.target.classList.add('active');
-  const mods = ['Chat','Imagem','Video','Voz','Musica','Avatar','Dashboard'];
-  mods.forEach(m => {
-    const el = document.getElementById('mod' + m);
-    if (el) el.classList.add('hidden');
-  });
-  const alvo = document.getElementById('mod' + nome.charAt(0).toUpperCase() + nome.slice(1));
-  if (alvo) alvo.classList.remove('hidden');
-}
-
-function montarPromptImagem() {
-  const produto = document.getElementById('imgProduto').value || 'produto premium';
-  const estilo = document.getElementById('imgEstilo').value || 'street luxury futurista, cyberpunk premium, cinematográfico';
-  const formato = document.getElementById('imgFormato').value || 'instagram square 1:1';
-  const detalhes = document.getElementById('imgDetalhes').value || 'visual sofisticado, iluminação dramática, atmosfera de campanha global';
-  return `${produto}, ${estilo}, ${formato}, ${detalhes}, ultra realistic, cinematic lighting, luxury advertising, futuristic, highly detailed, premium branding, sharp focus, dramatic shadows, global campaign aesthetic`;
-}
-
-async function gerarImagem() {
-  const finalPrompt = montarPromptImagem();
-  const width = document.getElementById('imgFormato').value.includes('9:16') ? 720 : document.getElementById('imgFormato').value.includes('16:9') ? 1280 : 1024;
-  const height = document.getElementById('imgFormato').value.includes('9:16') ? 1280 : document.getElementById('imgFormato').value.includes('16:9') ? 720 : 1024;
-  const imageUrl = `https://image.pollinations.ai/prompt/${encodeURIComponent(finalPrompt)}?width=${width}&height=${height}&seed=${imageSeed}&nologo=true&enhance=true`;
-
-  document.getElementById('promptImagemFinal').innerHTML = '<b>Prompt usado:</b><pre>' + escapeHtml(finalPrompt) + '</pre>';
-  document.getElementById('saidaImagem').innerHTML = 'Gerando imagem grátis...';
-  setStatus('imgStatus', 'Gerando imagem IA grátis via Pollinations...');
-
-  const img = new Image();
-  img.onload = function() {
-    document.getElementById('saidaImagem').innerHTML = `
-      <img src="${imageUrl}" class="preview-img" alt="Imagem gerada pelo 999 Agent" />
-      <br><br>
-      <a class="btn cyan" href="${imageUrl}" target="_blank">Abrir imagem</a>
-    `;
-    criativos.push({ tipo: 'imagem', prompt: finalPrompt, image: imageUrl, data: new Date().toISOString() });
-    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
-    setStatus('imgStatus', 'Imagem gerada grátis com sucesso.', 'ok');
-    atualizarDashboard();
-  };
-  img.onerror = function() {
-    document.getElementById('saidaImagem').innerHTML = `
-      <b>Não foi possível carregar a imagem agora.</b>
-      <pre>${escapeHtml(imageUrl)}</pre>
-    `;
-    setStatus('imgStatus', 'O serviço grátis pode estar instável. Clique em Nova variação e tente novamente.', 'err');
-  };
-  img.src = imageUrl;
-}
-
-function novaSeed() {
-  imageSeed = Date.now() + Math.floor(Math.random() * 999999);
-  gerarImagem();
-}
-
-async function gerarVideo() {
-  const produto = document.getElementById('vidProduto').value || 'produto premium';
-  const objetivo = document.getElementById('vidObjetivo').value || 'vender e gerar desejo';
-  const duracao = document.getElementById('vidDuracao').value || '30s';
-  const detalhes = document.getElementById('vidDetalhes').value || 'estética street luxury, cortes rápidos, visual cinematográfico';
-  setStatus('vidStatus', 'Gerando roteiro de vídeo com Video Agent...');
-  try {
-    const system = 'Você é o Video Agent do 999 Agent. Especialista em roteiros cinematográficos, anúncios, Reels, TikTok, IA de vídeo, viralização e direção audiovisual premium.';
-    const prompt = `Crie um roteiro completo de vídeo IA.\nProduto/campanha: ${produto}\nObjetivo: ${objetivo}\nDuração: ${duracao}\nDetalhes: ${detalhes}\n\nEntregue: conceito, roteiro por segundos, cenas, narração, texto na tela, prompt para IA de vídeo, prompt de imagem base, trilha sugerida e CTA.`;
-    const resposta = await chamarIA(prompt, system);
-    document.getElementById('saidaVideo').textContent = resposta;
-    criativos.push({ tipo: 'video', produto, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
-    setStatus('vidStatus', 'Roteiro de vídeo gerado.', 'ok');
-    atualizarDashboard();
-  } catch (error) {
-    setStatus('vidStatus', 'Erro vídeo: ' + error.message, 'err');
-  }
-}
-
-async function gerarVoz() {
-  const marca = document.getElementById('vozMarca').value || 'marca premium';
-  const tom = document.getElementById('vozTom').value || 'cinematográfico e persuasivo';
-  const briefing = document.getElementById('vozBriefing').value || 'anúncio de produto premium';
-  setStatus('vozStatus', 'Gerando narração...');
-  try {
-    const system = 'Você é especialista em locução publicitária, narração cinematográfica e scripts para voz IA.';
-    const prompt = `Crie uma narração pronta para voz IA.\nMarca/produto: ${marca}\nTom: ${tom}\nBriefing: ${briefing}\n\nEntregue versão de 15s, 30s e 60s, com pausas, emoção e CTA.`;
-    const resposta = await chamarIA(prompt, system);
-    document.getElementById('saidaVoz').textContent = resposta;
-    criativos.push({ tipo: 'voz', marca, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
-    setStatus('vozStatus', 'Narração gerada.', 'ok');
-    atualizarDashboard();
-  } catch (error) {
-    setStatus('vozStatus', 'Erro voz: ' + error.message, 'err');
-  }
-}
-
-async function gerarMusica() {
-  const estilo = document.getElementById('musicaEstilo').value || 'cinematic trap luxury';
-  const marca = document.getElementById('musicaMarca').value || 'campanha premium';
-  const detalhes = document.getElementById('musicaDetalhes').value || 'energia alta, atmosfera futurista, comercial premium';
-  setStatus('musicaStatus', 'Gerando prompt musical...');
-  try {
-    const system = 'Você é especialista em prompts musicais para IA, trilhas publicitárias, jingles e sound branding.';
-    const prompt = `Crie um prompt musical para IA.\nEstilo: ${estilo}\nMarca/campanha: ${marca}\nDetalhes: ${detalhes}\n\nEntregue prompt para Suno/Udio, letra curta opcional, direção sonora, BPM, instrumentos e clima emocional.`;
-    const resposta = await chamarIA(prompt, system);
-    document.getElementById('saidaMusica').textContent = resposta;
-    criativos.push({ tipo: 'musica', marca, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
-    setStatus('musicaStatus', 'Prompt musical gerado.', 'ok');
-    atualizarDashboard();
-  } catch (error) {
-    setStatus('musicaStatus', 'Erro música: ' + error.message, 'err');
-  }
-}
-
-async function gerarAvatar() {
-  const produto = document.getElementById('avatarProduto').value || 'produto premium';
-  const persona = document.getElementById('avatarPersona').value || 'fundador especialista';
-  const detalhes = document.getElementById('avatarDetalhes').value || 'oferta premium com CTA forte';
-  setStatus('avatarStatus', 'Gerando script de avatar...');
-  try {
-    const system = 'Você é especialista em vídeos UGC, avatar IA, scripts de apresentador virtual e anúncios de alta conversão.';
-    const prompt = `Crie script para avatar IA.\nProduto/campanha: ${produto}\nPersona: ${persona}\nDetalhes: ${detalhes}\n\nEntregue fala direta, texto na tela, expressões, gestos, cenário, CTA e variação UGC.`;
-    const resposta = await chamarIA(prompt, system);
-    document.getElementById('saidaAvatar').textContent = resposta;
-    criativos.push({ tipo: 'avatar', produto, resposta, data: new Date().toISOString() });
-    localStorage.setItem('p10_criativos', JSON.stringify(criativos));
-    setStatus('avatarStatus', 'Script de avatar gerado.', 'ok');
-    atualizarDashboard();
-  } catch (error) {
-    setStatus('avatarStatus', 'Erro avatar: ' + error.message, 'err');
-  }
-}
-
-function copiarTexto(id) {
-  const texto = document.getElementById(id).innerText;
-  navigator.clipboard.writeText(texto);
-  alert('Copiado.');
-}
-
-function atualizarDashboard() {
-  document.getElementById('dCriativos').innerText = criativos.length;
-}
-
-async function logout() {
-  await db.auth.signOut();
-  location.reload();
-}
-
-document.getElementById('btnCadastrar').addEventListener('click', registrar);
-document.getElementById('btnEntrar').addEventListener('click', login);
-document.getElementById('btnIA').addEventListener('click', enviarIA);
-document.getElementById('btnReload').addEventListener('click', () => carregarChats(true));
-document.getElementById('btnLogout').addEventListener('click', logout);
-document.getElementById('btnImagem').addEventListener('click', gerarImagem);
-document.getElementById('btnNovaSeed').addEventListener('click', novaSeed);
-document.getElementById('btnVideo').addEventListener('click', gerarVideo);
-document.getElementById('btnVoz').addEventListener('click', gerarVoz);
-document.getElementById('btnMusica').addEventListener('click', gerarMusica);
-document.getElementById('btnAvatar').addEventListener('click', gerarAvatar);
-
-db.auth.getSession().then(async ({ data: { session } }) => {
-  if (session) {
-    currentUser = session.user;
-    await abrirApp();
-  }
-});
+const SUPABASE_URL='https://kzjuqssxifzqrzxskbwx.supabase.co';
+const SUPABASE_KEY='sb_publishable_YQlrAj3NKf0wa2-3ocsFeg_6nbYUgv0';
+const db=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+let currentUser=null,historico=[],agentes=[],agenteAtivo=null,projetos=[],projetoAtivo=null,arquivos=[],memorias=[];
+let imageSeed=Date.now();let ultimaResposta='';let criativos=JSON.parse(localStorage.getItem('p11_criativos')||'[]');
+function setStatus(id,msg,type=''){const el=document.getElementById(id);el.className='status '+type;el.textContent=msg;}
+function escapeHtml(text){return String(text||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function validarAuth(){const email=document.getElementById('email').value.trim();const senha=document.getElementById('senha').value.trim();if(!email||!senha){setStatus('authStatus','Preencha email e senha.','err');return null;}if(senha.length<6){setStatus('authStatus','A senha precisa ter pelo menos 6 caracteres.','err');return null;}return{email,senha};}
+async function registrar(){const dados=validarAuth();if(!dados)return;setStatus('authStatus','Criando conta...');try{const{error}=await db.auth.signUp({email:dados.email,password:dados.senha});if(error)throw error;setStatus('authStatus','Conta criada. Agora clique em Entrar.','ok');}catch(error){setStatus('authStatus','Erro ao cadastrar: '+error.message,'err');}}
+async function login(){const dados=validarAuth();if(!dados)return;setStatus('authStatus','Entrando...');try{const{data,error}=await db.auth.signInWithPassword({email:dados.email,password:dados.senha});if(error)throw error;currentUser=data.user;await abrirApp();}catch(error){setStatus('authStatus','Erro ao entrar: '+error.message,'err');}}
+async function abrirApp(){document.getElementById('authBox').classList.add('hidden');document.getElementById('app').classList.remove('hidden');document.getElementById('userInfo').innerText=currentUser.email;await garantirPerfil();await carregarAgentes();await carregarProjetos();await carregarArquivos();await carregarMemorias();await carregarChats();atualizarDashboard();}
+async function garantirPerfil(){setStatus('profileStatus','Carregando perfil...');try{const{data,error}=await db.from('perfis').select('*').eq('id',currentUser.id).maybeSingle();if(error)throw error;if(!data){const{error:insertError}=await db.from('perfis').insert([{id:currentUser.id,nome:currentUser.email,plano:'free'}]);if(insertError)throw insertError;setStatus('profileStatus','Perfil criado no plano FREE.','ok');return;}setStatus('profileStatus','Perfil carregado.','ok');}catch(error){setStatus('profileStatus','Erro no perfil: '+error.message,'err');}}
+async function carregarAgentes(){setStatus('agentStatus','Carregando agentes...');try{const{data,error}=await db.from('agentes').select('*').order('created_at',{ascending:true});if(error)throw error;agentes=data||[];document.getElementById('mAgentes').innerText=agentes.length;document.getElementById('dAgentes').innerText=agentes.length;if(!agentes.length){setStatus('agentStatus','Nenhum agente encontrado.','err');return;}agenteAtivo=agentes[0];renderAgentes();setStatus('agentStatus',`${agentes.length} agentes carregados.`,'ok');}catch(error){setStatus('agentStatus','Erro agentes: '+error.message,'err');}}
+function renderAgentes(){const grid=document.getElementById('agentesGrid');grid.innerHTML=agentes.map(a=>`<div class="agent-card ${agenteAtivo&&agenteAtivo.id===a.id?'active':''}" onclick="selecionarAgente('${a.id}')"><h3>${escapeHtml(a.nome)}</h3><p>${escapeHtml(a.sistema)}</p></div>`).join('');document.getElementById('agenteAtivoNome').innerText=agenteAtivo?agenteAtivo.nome:'Nenhum';}
+window.selecionarAgente=function(id){agenteAtivo=agentes.find(a=>a.id===id);renderAgentes();setStatus('iaStatus',`${agenteAtivo.nome} ativado.`,'ok');}
+function montarMemoria(){const hist=historico.slice(-6).map(c=>`Usuário: ${c.prompt}\n${c.agente}: ${c.resposta}`).join('\n\n')||'Sem histórico.';const mem=memorias.slice(-10).map(m=>`${m.tipo}: ${m.conteudo}`).join('\n')||'Sem memória fixa.';const proj=projetoAtivo?`Projeto ativo: ${projetoAtivo.nome}\nDescrição: ${projetoAtivo.descricao}`:'Sem projeto ativo.';return `${proj}\n\nMemória fixa:\n${mem}\n\nHistórico recente:\n${hist}`;}
+function systemPadrao(){return `Você faz parte do 999 Agent, uma central de IA multiagentes premium. Responda em português, com execução prática, estratégia, automação, monetização e próximos passos.`;}
+function montarPromptComMemoria(prompt){return `Contexto operacional:\n${montarMemoria()}\n\nNova solicitação:\n${prompt}\n\nRegras: entregue execução prática, próximos passos, automações e melhorias.`;}
+async function chamarIA(prompt,system){const{data,error}=await db.functions.invoke('p1-ai',{body:{prompt,system}});if(error)throw error;return data?.output||'Sem resposta.';}
+async function enviarIA(){if(!agenteAtivo){setStatus('iaStatus','Selecione um agente.','err');return;}const prompt=document.getElementById('prompt').value.trim();if(!prompt){setStatus('iaStatus','Digite uma ordem.','err');return;}const chat=document.getElementById('chatBox');if(chat.textContent==='Nenhuma conversa ainda.')chat.innerHTML='';chat.innerHTML+=`<div class="bubble user"><b>Você:</b><br>${escapeHtml(prompt)}</div><div class="bubble agentnote"><b>Agente:</b> ${escapeHtml(agenteAtivo.nome)}</div>`;setStatus('iaStatus',`${agenteAtivo.nome} processando...`);try{const resposta=await chamarIA(montarPromptComMemoria(prompt),agenteAtivo.sistema+'\n\n'+systemPadrao());ultimaResposta=resposta;chat.innerHTML+=`<div class="bubble ai"><b>${escapeHtml(agenteAtivo.nome)}:</b><br>${escapeHtml(resposta)}</div>`;await db.from('chats').insert([{user_id:currentUser.id,agente:agenteAtivo.nome,prompt,resposta}]);document.getElementById('prompt').value='';setStatus('iaStatus','Resposta gerada e salva.','ok');await carregarChats(false);}catch(error){chat.innerHTML+=`<div class="bubble ai"><b>Erro:</b><br>${escapeHtml(error.message)}</div>`;setStatus('iaStatus','Erro IA: '+error.message,'err');}}
+async function carregarChats(render=true){try{const{data,error}=await db.from('chats').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:true});if(error)throw error;historico=data||[];document.getElementById('mChats').innerText=historico.length;document.getElementById('mMemoria').innerText=Math.min(historico.length+memorias.length,18);document.getElementById('dChats').innerText=historico.length;document.getElementById('memoryStatus').textContent=`Memória ativa: ${historico.length} chats + ${memorias.length} memórias fixas.`;document.getElementById('memoryStatus').className='status ok';if(render){const chat=document.getElementById('chatBox');chat.innerHTML=historico.length?historico.slice(-30).map(c=>`<div class="bubble user"><b>Você:</b><br>${escapeHtml(c.prompt)}</div><div class="bubble ai"><b>${escapeHtml(c.agente)}:</b><br>${escapeHtml(c.resposta)}</div>`).join(''):'Nenhuma conversa ainda.';}atualizarDashboard();}catch(error){setStatus('iaStatus','Erro chats: '+error.message,'err');}}
+function mostrarModulo(event,nome){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');['Chat','Projetos','Upload','Memoria','Imagem','Video','Voz','Musica','Avatar','Dashboard'].forEach(m=>{const el=document.getElementById('mod'+m);if(el)el.classList.add('hidden');});const alvo=document.getElementById('mod'+nome.charAt(0).toUpperCase()+nome.slice(1));if(alvo)alvo.classList.remove('hidden');}
+async function criarProjeto(){const nome=document.getElementById('projetoNome').value.trim();const descricao=document.getElementById('projetoDescricao').value.trim();if(!nome){setStatus('projetoStatus','Digite o nome do projeto.','err');return;}try{const{error}=await db.from('projetos').insert([{user_id:currentUser.id,nome,descricao,status:'ativo'}]);if(error)throw error;setStatus('projetoStatus','Projeto criado.','ok');document.getElementById('projetoNome').value='';document.getElementById('projetoDescricao').value='';await carregarProjetos();}catch(error){setStatus('projetoStatus','Erro projeto: '+error.message,'err');}}
+async function carregarProjetos(){try{const{data,error}=await db.from('projetos').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});if(error)throw error;projetos=data||[];document.getElementById('mProjetos').innerText=projetos.length;document.getElementById('dProjetos').innerText=projetos.length;if(!projetoAtivo&&projetos.length)projetoAtivo=projetos[0];document.getElementById('projetoAtivoNome').innerText=projetoAtivo?projetoAtivo.nome:'Nenhum';document.getElementById('listaProjetos').innerHTML=projetos.length?projetos.map(p=>`<div class="project-card ${projetoAtivo&&projetoAtivo.id===p.id?'active':''}" onclick="selecionarProjeto('${p.id}')"><h3>${escapeHtml(p.nome)}</h3><p>${escapeHtml(p.descricao||'Sem descrição')}</p><span class="pill">${escapeHtml(p.status||'ativo')}</span></div>`).join(''):'Nenhum projeto.';atualizarDashboard();}catch(error){if(document.getElementById('projetoStatus'))setStatus('projetoStatus','Erro ao carregar projetos: '+error.message,'err');}}
+window.selecionarProjeto=function(id){projetoAtivo=projetos.find(p=>p.id===id);document.getElementById('projetoAtivoNome').innerText=projetoAtivo?projetoAtivo.nome:'Nenhum';carregarProjetos();}
+async function uploadArquivo(){const file=document.getElementById('arquivoInput').files[0];if(!file){setStatus('uploadStatus','Selecione um arquivo.','err');return;}const nome=`${currentUser.id}/${Date.now()}-${file.name}`;try{const{error}=await db.storage.from('uploads').upload(nome,file,{upsert:false});if(error)throw error;const{data:pub}=db.storage.from('uploads').getPublicUrl(nome);await db.from('arquivos').insert([{user_id:currentUser.id,nome:file.name,url:pub.publicUrl,tipo:file.type||'arquivo'}]);setStatus('uploadStatus','Upload realizado.','ok');await carregarArquivos();}catch(error){setStatus('uploadStatus','Erro upload: '+error.message,'err');}}
+async function carregarArquivos(){try{const{data,error}=await db.from('arquivos').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});if(error)throw error;arquivos=data||[];document.getElementById('listaArquivos').innerHTML=arquivos.length?arquivos.map(a=>`<div class="file-card"><h3>${escapeHtml(a.nome)}</h3><p>${escapeHtml(a.tipo||'arquivo')}</p><a class="btn secondary" target="_blank" href="${a.url}">Abrir</a></div>`).join(''):'Nenhum arquivo.';}catch(error){if(document.getElementById('uploadStatus'))setStatus('uploadStatus','Erro arquivos: '+error.message,'err');}}
+async function salvarMemoria(){const tipo=document.getElementById('memoriaTipo').value;const conteudo=document.getElementById('memoriaConteudo').value.trim();if(!conteudo){setStatus('memoriaStatusBox','Digite uma memória.','err');return;}try{const{error}=await db.from('memoria_ia').insert([{user_id:currentUser.id,tipo,conteudo,embedding:{}}]);if(error)throw error;setStatus('memoriaStatusBox','Memória salva.','ok');document.getElementById('memoriaConteudo').value='';await carregarMemorias();}catch(error){setStatus('memoriaStatusBox','Erro memória: '+error.message,'err');}}
+async function carregarMemorias(){try{const{data,error}=await db.from('memoria_ia').select('*').eq('user_id',currentUser.id).order('created_at',{ascending:false});if(error)throw error;memorias=data||[];document.getElementById('listaMemoria').innerHTML=memorias.length?memorias.map(m=>`<div class="memory-card"><h3>${escapeHtml(m.tipo)}</h3><p>${escapeHtml(m.conteudo)}</p></div>`).join(''):'Nenhuma memória.';atualizarDashboard();}catch(error){if(document.getElementById('memoriaStatusBox'))setStatus('memoriaStatusBox','Erro memórias: '+error.message,'err');}}
+function montarPromptImagem(){const produto=document.getElementById('imgProduto').value||'produto premium';const estilo=document.getElementById('imgEstilo').value||'street luxury futurista';const formato=document.getElementById('imgFormato').value||'instagram square 1:1';const detalhes=document.getElementById('imgDetalhes').value||'cinematic lighting';return `${produto}, ${estilo}, ${formato}, ${detalhes}, ultra realistic, cinematic lighting, luxury advertising, futuristic, highly detailed, premium branding, sharp focus`;}
+async function gerarImagem(){const finalPrompt=montarPromptImagem();const formato=document.getElementById('imgFormato').value;const width=formato.includes('9:16')?720:formato.includes('16:9')?1280:1024;const height=formato.includes('9:16')?1280:formato.includes('16:9')?720:1024;const imageUrl=`https://image.pollinations.ai/prompt/${encodeURIComponent(finalPrompt)}?width=${width}&height=${height}&seed=${imageSeed}&nologo=true&enhance=true`;document.getElementById('promptImagemFinal').innerHTML='<b>Prompt usado:</b><pre>'+escapeHtml(finalPrompt)+'</pre>';document.getElementById('saidaImagem').innerHTML='Gerando imagem grátis...';setStatus('imgStatus','Gerando imagem grátis via Pollinations...');const img=new Image();img.onload=function(){document.getElementById('saidaImagem').innerHTML=`<img src="${imageUrl}" class="preview-img"/><br><br><a class="btn cyan" target="_blank" href="${imageUrl}">Abrir imagem</a>`;criativos.push({tipo:'imagem',prompt:finalPrompt,image:imageUrl,data:new Date().toISOString()});localStorage.setItem('p11_criativos',JSON.stringify(criativos));setStatus('imgStatus','Imagem gerada grátis.','ok');atualizarDashboard();};img.onerror=function(){document.getElementById('saidaImagem').innerHTML=`<b>Serviço grátis instável.</b><pre>${escapeHtml(imageUrl)}</pre>`;setStatus('imgStatus','Erro ao carregar imagem. Tente nova variação.','err');};img.src=imageUrl;}
+function novaSeed(){imageSeed=Date.now()+Math.floor(Math.random()*999999);gerarImagem();}
+async function gerarVideo(){await gerarCriativoIA('vidStatus','saidaVideo','video','Você é especialista em vídeos, Reels, TikTok e anúncios cinematográficos.',`Crie roteiro completo de vídeo IA para ${document.getElementById('vidProduto').value||'produto premium'}. Objetivo: ${document.getElementById('vidObjetivo').value||'vender'}. Duração: ${document.getElementById('vidDuracao').value||'30s'}. Detalhes: ${document.getElementById('vidDetalhes').value||'premium'}.`)}
+async function gerarVoz(){await gerarCriativoIA('vozStatus','saidaVoz','voz','Você é especialista em locução publicitária e narração IA.',`Crie narração de 15s, 30s e 60s para ${document.getElementById('vozMarca').value||'marca premium'}. Tom: ${document.getElementById('vozTom').value||'cinematográfico'}. Briefing: ${document.getElementById('vozBriefing').value||'anúncio premium'}.`)}
+async function gerarMusica(){await gerarCriativoIA('musicaStatus','saidaMusica','musica','Você é especialista em prompts musicais para IA.',`Crie prompt musical para ${document.getElementById('musicaMarca').value||'campanha premium'}. Estilo: ${document.getElementById('musicaEstilo').value||'cinematic trap luxury'}. Detalhes: ${document.getElementById('musicaDetalhes').value||'energia alta'}.`)}
+async function gerarAvatar(){await gerarCriativoIA('avatarStatus','saidaAvatar','avatar','Você é especialista em avatar IA, UGC e scripts de apresentador virtual.',`Crie script de avatar IA para ${document.getElementById('avatarProduto').value||'produto premium'}. Persona: ${document.getElementById('avatarPersona').value||'especialista'}. Detalhes: ${document.getElementById('avatarDetalhes').value||'oferta premium'}.`)}
+async function gerarCriativoIA(statusId,outId,tipo,system,prompt){setStatus(statusId,'Gerando...');try{const resposta=await chamarIA(prompt,system);document.getElementById(outId).textContent=resposta;ultimaResposta=resposta;criativos.push({tipo,resposta,data:new Date().toISOString()});localStorage.setItem('p11_criativos',JSON.stringify(criativos));setStatus(statusId,'Gerado com sucesso.','ok');atualizarDashboard();}catch(error){setStatus(statusId,'Erro: '+error.message,'err');}}
+function falar(texto){const t=texto||ultimaResposta||document.getElementById('saidaVoz').innerText;if(!t||t.includes('Aguardando')){alert('Nada para falar ainda.');return;}speechSynthesis.cancel();const voz=new SpeechSynthesisUtterance(t);voz.lang='pt-BR';voz.rate=1;voz.pitch=1;speechSynthesis.speak(voz);}
+function copiarTexto(id){navigator.clipboard.writeText(document.getElementById(id).innerText);alert('Copiado.');}
+function atualizarDashboard(){document.getElementById('dCriativos').innerText=criativos.length;document.getElementById('dProjetos').innerText=projetos.length;}
+async function logout(){await db.auth.signOut();location.reload();}
+document.getElementById('btnCadastrar').addEventListener('click',registrar);document.getElementById('btnEntrar').addEventListener('click',login);document.getElementById('btnIA').addEventListener('click',enviarIA);document.getElementById('btnReload').addEventListener('click',()=>{carregarMemorias();carregarChats(true)});document.getElementById('btnLogout').addEventListener('click',logout);document.getElementById('btnFalarUltima').addEventListener('click',()=>falar());document.getElementById('btnCriarProjeto').addEventListener('click',criarProjeto);document.getElementById('btnListarProjetos').addEventListener('click',carregarProjetos);document.getElementById('btnUpload').addEventListener('click',uploadArquivo);document.getElementById('btnListarArquivos').addEventListener('click',carregarArquivos);document.getElementById('btnSalvarMemoria').addEventListener('click',salvarMemoria);document.getElementById('btnListarMemoria').addEventListener('click',carregarMemorias);document.getElementById('btnImagem').addEventListener('click',gerarImagem);document.getElementById('btnNovaSeed').addEventListener('click',novaSeed);document.getElementById('btnVideo').addEventListener('click',gerarVideo);document.getElementById('btnVoz').addEventListener('click',gerarVoz);document.getElementById('btnFalarVoz').addEventListener('click',()=>falar(document.getElementById('saidaVoz').innerText));document.getElementById('btnMusica').addEventListener('click',gerarMusica);document.getElementById('btnAvatar').addEventListener('click',gerarAvatar);
+db.auth.getSession().then(async({data:{session}})=>{if(session){currentUser=session.user;await abrirApp();}});
 </script>
 </body>
 </html>
